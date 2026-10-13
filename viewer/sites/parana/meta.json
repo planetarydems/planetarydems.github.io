@@ -1,0 +1,51 @@
+{
+ "key": "parana",
+ "title": "Paran\u00e1 Valles",
+ "lon": -10.26,
+ "lat": -22.87,
+ "width_km": 109.998,
+ "height_km": 79.992,
+ "mesh": {
+  "cols": 1536,
+  "rows": 1117,
+  "px_m": 71.61328125
+ },
+ "zmin": -1556.0,
+ "zmax": 480.0,
+ "dem_px_m": 18.0,
+ "tex": {
+  "cols": 4095,
+  "rows": 2978,
+  "px_m": 26.861538461538462,
+  "full_cols": 6111,
+  "full_px_m": 18.0
+ },
+ "color_range": [
+  -977.7512725830078,
+  218.75464904785144
+ ],
+ "fill_share": 0.0015267358841922485,
+ "frames": [],
+ "product": "ta_implicit_d1_implrel100s1_e088",
+ "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
+ "checks": {
+  "tex_valid_frames": 0.9997671342981131,
+  "tex_filled_from_hillshade": 0.00023286570188683082,
+  "sun_az": 304.0,
+  "sun_alt": 40.0,
+  "sun_fit_r": 0.6832669275925342,
+  "tex_vs_dem_shift_m": [
+   5.20106322054653,
+   -2.255018546743486
+  ],
+  "tex_vs_dem_resp": 0.5094784554772906
+ },
+ "view": {
+  "az": 205,
+  "el": 34,
+  "dist": 0.75,
+  "te": 0,
+  "tn": 0,
+  "ve": 5
+ }
+}

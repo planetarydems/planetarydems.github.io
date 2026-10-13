@@ -2,7 +2,16 @@
 
 Source of the Planetary DEMs website, served by GitHub Pages at <https://planetarydems.org>.
 
-The site is one static page (`index.html`, no build step, no external scripts or fonts). `CNAME` holds the custom domain;
-`.nojekyll` tells GitHub Pages to serve the files as they are.
+Static files, no build step on the server:
 
-To change the site, edit `index.html` and push to `main`; GitHub Pages republishes within a minute or two.
+| path | content |
+|---|---|
+| `index.html` | the MESA page |
+| `img/` | perspective views (MESA and MOLA, CTX image and shaded relief), thumbnails, figures |
+| `data/` | `sites.json` (gallery) and `tables.json` (accuracy numbers) |
+| `viewer/` | interactive 3-D viewer: `mesa3d.js`, three.js 0.170.0 (MIT, `viewer/vendor/`), per-site terrain in `viewer/sites/` |
+
+Fonts load from Google Fonts. `CNAME` holds the custom domain; `.nojekyll` makes GitHub Pages serve the files as they are.
+
+The page is generated from `mars_dem/website/prototype/` by `mars_dem/website/scripts/build_site.py`. Push to `main` to
+republish; GitHub Pages updates within a few minutes.

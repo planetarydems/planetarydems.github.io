@@ -2,24 +2,588 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Planetary DEMs</title>
-<meta name="description" content="Planetary DEMs: coming soon.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="MESA (Mars Elevation from Shading and Altimetry): a global 18 m digital elevation model of Mars, predicted from Context Camera images and leveled to MOLA laser altimetry.">
+<meta property="og:title" content="MESA | Mars Elevation from Shading and Altimetry">
+<meta property="og:description" content="MESA (Mars Elevation from Shading and Altimetry): a global 18 m digital elevation model of Mars, predicted from Context Camera images and leveled to MOLA laser altimetry.">
+<meta property="og:image" content="https://planetarydems.org/img/hero.jpg">
+<title>MESA | Mars Elevation from Shading and Altimetry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
-  :root { --bg: #fbfaf7; --fg: #1d1f21; --muted: #5d6166; }
-  @media (prefers-color-scheme: dark) { :root { --bg: #141517; --fg: #e8e6e1; --muted: #a2a5a9; } }
-  html, body { height: 100%; margin: 0; }
-  body { display: flex; align-items: center; justify-content: center; background: var(--bg); color: var(--fg);
-         font: 17px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-         text-align: center; padding: 0 1rem; }
-  h1 { font-size: 2.2rem; margin: 0 0 .4rem; letter-spacing: -.01em; }
-  p { margin: 0; color: var(--muted); font-size: 1.15rem; }
+  /* Layout: a dark imagery band on top (hero + 3-D stage, always dark: it shows orbital images), then a light/dark
+     reading column for data access and accuracy. One accent, Martian-dusk blue; MOLA's orange appears only in charts. */
+  :root {
+    --bg: #f3f4f6; --surface: #ffffff; --ink: #15181d; --ink2: #464c57; --muted: #737a86; --line: #dcdfe4;
+    --accent: #2c69c9; --accent-ink: #ffffff; --mola: #d9622b; --grid: #e7e9ed;
+    --code-bg: #12161b; --code-ink: #dfe4ea; --code-com: #7f8b99; --code-str: #9fd39a; --code-kw: #8db9f5; --code-num: #f0b77a;
+    --night: #0c0e11; --night-2: #15191e; --night-line: #2a2f37; --night-ink: #eef0f3; --night-muted: #a3aab4;
+    --warn-bg: #fff4e2; --warn-ink: #6b4510; --warn-line: #efd3a6;
+    --display: "Archivo", "Helvetica Neue", Arial, sans-serif; --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1114; --surface: #171a1f; --ink: #eef0f3; --ink2: #b9bfc8; --muted: #8a919c; --line: #2a2f37;
+      --accent: #6aa0f0; --accent-ink: #0c0e11; --mola: #e3743d; --grid: #252a31;
+      --warn-bg: #2a2114; --warn-ink: #f0d3a3; --warn-line: #4b3a20; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1114; --surface: #171a1f; --ink: #eef0f3; --ink2: #b9bfc8; --muted: #8a919c; --line: #2a2f37;
+    --accent: #6aa0f0; --accent-ink: #0c0e11; --mola: #e3743d; --grid: #252a31;
+    --warn-bg: #2a2114; --warn-ink: #f0d3a3; --warn-line: #4b3a20; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font: 16px/1.6 var(--body); margin: 0; }
+  a { color: var(--accent); }
+  img { max-width: 100%; display: block; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding-inline: 16px; }
+  h1, h2, h3 { font-family: var(--display); font-stretch: 112%; text-wrap: balance; line-height: 1.1; margin: 0; }
+  h2 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 750; letter-spacing: -0.01em; }
+  h3 { font-size: 19px; font-weight: 700; margin-top: 30px; }
+  .lede { color: var(--ink2); max-width: 68ch; margin: 10px 0 0; }
+  .eyebrow { font: 600 12.5px/1.3 var(--body); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+  code { font-family: var(--mono); font-size: 0.92em; }
+
+  /* ---------- top band ---------- */
+  .night { background: var(--night); color: var(--night-ink); }
+  .top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-block: 14px; }
+  .brand { color: var(--night-ink); text-decoration: none; font: 700 17px/1 var(--display); font-stretch: 120%; letter-spacing: 0.01em; }
+  .brand span { color: var(--night-muted); font-weight: 500; }
+  .top nav { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+  .top nav a { color: var(--night-muted); text-decoration: none; font-size: 14.5px; }
+  .top nav a:hover { color: var(--night-ink); }
+  .hero { position: relative; }
+  .hero img { width: 100%; aspect-ratio: 16 / 7.2; object-fit: cover; object-position: 50% 42%; max-width: 100%; }
+  .hero-text { position: absolute; left: 0; right: 0; bottom: 0; padding-block: 90px 34px; background: linear-gradient(transparent, rgba(12,14,17,0.88) 60%); }
+  .hero h1 { font-size: clamp(64px, 12vw, 148px); font-weight: 800; font-stretch: 125%; letter-spacing: 0.02em; line-height: 0.9; }
+  .hero .expansion { font: 600 clamp(16px, 2vw, 22px)/1.3 var(--display); font-stretch: 112%; margin: 8px 0 0; color: var(--night-ink); }
+  .hero .lead { max-width: 60ch; color: var(--night-muted); margin: 12px 0 0; font-size: clamp(15px, 1.6vw, 17.5px); }
+  .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 7px; font: 600 15px/1 var(--body); text-decoration: none; border: 1px solid var(--night-line); color: var(--night-ink); background: rgba(255,255,255,0.04); cursor: pointer; }
+  .btn.primary { background: #6aa0f0; border-color: #6aa0f0; color: #0c0e11; }
+  .hero-cap { position: absolute; right: 16px; top: 12px; margin: 0; font-size: 12px; color: var(--night-muted); background: rgba(12,14,17,0.6); padding: 3px 8px; border-radius: 4px; }
+  @media (max-width: 720px) {
+    .hero img { aspect-ratio: 16 / 10; }
+    .hero-text { position: static; background: var(--night); padding-block: 18px 26px; }
+    .hero-cap { position: static; background: none; padding: 8px 16px 0; }
+  }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--night-line); }
+  .stat { padding: 20px 18px 22px; border-left: 1px solid var(--night-line); }
+  .stat:first-child { border-left: 0; padding-left: 0; }
+  .stat .v { font: 750 clamp(28px, 3.4vw, 40px)/1 var(--display); font-stretch: 112%; font-variant-numeric: tabular-nums; }
+  .stat .l { color: var(--night-muted); font-size: 14px; margin-top: 8px; }
+  .stat .l b { color: var(--night-ink); font-weight: 500; }
+  @media (max-width: 760px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stat:nth-child(3) { border-left: 0; padding-left: 0; } .stat { border-top: 1px solid var(--night-line); } }
+
+  /* ---------- explore ---------- */
+  .explore { padding-block: 44px 40px; border-top: 1px solid var(--night-line); }
+  .explore .lede { color: var(--night-muted); }
+  .stage { margin-top: 22px; border: 1px solid var(--night-line); border-radius: 10px; overflow: hidden; background: var(--night-2); }
+  .media { position: relative; aspect-ratio: 16 / 9; max-width: 100%; background: #0a0c0e; overflow: hidden; user-select: none; touch-action: pan-y; }
+  .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+  .media .over { clip-path: inset(0 0 0 var(--x, 50%)); }
+  .media .divider { position: absolute; top: 0; bottom: 0; left: var(--x, 50%); width: 2px; margin-left: -1px; background: #fff; pointer-events: none; }
+  .media .divider::after { content: ""; position: absolute; top: 50%; left: 50%; width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 50%; background: #fff;
+    box-shadow: 0 1px 6px rgba(0,0,0,.5); background-image: linear-gradient(90deg, transparent 9px, #222 9px 11px, transparent 11px 19px, #222 19px 21px, transparent 21px); }
+  .media .tag { position: absolute; top: 12px; padding: 4px 9px; border-radius: 5px; background: rgba(12,14,17,0.72); color: #fff; font: 600 13px/1.2 var(--body); pointer-events: none; }
+  .media .tag.l { left: 12px; } .media .tag.r { right: 12px; }
+  .media input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+  .media .gl { position: absolute; inset: 0; }
+  .media .loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--night-muted); font-size: 14px; }
+  .bar { display: flex; flex-wrap: wrap; gap: 14px 24px; justify-content: space-between; align-items: flex-start; padding: 16px 18px 18px; }
+  .bar .info { min-width: 0; flex: 1 1 320px; }
+  .bar .name { font: 700 20px/1.2 var(--display); font-stretch: 112%; }
+  .bar .where { color: var(--night-muted); font: 13px/1.4 var(--mono); margin-top: 3px; }
+  .bar .cap { color: var(--night-muted); font-size: 14.5px; margin: 8px 0 0; max-width: 70ch; }
+  .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .seg { display: inline-flex; border: 1px solid var(--night-line); border-radius: 7px; overflow: hidden; }
+  .seg button { background: transparent; color: var(--night-ink); border: 0; padding: 7px 12px; font: 500 13.5px/1.2 var(--body); cursor: pointer; }
+  .seg button + button { border-left: 1px solid var(--night-line); }
+  .seg button[aria-pressed="true"] { background: var(--night-ink); color: var(--night); }
+  .seg.light { border-color: var(--line); } .seg.light button { color: var(--ink); } .seg.light button + button { border-color: var(--line); }
+  .seg.light button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+  .gl-tools { position: absolute; left: 12px; bottom: 12px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; background: rgba(12,14,17,0.75); padding: 8px 10px; border-radius: 8px; }
+  .gl-tools label { color: var(--night-muted); font-size: 12.5px; display: flex; gap: 6px; align-items: center; }
+  .gl-tools input[type=range] { width: 90px; accent-color: #6aa0f0; position: static; opacity: 1; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .chips button { background: transparent; color: var(--night-muted); border: 1px solid var(--night-line); border-radius: 99px; padding: 6px 13px; font: 500 13.5px/1.2 var(--body); cursor: pointer; }
+  .chips button[aria-pressed="true"] { background: var(--night-ink); color: var(--night); border-color: var(--night-ink); }
+  .chips button span { opacity: .65; margin-left: 5px; font-variant-numeric: tabular-nums; }
+  .sites { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; margin-top: 16px; }
+  .site { position: relative; border: 1px solid var(--night-line); border-radius: 8px; overflow: hidden; background: var(--night-2); color: var(--night-ink); text-align: left; padding: 0; cursor: pointer; font: inherit; }
+  .site img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  .site .t { padding: 7px 10px 9px; font-size: 13.5px; font-weight: 600; line-height: 1.25; }
+  .site .t small { display: block; font: 400 11.5px/1.4 var(--mono); color: var(--night-muted); margin-top: 2px; }
+  .site[aria-current="true"] { border-color: #6aa0f0; box-shadow: 0 0 0 1px #6aa0f0; }
+  .site.pending { cursor: default; }
+  .site.pending .ph { aspect-ratio: 16 / 9; display: grid; place-items: center; color: var(--night-muted); font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+    background: repeating-linear-gradient(135deg, #12161b 0 10px, #161a20 10px 20px); }
+  .site .badge { position: absolute; top: 6px; right: 6px; font: 600 10.5px/1 var(--body); letter-spacing: .06em; text-transform: uppercase; background: rgba(12,14,17,.8); color: #cfe0fb; padding: 4px 6px; border-radius: 4px; }
+  .legend-note { color: var(--night-muted); font-size: 13px; margin: 12px 0 0; }
+
+  /* ---------- reading sections ---------- */
+  section.read { padding-block: 56px 8px; }
+  .callout { margin-top: 18px; border: 1px solid var(--warn-line); background: var(--warn-bg); color: var(--warn-ink); border-radius: 8px; padding: 10px 14px; font-size: 14.5px; max-width: 80ch; }
+  .files { margin-top: 18px; overflow-x: auto; }
+  .files table { min-width: 640px; }
+  .products table { min-width: 820px; }
+  .products td:first-child { white-space: nowrap; }
+  .products .pill { margin-left: 0; white-space: nowrap; }
+  table { border-collapse: collapse; width: 100%; background: var(--surface); border: 1px solid var(--line); font-size: 14.5px; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font: 600 12.5px/1.3 var(--body); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); background: var(--bg); }
+  td code { white-space: nowrap; }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.sub { padding-left: 28px; color: var(--ink2); }
+  tr:last-child td { border-bottom: 0; }
+  .pill { display: inline-block; font: 600 11px/1 var(--body); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); border-radius: 99px; padding: 3px 7px; margin-left: 6px; vertical-align: 1px; }
+  .grid-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0 28px; margin-top: 18px; }
+  .grid-facts div { border-top: 1px solid var(--line); padding: 10px 0; min-width: 0; }
+  .grid-facts dt { font: 600 12px/1.3 var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .grid-facts dd { margin: 4px 0 0; font-size: 14.5px; }
+  .builder { margin-top: 20px; display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 1fr); gap: 20px; align-items: start; }
+  @media (max-width: 860px) { .builder { grid-template-columns: minmax(0, 1fr); } }
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+  .panel label { display: block; font: 600 12.5px/1.3 var(--body); color: var(--ink2); margin-bottom: 5px; }
+  .panel select, .panel input { width: 100%; font: 15px/1.3 var(--mono); padding: 8px 9px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); }
+  .bbox { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+  .est { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px; font-size: 14px; color: var(--ink2); }
+  .est .big { font: 700 26px/1.1 var(--display); font-stretch: 112%; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .est p { margin: 6px 0 0; }
+  .est .warn { color: var(--warn-ink); background: var(--warn-bg); border: 1px solid var(--warn-line); border-radius: 6px; padding: 6px 9px; margin-top: 10px; }
+  .code { min-width: 0; }
+  .code .head { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  pre { margin: 0; background: var(--code-bg); color: var(--code-ink); border-radius: 10px; padding: 16px 18px; overflow-x: auto; font: 13.5px/1.6 var(--mono); tab-size: 4; }
+  pre .c { color: var(--code-com); } pre .s { color: var(--code-str); } pre .k { color: var(--code-kw); } pre .d { color: var(--code-num); }
+  .copy { font: 500 13px/1 var(--body); padding: 7px 12px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+  .recipes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr)); gap: 18px; margin-top: 18px; }
+  .recipe { min-width: 0; }
+  .recipe h4 { font: 700 16px/1.3 var(--display); font-stretch: 110%; margin: 0 0 4px; }
+  .recipe p { margin: 0 0 10px; color: var(--ink2); font-size: 14.5px; }
+  .notes { margin: 18px 0 0; padding-left: 20px; max-width: 80ch; color: var(--ink2); }
+  .notes li { margin: 6px 0; }
+  .ovr { margin-top: 10px; overflow-x: auto; }
+  .ovr table { font-size: 13.5px; }
+  .charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 18px; margin-top: 16px; }
+  .chart { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 12px 8px; position: relative; min-width: 0; }
+  .chart h4 { margin: 0 6px; font: 700 15.5px/1.3 var(--display); font-stretch: 110%; }
+  .chart .sub { margin: 2px 6px 6px; font-size: 13px; color: var(--muted); }
+  .key { display: flex; gap: 16px; font-size: 13px; color: var(--ink2); margin: 0 6px 6px; }
+  .key i { display: inline-block; width: 14px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
+  .tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); font-size: 12.5px; padding: 6px 9px; border-radius: 6px; white-space: nowrap; opacity: 0; }
+  svg text { fill: var(--ink2); font: 11.5px var(--body); }
+  figure { margin: 20px 0 0; background: #fff; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  figcaption { background: var(--surface); padding: 10px 14px 12px; font-size: 14px; color: var(--ink2); border-top: 1px solid var(--line); }
+  .cite { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; margin-top: 18px; }
+  .cite .panel p { margin: 6px 0 0; color: var(--ink2); font-size: 14.5px; }
+  footer { margin-top: 64px; border-top: 1px solid var(--line); padding-block: 22px 40px; color: var(--muted); font-size: 13.5px; }
+  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
 </style>
+
 </head>
 <body>
-<main>
-  <h1>Planetary DEMs</h1>
-  <p>Coming soon.</p>
+<div class="night">
+  <div class="wrap top">
+    <a class="brand" href="#top">planetary<span>dems</span></a>
+    <nav aria-label="Sections"><a href="#explore">Sites</a><a href="#data">Data access</a><a href="#accuracy">Accuracy</a><a href="#cite">Citation</a></nav>
+  </div>
+  <div class="hero" id="top">
+    <img src="img/hero.jpg" data-src="img/hero.jpg" alt="The delta of Jezero crater in 3-D, CTX images draped on the MESA elevation model, seen from the east">
+    <p class="hero-cap">Jezero crater delta. CTX image draped on MESA, vertical exaggeration 4×.</p>
+    <div class="hero-text"><div class="wrap">
+      <p class="eyebrow" style="color:var(--night-muted)">Mars · global elevation model · 18 m grid</p>
+      <h1>MESA</h1>
+      <p class="expansion">Mars Elevation from Shading and Altimetry</p>
+      <p class="lead">A global digital elevation model of Mars on an 18 m grid. Elevation is predicted from the shading in 45,570 Context Camera (CTX) images with a neural network and leveled to MOLA laser altimetry.</p>
+      <div class="cta"><a class="btn primary" href="#data">Data access</a><a class="btn" href="#explore">Site gallery</a></div>
+    </div></div>
+  </div>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><div class="v">18 m</div><div class="l">grid spacing. <b>MOLA: 463 m</b></div></div>
+      <div class="stat"><div class="v">8.6 m</div><div class="l">median error against 618 independent HiRISE DEMs. <b>MOLA: 17.8 m</b></div></div>
+      <div class="stat"><div class="v">96.4%</div><div class="l">of the surface predicted from CTX images. Infilled areas are flagged.</div></div>
+      <div class="stat"><div class="v">1.4 TB</div><div class="l">single Cloud-Optimized GeoTIFF, read in subsets over HTTP.</div></div>
+    </div>
+  </div>
+  <section class="explore" id="explore"><div class="wrap">
+    <p class="eyebrow" style="color:var(--night-muted)">Sites</p>
+    <h2>Perspective views at 18 m</h2>
+    <p class="lede">In each view, MESA (left of the divider) is compared with the MOLA gridded DEM (right). In the relief view, both surfaces are rendered with shading from the elevation model. In the CTX view, the CTX images used for the MESA prediction are draped over both surfaces. The divider is moved by dragging.</p>
+    <div class="stage">
+      <div class="media" id="media"></div>
+      <div class="bar">
+        <div class="info"><div class="name" id="s-name"></div><div class="where" id="s-where"></div><p class="cap" id="s-cap"></p></div>
+        <div class="controls">
+          <div class="seg" id="c-drape" role="group" aria-label="Drape"><button data-v="relief" aria-pressed="true">Relief</button><button data-v="ctx" aria-pressed="false">CTX image</button></div>
+          <div class="seg" id="c-mode" role="group" aria-label="View"><button data-v="compare" aria-pressed="true">Compare</button><button data-v="3d" aria-pressed="false">Interactive 3-D</button></div>
+        </div>
+      </div>
+    </div>
+    <div class="chips" id="themes" role="group" aria-label="Landform"></div>
+    <div class="sites" id="sites"></div>
+    <p class="legend-note" id="pending-note"></p>
+  </div></section>
+</div>
+
+<main class="wrap">
+  <section class="read" id="data">
+    <p class="eyebrow">Data access</p>
+    <h2>Reading subsets of the COG</h2>
+    <p class="lede">MESA is distributed as a single 1.4 TB Cloud-Optimized GeoTIFF (COG). Subsets are read with HTTP range requests in GDAL, rasterio, or rioxarray. Only the 512 × 512 pixel tiles that intersect the requested area are transferred. In a test, ~12 MB were transferred for a 35 × 30 km subset at Jezero crater.</p>
+    <div class="callout"><b>Prototype.</b> Hosting is in preparation. The file addresses below are placeholders. The code was tested on a subset with the same file layout.</div>
+
+    <p class="lede" style="font-size:15px">The four products are defined on one grid (global equirectangular, Mars sphere). Resampling is not required to overlay them.</p>
+    <div class="files products">
+      <table>
+        <thead><tr><th>Product</th><th>Content</th><th>Grid and format</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><b>MESA DEM</b><br><code>mesa_v1_dem_18m.tif</code></td><td>Elevation in meters above the MOLA areoid (the PEDR height convention), float32, nodata −9999</td><td>1,185,494 × 592,747 pixels at 18 m. One lossless COG, 1.43 TB</td><td><span class="pill">Coming soon</span></td></tr>
+          <tr><td><b>Mask</b><br><code>mesa_v1_mask_18m.tif</code></td><td>0 = predicted from CTX, 1 = infilled (inpainting network or gap bridge), 255 = nodata</td><td>Same grid. uint8 COG, 1.3 GB</td><td><span class="pill">Coming soon</span></td></tr>
+          <tr><td><b>Uncertainty map</b><br><code>mesa_v1_uncertainty_18m.tif</code></td><td>Expected error of each pixel in meters, from the median error of test pixels with the same slope, local incidence, and distance to the nearest laser shot. Infilled pixels are assigned by distance to the nearest predicted pixel. A class raster accompanies the map (reliable &lt;10 m, caution 10–25 m, unreliable ≥25 m, and infilled).</td><td>Same grid. COG</td><td><span class="pill">Coming soon</span></td></tr>
+          <tr><td><b>CTX image mosaic</b><br><code>mesa_v1_ctx_6m.tif</code></td><td>8-bit CTX image. Each pixel is taken from the registered image that dominates the DEM at that location.</td><td>DEM grid at one third of the pixel size (6 m, 3 × 3 per DEM pixel). One lossless COG, ~4.3 TB</td><td><span class="pill">Coming soon</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <dl class="grid-facts">
+      <div><dt>Grid</dt><dd>Simple cylindrical on the Mars sphere, R = 3,396,190 m, centered on 0° longitude</dd></div>
+      <div><dt>Size</dt><dd>1,185,494 × 592,747 pixels of 18 m at the equator, edges on ±180° and ±90°</dd></div>
+      <div><dt>Coordinates</dt><dd>Longitude −180 to 180, east-positive. Heights relative to the MOLA areoid, as for MOLA PEDR <code>ELEV</code></dd></div>
+      <div><dt>Layout</dt><dd>512 × 512 tiles, DEFLATE compression, 12 overview levels with 36 m to 74 km pixels</dd></div>
+    </dl>
+
+    <h3>1. Area selection</h3>
+    <div class="builder">
+      <div class="panel">
+        <label for="preset">Preset site</label>
+        <select id="preset"></select>
+        <div class="bbox">
+          <div><label for="w">West (°E)</label><input id="w" inputmode="decimal"></div>
+          <div><label for="e">East (°E)</label><input id="e" inputmode="decimal"></div>
+          <div><label for="s">South (°N)</label><input id="s" inputmode="decimal"></div>
+          <div><label for="n">North (°N)</label><input id="n" inputmode="decimal"></div>
+        </div>
+        <div class="est" id="est" aria-live="polite"></div>
+      </div>
+      <div class="code">
+        <div class="head">
+          <div class="seg light" id="c-lang" role="group" aria-label="Tool"><button data-v="rioxarray" aria-pressed="true">rioxarray</button><button data-v="rasterio" aria-pressed="false">rasterio</button><button data-v="gdal" aria-pressed="false">GDAL command line</button></div>
+          <button class="copy" data-target="code-main">Copy</button>
+        </div>
+        <pre id="code-main"></pre>
+      </div>
+    </div>
+
+    <h3>2. Further examples</h3>
+    <div class="recipes">
+      <div class="recipe"><h4>Large regions from overviews</h4><p>The same surface is stored at coarser pixel spacing in 12 overview levels. At level 3 (288 m pixels), a 30° × 30° region is ~6,200 pixels across.</p>
+        <div class="code"><div class="head"><span></span><button class="copy" data-target="r-ovr">Copy</button></div><pre id="r-ovr"></pre></div>
+        <div class="ovr"><table><thead><tr><th>overview_level</th><th class="n">0</th><th class="n">1</th><th class="n">2</th><th class="n">3</th><th class="n">4</th><th class="n">5</th><th class="n">7</th><th class="n">9</th><th class="n">11</th></tr></thead>
+          <tbody><tr><td>pixel</td><td class="n">36 m</td><td class="n">72 m</td><td class="n">144 m</td><td class="n">288 m</td><td class="n">576 m</td><td class="n">1.2 km</td><td class="n">4.6 km</td><td class="n">18 km</td><td class="n">74 km</td></tr></tbody></table></div>
+      </div>
+      <div class="recipe"><h4>Infilled pixels</h4><p>3.6% of the surface is infilled, in areas without usable CTX images. Infilled pixels are suitable for context. They are unsuitable for measurements of small landforms.</p>
+        <div class="code"><div class="head"><span></span><button class="copy" data-target="r-mask">Copy</button></div><pre id="r-mask"></pre></div></div>
+      <div class="recipe"><h4>Square pixels in meters</h4><p>Pixels of the global grid are elongated east–west away from the equator. Reprojection to a projection centered on the area is recommended before distances or slopes are measured.</p>
+        <div class="code"><div class="head"><span></span><button class="copy" data-target="r-proj">Copy</button></div><pre id="r-proj"></pre></div></div>
+      <div class="recipe"><h4>HTTP read settings</h4><p>With these GDAL settings, the directory listing is skipped, requests for adjacent tiles are merged, and connections are reused.</p>
+        <div class="code"><div class="head"><span></span><button class="copy" data-target="r-env">Copy</button></div><pre id="r-env"></pre></div></div>
+    </div>
+    <ul class="notes">
+      <li>Areas that cross 180° longitude are requested in two parts, one on each side.</li>
+      <li>Data are available equatorward of ~88.6° latitude. Near the poles, subsets are selected by longitude and latitude and reprojected to polar stereographic.</li>
+      <li>Vertical exaggeration in the perspective views is for display. Heights in the files are in meters without exaggeration.</li>
+    </ul>
+  </section>
+
+  <section class="read" id="accuracy">
+    <p class="eyebrow">Accuracy</p>
+    <h2>Accuracy assessment</h2>
+    <p class="lede">Test sites were withheld from training by location. HiRISE DEMs were produced from independent imagery with a different stereo pipeline. Errors are medians of the per-DEM mean absolute error of the product as delivered.</p>
+    <div class="files"><table id="acc"></table></div>
+    <p class="lede" id="accnote" style="font-size:13.5px"></p>
+    <div class="charts">
+      <div class="chart" id="c_r"><h4>Correlation with HiRISE</h4><p class="sub">by wavelength, 581 co-registered HiRISE DEMs</p>
+        <div class="key"><span><i style="background:var(--accent)"></i>MESA</span><span><i style="background:var(--mola)"></i>MOLA</span></div><div class="tip"></div></div>
+      <div class="chart" id="c_e"><h4>RMS error (m)</h4><p class="sub">same DEMs and bands</p>
+        <div class="key"><span><i style="background:var(--accent)"></i>MESA</span><span><i style="background:var(--mola)"></i>MOLA</span></div><div class="tip"></div></div>
+    </div>
+    <figure><img src="img/hirise_comparison.jpg" data-src="img/hirise_comparison.jpg" alt="Three HiRISE test sites: CTX image, HiRISE DEM, MESA and MOLA side by side" loading="lazy">
+      <figcaption>Three HiRISE DEMs of the test set, 8 km across. Ridges, gullies, and dunes in the HiRISE DEMs are reproduced in MESA and are absent from MOLA. Color is elevation over a hillshade. Offsets between surfaces were not removed.</figcaption></figure>
+  </section>
+
+  <section class="read" id="cite">
+    <p class="eyebrow">Citation</p>
+    <h2>Citation and license</h2>
+    <div class="cite">
+      <div class="panel"><b>Paper</b><p>In preparation.</p></div>
+      <div class="panel"><b>Code and model</b><p>To be released with the paper in the planetarydems organization on GitHub.</p></div>
+      <div class="panel"><b>License</b><p>To be announced with the data release.</p></div>
+    </div>
+  </section>
+  <footer>CTX images: NASA/JPL/Malin Space Science Systems. MOLA: NASA/GSFC. HiRISE DEMs: NASA/JPL/University of Arizona. · planetarydems.org</footer>
 </main>
+
+<script type="module">
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const fmtLat = (v) => `${Math.abs(v).toFixed(2)}°${v >= 0 ? 'N' : 'S'}`, fmtLon = (v) => `${Math.abs(v).toFixed(2)}°${v >= 0 ? 'E' : 'W'}`;
+// a standalone copy defines window.EMBED = {sites, tables, img: {path: dataURI}, viewer: {site: {file: dataURI}}}
+const EMBED = window.EMBED || null;
+const [SITES, T] = EMBED ? [EMBED.sites, EMBED.tables]
+  : await Promise.all([fetch('data/sites.json').then((r) => r.json()), fetch('data/tables.json').then((r) => r.json())]);
+const im = (p) => (EMBED && EMBED.img[p]) || p;
+for (const el of document.querySelectorAll('img[data-src]')) el.src = im(el.dataset.src);
+
+// ---------------- segmented controls ----------------
+function seg(id, fn) {
+  $(id).addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    for (const x of $(id).children) x.setAttribute('aria-pressed', x === b);
+    fn(b.dataset.v);
+  });
+}
+const pressed = (id) => [...$(id).children].find((b) => b.getAttribute('aria-pressed') === 'true').dataset.v;
+
+// ---------------- explore stage ----------------
+let cur = SITES.find((s) => s.rendered), viewer = null, viewerMod = null, theme = 'All';
+const THEMES = ['All', ...['Fluvial valleys', 'Deltas and fans', 'Craters', 'Chaos and canyons', 'Volcanoes'].filter((t) => SITES.some((s) => s.theme === t))];
+function renderThemes() {
+  $('themes').innerHTML = THEMES.map((t) => `<button aria-pressed="${t === theme}" data-t="${esc(t)}">${esc(t)}<span>${t === 'All' ? SITES.length : SITES.filter((s) => s.theme === t).length}</span></button>`).join('');
+}
+$('themes').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) { theme = b.dataset.t; renderThemes(); renderSites(); } });
+function renderSites() {
+  $('sites').innerHTML = SITES.map((s, i) => [s, i]).filter(([s]) => theme === 'All' || s.theme === theme).map(([s, i]) => s.rendered
+    ? `<button class="site" data-i="${i}" aria-current="${s === cur}"><img src="${im(`img/${s.view}_thumb.jpg`)}" alt="" loading="lazy">${s.viewer ? '<span class="badge">3-D</span>' : ''}<div class="t">${esc(s.title)}<small>${fmtLat(s.lat)} ${fmtLon(s.lon)}</small></div></button>`
+    : `<div class="site pending"><div class="ph">in preparation</div><div class="t">${esc(s.title)}<small>${fmtLat(s.lat)} ${fmtLon(s.lon)}</small></div></div>`).join('');
+  const n = SITES.filter((s) => !s.rendered).length;
+  $('pending-note').textContent = n ? `Views of ${n} further sites are in preparation.` : '';
+}
+$('sites').addEventListener('click', (e) => { const b = e.target.closest('button.site'); if (b) { cur = SITES[+b.dataset.i]; renderThemes(); renderSites(); show(); } });
+
+function compare() {
+  const d = pressed('c-drape'), m = $('media');
+  if (viewer) { viewer.dispose(); viewer = null; }
+  m.innerHTML = `<img src="${im(`img/${cur.view}_mesa_${d}.jpg`)}" alt="${esc(cur.title)}, ${d === 'ctx' ? 'CTX image on' : 'relief of'} MESA">
+    <img class="over" src="${im(`img/${cur.view}_mola_${d}.jpg`)}" alt="${esc(cur.title)}, ${d === 'ctx' ? 'CTX image on' : 'relief of'} MOLA">
+    <div class="divider"></div><span class="tag l">MESA · 18 m</span><span class="tag r">MOLA · 463 m</span>
+    <input type="range" min="0" max="100" value="50" aria-label="Move the divider between MESA and MOLA">`;
+  m.style.setProperty('--x', '50%');
+  m.querySelector('input').addEventListener('input', (e) => m.style.setProperty('--x', `${e.target.value}%`));
+}
+async function interactive() {
+  const m = $('media');
+  m.innerHTML = '<div class="gl"></div><div class="loading">Loading terrain…</div>';
+  viewerMod = viewerMod || window.MESA3D || await import('./viewer/mesa3d.js');
+  if (viewer) viewer.dispose();
+  viewer = await viewerMod.createViewer(m.querySelector('.gl'), `viewer/sites/${cur.site}/`, { files: EMBED && EMBED.viewer[cur.site] });
+  m.querySelector('.loading').remove();
+  m.insertAdjacentHTML('beforeend', `<div class="gl-tools">
+    <div class="seg" id="g-surf"><button data-v="mesa" aria-pressed="true">MESA</button><button data-v="mola" aria-pressed="false">MOLA</button></div>
+    <div class="seg" id="g-drape"><button data-v="ctx" aria-pressed="true">Image</button><button data-v="color" aria-pressed="false">Elevation</button><button data-v="relief" aria-pressed="false">Relief</button></div>
+    <label>Vertical <input id="g-ve" type="range" min="1" max="6" step="0.5" value="${viewer.exaggeration}"></label></div>`);
+  seg('g-surf', (v) => viewer.setSurface(v));
+  seg('g-drape', (v) => viewer.setDrape(v));
+  $('g-ve').addEventListener('input', (e) => viewer.setExaggeration(+e.target.value));
+}
+function show() {
+  $('s-name').textContent = cur.title;
+  $('s-where').textContent = `${fmtLat(cur.lat)} ${fmtLon(cur.lon)} · window ${cur.window_km[0]} × ${cur.window_km[1]} km · vertical exaggeration ${cur.ve}×`;
+  $('s-cap').textContent = cur.caption;
+  const has3d = !!cur.viewer;
+  $('c-mode').children[1].disabled = !has3d;
+  $('c-mode').children[1].title = has3d ? '' : 'Interactive view in preparation for this site';
+  if (pressed('c-mode') === '3d' && has3d) interactive();
+  else { for (const b of $('c-mode').children) b.setAttribute('aria-pressed', b.dataset.v === 'compare'); compare(); }
+}
+seg('c-drape', () => { if (pressed('c-mode') === 'compare') compare(); });
+seg('c-mode', (v) => (v === '3d' ? interactive() : compare()));
+renderThemes(); renderSites(); show();
+
+// ---------------- area builder + code ----------------
+const DEM = 'https://data.planetarydems.org/mars/mesa/v1/mesa_v1_dem_18m.tif';
+const MASK = 'https://data.planetarydems.org/mars/mesa/v1/mesa_v1_mask_18m.tif';
+const NX = 1185494, NY = 592747, TILE = 512, KM_DEG = 3396.19 * Math.PI / 180;
+const presets = SITES.filter((s, i, a) => a.findIndex((t) => t.site === s.site) === i).map((s) => {
+  const hw = s.window_km[0] / 2 / (KM_DEG * Math.cos(s.lat * Math.PI / 180)), hh = s.window_km[1] / 2 / KM_DEG;
+  const r = (v) => Math.round(v * 100) / 100;
+  return { label: s.title, key: s.site, w: r(s.lon - hw), e: r(s.lon + hw), s: r(s.lat - hh), n: r(s.lat + hh) };
+});
+presets.sort((a, b) => a.label.localeCompare(b.label));
+$('preset').innerHTML = presets.map((p, i) => `<option value="${i}">${esc(p.label)}</option>`).join('');
+const jez = presets.findIndex((p) => p.key === 'jezero');
+$('preset').value = jez >= 0 ? jez : 0;
+
+function hl(code, lang) {   // tiny highlighter: comments, strings, keywords, numbers
+  const kw = lang === 'sh' ? /\b(gdal_translate|export)\b/ : /\b(import|from|with|as|for|in|def|return|True|False|None)\b/;
+  const re = new RegExp(`(#[^\\n]*)|("(?:[^"\\\\]|\\\\.)*")|${kw.source}|(-?\\b\\d+(?:\\.\\d+)?\\b)`, 'g');
+  let out = '', last = 0;
+  for (const m of code.matchAll(re)) {
+    out += esc(code.slice(last, m.index));
+    const cls = m[1] ? 'c' : m[2] ? 's' : m[3] ? 'k' : 'd';
+    out += `<span class="${cls}">${esc(m[0])}</span>`; last = m.index + m[0].length;
+  }
+  return out + esc(code.slice(last));
+}
+const num = (v) => String(Math.round(v * 1e4) / 1e4);
+function bboxFromInputs() {
+  const b = { w: +$('w').value, e: +$('e').value, s: +$('s').value, n: +$('n').value };
+  const p = presets[+$('preset').value];
+  b.label = p && p.w === b.w && p.e === b.e && p.s === b.s && p.n === b.n ? p.label : 'custom area';
+  b.slug = b.label === 'custom area' ? 'area' : p.key;
+  return b;
+}
+function code(lang, b) {
+  const box = `west, south, east, north = ${num(b.w)}, ${num(b.s)}, ${num(b.e)}, ${num(b.n)}`;
+  if (lang === 'rioxarray') return `import rioxarray
+
+DEM = "${DEM}"   # placeholder address
+MARS = "+proj=longlat +R=3396190 +no_defs +type=crs"   # Mars sphere, degrees
+
+${box}   # ${b.label}
+
+dem = rioxarray.open_rasterio(DEM, masked=True)               # lazy open, header only
+area = dem.rio.clip_box(west, south, east, north, crs=MARS)  # window selection
+area.rio.to_raster("${b.slug}_mesa.tif", compress="deflate")  # intersecting tiles are transferred`;
+  if (lang === 'rasterio') return `import rasterio
+from rasterio.warp import transform_bounds
+from rasterio.windows import from_bounds
+
+DEM = "${DEM}"   # placeholder address
+MARS = "+proj=longlat +R=3396190 +no_defs +type=crs"   # Mars sphere, degrees
+${box}   # ${b.label}
+
+with rasterio.Env(GDAL_DISABLE_READDIR_ON_OPEN="EMPTY_DIR"):
+    with rasterio.open(DEM) as src:
+        bounds = transform_bounds(MARS, src.crs, west, south, east, north)
+        window = from_bounds(*bounds, transform=src.transform).round_offsets().round_lengths()
+        z = src.read(1, window=window)                 # float32 meters, nodata -9999
+        profile = dict(driver="GTiff", dtype="float32", count=1, crs=src.crs, nodata=src.nodata,
+                       width=window.width, height=window.height, transform=src.window_transform(window),
+                       compress="deflate", predictor=3, tiled=True)
+
+with rasterio.open("${b.slug}_mesa.tif", "w", **profile) as dst:
+    dst.write(z, 1)`;
+  return `# ${b.label}. Order for -projwin is west, north, east, south.
+gdal_translate -projwin_srs "+proj=longlat +R=3396190 +no_defs" \\
+  -projwin ${num(b.w)} ${num(b.n)} ${num(b.e)} ${num(b.s)} \\
+  -co COMPRESS=DEFLATE -co PREDICTOR=3 -co TILED=YES \\
+  /vsicurl/${DEM} \\
+  ${b.slug}_mesa.tif`;
+}
+function estimate(b) {
+  const x = (lon) => (lon + 180) / 360 * NX, y = (lat) => (90 - lat) / 180 * NY;
+  const problems = [];
+  if (![b.w, b.e, b.s, b.n].every(Number.isFinite)) problems.push('Enter four numbers.');
+  else {
+    if (b.w >= b.e) problems.push('West must be less than east. Areas that cross 180° are requested in two parts.');
+    if (b.s >= b.n) problems.push('South must be less than north.');
+    if (b.w < -180 || b.e > 180) problems.push('Longitudes run from −180 to 180.');
+    if (b.s < -90 || b.n > 90) problems.push('Latitudes run from −90 to 90.');
+  }
+  if (problems.length) return `<p class="warn">${problems.join(' ')}</p>`;
+  const wpx = x(b.e) - x(b.w), hpx = y(b.s) - y(b.n);
+  const tiles = (Math.floor(x(b.e) / TILE) - Math.floor(x(b.w) / TILE) + 1) * (Math.floor(y(b.s) / TILE) - Math.floor(y(b.n) / TILE) + 1);
+  const mb = tiles * TILE * TILE * 4 * 0.57 / 1e6, lat0 = (b.s + b.n) / 2;
+  const km = [(b.e - b.w) * KM_DEG * Math.cos(lat0 * Math.PI / 180), (b.n - b.s) * KM_DEG];
+  const size = mb >= 1000 ? `${(mb / 1000).toFixed(1)} GB` : `${Math.max(1, Math.round(mb))} MB`;
+  let s = `<div class="big">~${size}</div><p>${Math.round(wpx).toLocaleString()} × ${Math.round(hpx).toLocaleString()} pixels, ${Math.round(km[0]).toLocaleString()} × ${Math.round(km[1]).toLocaleString()} km, ${tiles.toLocaleString()} tiles of 9.2 km.</p>`;
+  if (Math.abs(b.n) > 88.6 || Math.abs(b.s) > 88.6) s += '<p class="warn">Data are available equatorward of ~88.6° latitude.</p>';
+  if (mb > 2000) s += '<p class="warn">The transfer at 18 m exceeds 2 GB for this area. An overview level (see below) or a dask-backed read with <code>chunks=True</code> is recommended.</p>';
+  return s;
+}
+const recipes = {
+  'r-ovr': ['py', () => `import rioxarray
+
+MARS = "+proj=longlat +R=3396190 +no_defs +type=crs"
+coarse = rioxarray.open_rasterio(DEM, masked=True, overview_level=3)   # 288 m pixels
+region = coarse.rio.clip_box(-30, -30, 0, 0, crs=MARS)                 # 30° x 30°, Margaritifer Terra
+region.rio.to_raster("region_288m.tif", compress="deflate")`],
+  'r-mask': ['py', (b) => `# continued from the code above
+MASK = "${MASK}"   # placeholder address
+
+mask = rioxarray.open_rasterio(MASK).rio.clip_box(${num(b.w)}, ${num(b.s)}, ${num(b.e)}, ${num(b.n)}, crs=MARS)
+infilled = mask.squeeze() == 1      # 0 = predicted from CTX, 1 = infilled, 255 = nodata
+print(f"{float(infilled.mean()):.1%} of the area is infilled")`],
+  'r-proj': ['py', (b) => {
+    const lat0 = (b.s + b.n) / 2, lon0 = (b.w + b.e) / 2;
+    const proj = Math.abs(lat0) > 65 ? `+proj=stere +lat_0=${lat0 > 0 ? 90 : -90} +lon_0=${num(lon0)} +R=3396190 +units=m +no_defs` : `+proj=eqc +lat_ts=${num(lat0)} +lon_0=${num(lon0)} +R=3396190 +units=m +no_defs`;
+    return `# continued from the code above
+from rasterio.enums import Resampling
+
+local = area.rio.reproject(
+    "${proj}",
+    resolution=18, resampling=Resampling.bilinear)   # true scale at the area center
+local.rio.to_raster("${b.slug}_mesa_local.tif", compress="deflate")`; }],
+  'r-env': ['py', () => `import rasterio, rioxarray
+
+with rasterio.Env(GDAL_DISABLE_READDIR_ON_OPEN="EMPTY_DIR",       # skip the directory listing
+                  GDAL_HTTP_MERGE_CONSECUTIVE_RANGES="YES",       # merge requests for adjacent tiles
+                  GDAL_HTTP_MULTIPLEX="YES",                      # reuse one HTTP/2 connection
+                  VSI_CACHE="TRUE"):
+    dem = rioxarray.open_rasterio(DEM, masked=True)
+    area = dem.rio.clip_box(west, south, east, north, crs=MARS).load()`],
+};
+function update(fromPreset) {
+  if (fromPreset) { const p = presets[+$('preset').value]; $('w').value = p.w; $('e').value = p.e; $('s').value = p.s; $('n').value = p.n; }
+  const b = bboxFromInputs(), lang = pressed('c-lang');
+  $('code-main').innerHTML = hl(code(lang, b), lang === 'gdal' ? 'sh' : 'py');
+  $('est').innerHTML = estimate(b);
+  for (const [id, [l, f]] of Object.entries(recipes)) $(id).innerHTML = hl(f(b), l);
+}
+$('preset').addEventListener('change', () => update(true));
+for (const id of ['w', 'e', 's', 'n']) $(id).addEventListener('input', () => update(false));
+seg('c-lang', () => update(false));
+update(true);
+document.addEventListener('click', async (e) => {
+  const b = e.target.closest('.copy'); if (!b) return;
+  const pre = $(b.dataset.target), text = pre.textContent;
+  try { await navigator.clipboard.writeText(text); b.textContent = 'Copied'; }
+  catch { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selected, press ⌘C'; }
+  setTimeout(() => (b.textContent = 'Copy'), 1800);
+});
+
+// ---------------- accuracy table + charts ----------------
+const A = T.accuracy;
+$('acc').innerHTML = `<thead><tr>${A.columns.map((c, i) => `<th class="${i ? 'n' : ''}">${esc(c)}</th>`).join('')}</tr></thead><tbody>` +
+  A.rows.map((r) => `<tr>${r.map((c, i) => i === 0 ? `<td class="${c.startsWith('  ') ? 'sub' : ''}">${esc(c.trim())}</td>` : `<td class="n">${esc(c)}</td>`).join('')}</tr>`).join('') + '</tbody>';
+$('accnote').textContent = A.notes.join(' ') + ' labelMAE is the error after the prediction is rescaled to the mean and standard deviation of the reference. MOLA is evaluated as distributed.';
+const Wv = T.wavelength;
+function lineChart(el, key, ymax, fmt, tfmt) {
+  const W = 520, H = 250, m = { l: 40, r: 92, t: 14, b: 44 }, n = Wv.bands.length;
+  const x = (i) => m.l + i * (W - m.l - m.r) / (n - 1), y = (v) => H - m.b - v / ymax * (H - m.t - m.b);
+  const series = [['MESA', Wv.mesa[key], 'var(--accent)'], ['MOLA', Wv.mola[key], 'var(--mola)']];
+  let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${esc(el.querySelector('h4').textContent)} by wavelength">`;
+  for (let i = 0; i <= 4; i++) { const t = ymax * i / 4; s += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(t)}" y2="${y(t)}" stroke="var(--grid)" stroke-width="1"/><text x="${m.l - 6}" y="${y(t) + 4}" text-anchor="end">${tfmt(t)}</text>`; }
+  Wv.bands.forEach((b, i) => { s += `<text x="${x(i)}" y="${H - m.b + 16}" text-anchor="middle">${b.replace(' km', '').replace(' m', '')}</text>`; });
+  s += `<text x="${(m.l + W - m.r) / 2}" y="${H - 6}" text-anchor="middle">wavelength (m, or km for the last four bands)</text>`;
+  for (const [, v, c] of series) {
+    s += `<polyline fill="none" stroke="${c}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="${v.map((d, i) => `${x(i)},${y(d)}`).join(' ')}"/>`;
+    s += v.map((d, i) => `<circle cx="${x(i)}" cy="${y(d)}" r="4.5" fill="${c}" stroke="var(--surface)" stroke-width="2"/>`).join('');
+  }
+  const [a, b] = [series[0][1], series[1][1]];
+  if (Math.abs(y(a[n - 1]) - y(b[n - 1])) >= 16) series.forEach(([nm, v]) => { s += `<text x="${x(n - 1) + 9}" y="${y(v[n - 1]) + 4}" style="fill:var(--ink)">${nm} ${fmt(v[n - 1])}</text>`; });
+  else { const k = a.reduce((bi, d, i) => (Math.abs(d - b[i]) > Math.abs(a[bi] - b[bi]) ? i : bi), 0);
+    series.forEach(([nm, v], j) => { const up = (a[k] >= b[k]) === (j === 0); s += `<text x="${x(k) + 8}" y="${y(v[k]) + (up ? -9 : 17)}" style="fill:var(--ink)">${nm} ${fmt(v[k])}</text>`; }); }
+  s += `<line class="cross" x1="0" x2="0" y1="${m.t}" y2="${H - m.b}" stroke="var(--muted)" stroke-width="1" opacity="0"/>`;
+  Wv.bands.forEach((bnd, i) => { s += `<rect data-i="${i}" x="${x(i) - (W - m.l - m.r) / (n - 1) / 2}" y="${m.t}" width="${(W - m.l - m.r) / (n - 1)}" height="${H - m.t - m.b}" fill="transparent"/>`; });
+  el.insertAdjacentHTML('beforeend', s + '</svg>');
+  const tip = el.querySelector('.tip'), cross = el.querySelector('.cross'), svg = el.querySelector('svg');
+  svg.addEventListener('pointermove', (e) => {
+    const r = e.target.closest('rect[data-i]'); if (!r) return; const i = +r.dataset.i;
+    cross.setAttribute('x1', x(i)); cross.setAttribute('x2', x(i)); cross.setAttribute('opacity', 0.6);
+    tip.innerHTML = `<b>${Wv.bands[i]}</b><br>MESA ${fmt(Wv.mesa[key][i])} · MOLA ${fmt(Wv.mola[key][i])}`;
+    const bb = el.getBoundingClientRect();
+    tip.style.left = `${Math.min(e.clientX - bb.left + 12, bb.width - 170)}px`; tip.style.top = `${e.clientY - bb.top - 44}px`; tip.style.opacity = 1;
+  });
+  svg.addEventListener('pointerleave', () => { tip.style.opacity = 0; cross.setAttribute('opacity', 0); });
+}
+lineChart($('c_r'), 'r', 1, (v) => v.toFixed(2), (v) => v.toFixed(2));
+lineChart($('c_e'), 'rms_error_m', 16, (v) => v.toFixed(1), (v) => v.toFixed(0));
+</script>
+
 </body>
 </html>

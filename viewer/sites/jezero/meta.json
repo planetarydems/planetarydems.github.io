@@ -1,0 +1,83 @@
+{
+ "key": "jezero",
+ "title": "Jezero crater",
+ "lon": 77.5,
+ "lat": 18.43,
+ "width_km": 55.998,
+ "height_km": 48.006,
+ "mesh": {
+  "cols": 1536,
+  "rows": 1317,
+  "px_m": 36.45703125
+ },
+ "zmin": -2888.0,
+ "zmax": -1409.0,
+ "dem_px_m": 18.0,
+ "tex": {
+  "cols": 4096,
+  "rows": 3511,
+  "px_m": 13.67138671875,
+  "full_cols": 7000,
+  "full_px_m": 8.0
+ },
+ "color_range": [
+  -2705.946689453125,
+  -1722.8100439453128
+ ],
+ "fill_share": 0.0,
+ "frames": [
+  {
+   "id": "U23_080123_1979",
+   "share": 0.4314,
+   "inc": 47.39
+  },
+  {
+   "id": "P06_003521_1971",
+   "share": 0.2657,
+   "inc": 61.54
+  },
+  {
+   "id": "P06_003376_1987",
+   "share": 0.1592,
+   "inc": 62.41
+  },
+  {
+   "id": "U14_076602_2003",
+   "share": 0.1128,
+   "inc": 42.62
+  },
+  {
+   "id": "V02_080545_1968",
+   "share": 0.0308,
+   "inc": 49.27
+  }
+ ],
+ "product": "ta_implicit_d1_implrel100s1_e088",
+ "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
+ "checks": {
+  "tex_valid_frames": 1.0,
+  "murray_shift_m": [
+   -94.44747479285434,
+   -130.61499077392364
+  ],
+  "murray_shift_resp": 0.3912791568429927,
+  "tex_filled_from_murray": 0.0,
+  "tex_filled_from_hillshade": 0.0,
+  "sun_az": 269.0,
+  "sun_alt": 36.93895079796224,
+  "sun_fit_r": 0.5733283622692731,
+  "tex_vs_dem_shift_m": [
+   -19.30656666089135,
+   1.449293818067872
+  ],
+  "tex_vs_dem_resp": 0.5468726680555556
+ },
+ "view": {
+  "az": 120,
+  "el": 34,
+  "dist": 0.8,
+  "te": -3,
+  "tn": 2,
+  "ve": 4
+ }
+}

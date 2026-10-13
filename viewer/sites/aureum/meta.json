@@ -1,0 +1,87 @@
+{
+ "key": "aureum",
+ "title": "Aureum Chaos",
+ "lon": -26.23,
+ "lat": -4.48,
+ "width_km": 59.994,
+ "height_km": 50.004,
+ "mesh": {
+  "cols": 1536,
+  "rows": 1280,
+  "px_m": 39.05859375
+ },
+ "zmin": -4047.0,
+ "zmax": -1375.0,
+ "dem_px_m": 18.0,
+ "tex": {
+  "cols": 4096,
+  "rows": 3413,
+  "px_m": 14.64697265625,
+  "full_cols": 7499,
+  "full_px_m": 8.0
+ },
+ "color_range": [
+  -3848.1231127929686,
+  -1704.4889562988315
+ ],
+ "fill_share": 0.0,
+ "frames": [
+  {
+   "id": "P04_002681_1761",
+   "share": 0.2339,
+   "inc": 55.73
+  },
+  {
+   "id": "V01_080338_1746",
+   "share": 0.2051,
+   "inc": 60.17
+  },
+  {
+   "id": "N10_066134_1759",
+   "share": 0.1791,
+   "inc": 48.48
+  },
+  {
+   "id": "P06_003248_1755",
+   "share": 0.1183,
+   "inc": 54.58
+  },
+  {
+   "id": "P06_003380_1757",
+   "share": 0.1159,
+   "inc": 56.45
+  },
+  {
+   "id": "U17_077503_1740",
+   "share": 0.0822,
+   "inc": 44.61
+  },
+  {
+   "id": "V20_087788_1771",
+   "share": 0.0656,
+   "inc": 55.2
+  }
+ ],
+ "product": "ta_implicit_d1_implrel100s1_e088",
+ "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
+ "checks": {
+  "tex_valid_frames": 1.0,
+  "tex_filled_from_hillshade": 0.0,
+  "sun_az": 271.0,
+  "sun_alt": 35.65879010556074,
+  "sun_fit_r": 0.6919568961508641,
+  "tex_vs_dem_shift_m": [
+   -12.08351122062686,
+   -0.06043577203536188
+  ],
+  "tex_vs_dem_resp": 0.5155156798562885
+ },
+ "view": {
+  "az": 200,
+  "el": 32,
+  "dist": 0.8,
+  "te": 0,
+  "tn": 0,
+  "ve": 2
+ }
+}

@@ -1,0 +1,78 @@
+{
+ "key": "eberswalde",
+ "title": "Eberswalde delta",
+ "lon": -33.65,
+ "lat": -23.82,
+ "width_km": 36.0,
+ "height_km": 30.006,
+ "mesh": {
+  "cols": 1536,
+  "rows": 1280,
+  "px_m": 23.4375
+ },
+ "zmin": -1584.0,
+ "zmax": -55.0,
+ "dem_px_m": 18.0,
+ "tex": {
+  "cols": 4096,
+  "rows": 3414,
+  "px_m": 8.7890625,
+  "full_cols": 6000,
+  "full_px_m": 6.0
+ },
+ "color_range": [
+  -1552.4606970214843,
+  -154.18427154541035
+ ],
+ "fill_share": 0.0,
+ "frames": [
+  {
+   "id": "J06_047119_1572",
+   "share": 0.3016,
+   "inc": 49.65
+  },
+  {
+   "id": "B22_018333_1548",
+   "share": 0.2907,
+   "inc": 71.38
+  },
+  {
+   "id": "B18_016777_1580",
+   "share": 0.2486,
+   "inc": 62.43
+  },
+  {
+   "id": "P17_007481_1544",
+   "share": 0.159,
+   "inc": 60.02
+  }
+ ],
+ "product": "ta_implicit_d1_implrel100s1_e088",
+ "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
+ "checks": {
+  "tex_valid_frames": 1.0,
+  "murray_shift_m": [
+   -18.968874699623484,
+   65.10509206607185
+  ],
+  "murray_shift_resp": 0.4925567441304525,
+  "tex_filled_from_murray": 0.0,
+  "tex_filled_from_hillshade": 0.0,
+  "sun_az": 304.0,
+  "sun_alt": 29.206753284343137,
+  "sun_fit_r": 0.7410644013947215,
+  "tex_vs_dem_shift_m": [
+   -1.3002509846651265,
+   4.9721188955393245
+  ],
+  "tex_vs_dem_resp": 0.6612892670808015
+ },
+ "view": {
+  "az": 120,
+  "el": 32,
+  "dist": 0.8,
+  "te": -1,
+  "tn": 0,
+  "ve": 3
+ }
+}

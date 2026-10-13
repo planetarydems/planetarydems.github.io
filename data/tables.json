@@ -1,0 +1,228 @@
+{
+ "source": "paper/main.tex working copy of 2026-10-09 20:50 (re-scored for the implrel100s1_e088 model and mosaic): Tables 1, 3 and 4, abstract, Sections 3.1-3.3. The manuscript still calls the product MADER; the website uses the new name MESA.",
+ "metrics": {
+  "deployMAE": "Median of the per-DEM mean absolute error of the product as delivered. Shifts, offsets, and tilts were not removed.",
+  "labelMAE": "Error after the prediction is rescaled to the mean and standard deviation of the reference, after co-registration. Reported for MESA. MOLA is evaluated as distributed (deployMAE).",
+  "sub_km_r": "Correlation with the reference at wavelengths below ~1 km."
+ },
+ "key_numbers": [
+  {
+   "label": "Grid spacing",
+   "value": "18 m",
+   "compare": "MOLA gridded DEM 463 m"
+  },
+  {
+   "label": "Error against 618 HiRISE DEMs",
+   "value": "8.6 m",
+   "compare": "MOLA 17.8 m",
+   "note": "median deployMAE"
+  },
+  {
+   "label": "Error against 359 held-out CTX stereo DEMs",
+   "value": "10.5 m",
+   "compare": "MOLA 18.4 m",
+   "note": "median deployMAE, whole CTX images"
+  },
+  {
+   "label": "CTX images",
+   "value": "45,570",
+   "compare": "acquired 2006-09-28 to 2025-11-30"
+  },
+  {
+   "label": "Surface predicted from CTX",
+   "value": "96.4%",
+   "compare": "3.6% infilled and flagged in a provenance mask"
+  },
+  {
+   "label": "Tiles",
+   "value": "648",
+   "compare": "10° × 10°, joined into one Cloud-Optimized GeoTIFF"
+  }
+ ],
+ "accuracy": {
+  "title": "Accuracy against independent stereo DEMs",
+  "columns": [
+   "Reference",
+   "Number",
+   "MESA labelMAE (m)",
+   "MESA deployMAE (m)",
+   "MOLA deployMAE (m)"
+  ],
+  "rows": [
+   [
+    "HiRISE stereo DEMs",
+    "618",
+    "7.8*",
+    "8.6",
+    "17.8"
+   ],
+   [
+    "Held-out CTX stereo DEMs (whole images)",
+    "359",
+    "9.8",
+    "10.5",
+    "18.4"
+   ],
+   [
+    "  equatorial, < 30°",
+    "223",
+    "10.8",
+    "12.3",
+    "19.6"
+   ],
+   [
+    "  mid-latitude, 30–60°",
+    "109",
+    "9.2",
+    "9.9",
+    "18.3"
+   ],
+   [
+    "  polar, > 60°",
+    "27",
+    "7.4",
+    "7.7",
+    "9.3"
+   ]
+  ],
+  "notes": [
+   "Values are medians. *labelMAE against HiRISE is computed for the 581 DEMs with orthoimages co-registered to the CTX image."
+  ]
+ },
+ "fine_scale": {
+  "title": "Relief below ~1 km (whole CTX images, 359 held-out pairs)",
+  "columns": [
+   "",
+   "MESA",
+   "MOLA"
+  ],
+  "rows": [
+   [
+    "Correlation with the stereo DEM",
+    "0.75",
+    "0.33"
+   ],
+   [
+    "Share of the stereo DEM's amplitude",
+    "82%",
+    "40%"
+   ],
+   [
+    "Error as a share of relief",
+    "1.9%",
+    "3.2%"
+   ]
+  ]
+ },
+ "wavelength": {
+  "title": "Accuracy against 581 co-registered HiRISE DEMs by wavelength (Table 4a)",
+  "bands": [
+   "< 144 m",
+   "144–288 m",
+   "288–577 m",
+   "0.58–1.2 km",
+   "1.2–2.3 km",
+   "2.3–4.6 km",
+   "4.6–9.2 km"
+  ],
+  "hirise_rms_m": [
+   0.95,
+   1.27,
+   2.79,
+   6.29,
+   13.69,
+   27.3,
+   46.9
+  ],
+  "mesa": {
+   "amplitude": [
+    0.39,
+    0.6,
+    0.76,
+    0.86,
+    0.93,
+    0.97,
+    0.99
+   ],
+   "r": [
+    0.48,
+    0.71,
+    0.83,
+    0.9,
+    0.95,
+    0.98,
+    0.99
+   ],
+   "rms_error_m": [
+    0.84,
+    0.91,
+    1.58,
+    2.73,
+    4.43,
+    6.07,
+    6.31
+   ]
+  },
+  "mola": {
+   "amplitude": [
+    0.27,
+    0.36,
+    0.42,
+    0.52,
+    0.67,
+    0.8,
+    0.89
+   ],
+   "r": [
+    0.09,
+    0.18,
+    0.31,
+    0.48,
+    0.68,
+    0.85,
+    0.95
+   ],
+   "rms_error_m": [
+    0.96,
+    1.27,
+    2.67,
+    5.5,
+    10.06,
+    14.53,
+    15.42
+   ]
+  },
+  "notes": [
+   "Pooled over the HiRISE DEMs in difference-of-Gaussian bands. Error is the RMS difference, amplitude is relative to HiRISE."
+  ]
+ },
+ "product": {
+  "title": "The product",
+  "rows": [
+   [
+    "Grid",
+    "18 m, simple cylindrical on the Mars sphere (R = 3,396,190 m), 1,185,494 × 592,747 pixels"
+   ],
+   [
+    "Source images",
+    "45,570 CTX images, 2006–2025, one prediction per image and tile (53,702)"
+   ],
+   [
+    "Vertical reference",
+    "MOLA areoid, leveled to MOLA PEDR laser shots: median residual −0.05 m, robust SD 2.28 m"
+   ],
+   [
+    "Coverage",
+    "96.4% predicted from CTX images and 3.6% infilled (1.4% within 30° of the equator, 11.2% poleward of 60°). Data are available equatorward of ~88.6° latitude."
+   ],
+   [
+    "Companion layers",
+    "Provenance mask (CTX-derived or infilled), per-pixel expected error, and uncertainty class."
+   ],
+   [
+    "Known limits",
+    "Fine-scale amplitude is low (39% of the HiRISE amplitude below 144 m). The improvement over MOLA is small poleward of 80°. Infilled areas are suitable for context and unsuitable for morphometry."
+   ]
+  ]
+ }
+}

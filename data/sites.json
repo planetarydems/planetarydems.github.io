@@ -1,0 +1,406 @@
+[
+ {
+  "view": "jezero_delta",
+  "site": "jezero",
+  "title": "Jezero crater delta",
+  "caption": "The delta on the western rim of Jezero crater, seen from the east. The Perseverance landing site is on the crater floor in front of the delta.",
+  "ve": 4,
+  "lat": 18.43,
+  "lon": 77.5,
+  "window_km": [
+   56.0,
+   48.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Deltas and fans"
+ },
+ {
+  "view": "parana_valleys",
+  "site": "parana",
+  "title": "Paraná Valles",
+  "caption": "Branching valleys of Paraná Valles, seen from the south-southeast. The image layer is a CTX mosaic aligned to MESA.",
+  "ve": 5,
+  "lat": -22.87,
+  "lon": -10.26,
+  "window_km": [
+   110.0,
+   80.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Fluvial valleys"
+ },
+ {
+  "view": "gale_mound",
+  "site": "gale",
+  "title": "Gale crater",
+  "caption": "Aeolis Mons (Mount Sharp) inside Gale crater, seen from the north-northwest across Aeolis Palus, the Curiosity landing site.",
+  "ve": 1.5,
+  "lat": -5.0,
+  "lon": 137.75,
+  "window_km": [
+   110.0,
+   100.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Craters"
+ },
+ {
+  "view": "eberswalde_delta",
+  "site": "eberswalde",
+  "title": "Eberswalde delta",
+  "caption": "A fan-shaped delta with branching, inverted channels, seen from the east-southeast.",
+  "ve": 3,
+  "lat": -23.82,
+  "lon": -33.65,
+  "window_km": [
+   36.0,
+   30.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Deltas and fans"
+ },
+ {
+  "view": "saheki_crater",
+  "site": "saheki",
+  "title": "Saheki crater",
+  "caption": "A complex crater with central peaks and alluvial fans on its floor, seen from the south.",
+  "ve": 2.5,
+  "lat": -21.75,
+  "lon": 73.17,
+  "window_km": [
+   100.0,
+   92.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Deltas and fans"
+ },
+ {
+  "view": "aureum_chaos",
+  "site": "aureum",
+  "title": "Aureum Chaos",
+  "caption": "Blocks and troughs of chaotic terrain, seen from the south-southwest.",
+  "ve": 2,
+  "lat": -4.48,
+  "lon": -26.23,
+  "window_km": [
+   60.0,
+   50.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Chaos and canyons"
+ },
+ {
+  "view": "saheki_floor",
+  "site": "saheki",
+  "title": "Saheki crater floor",
+  "caption": "Central peaks and a younger crater on the floor of Saheki crater.",
+  "ve": 2.5,
+  "lat": -21.75,
+  "lon": 73.17,
+  "window_km": [
+   100.0,
+   92.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Deltas and fans"
+ },
+ {
+  "view": "jezero_crater",
+  "site": "jezero",
+  "title": "Jezero crater",
+  "caption": "The western half of Jezero crater with its delta, seen from the southeast.",
+  "ve": 4,
+  "lat": 18.43,
+  "lon": 77.5,
+  "window_km": [
+   56.0,
+   48.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Deltas and fans"
+ },
+ {
+  "view": "parana_wide",
+  "site": "parana",
+  "title": "Paraná Valles network",
+  "caption": "The Paraná Valles network in a 110 by 80 km window, seen from the south-southwest. The image layer is a CTX mosaic aligned to MESA.",
+  "ve": 5,
+  "lat": -22.87,
+  "lon": -10.26,
+  "window_km": [
+   110.0,
+   80.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Fluvial valleys"
+ },
+ {
+  "view": "olympus",
+  "site": "olympus",
+  "title": "Olympus Mons caldera",
+  "lat": 18.45,
+  "lon": -133.85,
+  "window_km": [
+   100.0,
+   90.0
+  ],
+  "rendered": false,
+  "theme": "Volcanoes"
+ },
+ {
+  "view": "hebes",
+  "site": "hebes",
+  "title": "Hebes Chasma",
+  "lat": -1.1,
+  "lon": -76.0,
+  "window_km": [
+   160.0,
+   110.0
+  ],
+  "rendered": false,
+  "theme": "Chaos and canyons"
+ },
+ {
+  "view": "coprates",
+  "site": "coprates",
+  "title": "Coprates Chasma",
+  "lat": -13.4,
+  "lon": -61.4,
+  "window_km": [
+   100.0,
+   90.0
+  ],
+  "rendered": false,
+  "theme": "Chaos and canyons"
+ },
+ {
+  "view": "noctis",
+  "site": "noctis",
+  "title": "Noctis Labyrinthus",
+  "lat": -6.9,
+  "lon": -102.2,
+  "window_km": [
+   120.0,
+   100.0
+  ],
+  "rendered": false,
+  "theme": "Chaos and canyons"
+ },
+ {
+  "view": "mojave",
+  "site": "mojave",
+  "title": "Mojave crater",
+  "lat": 7.46,
+  "lon": -33.0,
+  "window_km": [
+   75.0,
+   70.0
+  ],
+  "rendered": false,
+  "theme": "Craters"
+ },
+ {
+  "view": "endeavour",
+  "site": "endeavour",
+  "title": "Endeavour crater",
+  "lat": -2.28,
+  "lon": -5.23,
+  "window_km": [
+   36.0,
+   32.0
+  ],
+  "rendered": false,
+  "theme": "Craters"
+ },
+ {
+  "view": "korolev",
+  "site": "korolev",
+  "title": "Korolev crater",
+  "lat": 72.77,
+  "lon": 164.58,
+  "window_km": [
+   110.0,
+   100.0
+  ],
+  "rendered": false,
+  "theme": "Craters"
+ },
+ {
+  "view": "holden",
+  "site": "holden",
+  "title": "Holden crater",
+  "lat": -26.1,
+  "lon": -34.0,
+  "window_km": [
+   140.0,
+   130.0
+  ],
+  "rendered": false,
+  "theme": "Deltas and fans"
+ },
+ {
+  "view": "zunil",
+  "site": "zunil",
+  "title": "Zunil crater",
+  "lat": 7.7,
+  "lon": 166.0,
+  "window_km": [
+   30.0,
+   26.0
+  ],
+  "rendered": false,
+  "theme": "Craters"
+ },
+ {
+  "view": "warrego",
+  "site": "warrego",
+  "title": "Warrego Valles",
+  "lat": -42.47,
+  "lon": -92.57,
+  "window_km": [
+   90.0,
+   70.0
+  ],
+  "rendered": false,
+  "theme": "Fluvial valleys"
+ },
+ {
+  "view": "hydraotes",
+  "site": "hydraotes",
+  "title": "Hydraotes Chaos",
+  "lat": 0.9,
+  "lon": -35.2,
+  "window_km": [
+   120.0,
+   100.0
+  ],
+  "rendered": false,
+  "theme": "Chaos and canyons"
+ },
+ {
+  "view": "iani",
+  "site": "iani",
+  "title": "Iani Chaos",
+  "lat": -0.99,
+  "lon": -17.715,
+  "window_km": [
+   100.0,
+   84.0
+  ],
+  "rendered": false,
+  "theme": "Chaos and canyons"
+ },
+ {
+  "view": "jovis",
+  "site": "jovis",
+  "title": "Jovis Tholus",
+  "lat": 18.41,
+  "lon": -117.45,
+  "window_km": [
+   90.0,
+   80.0
+  ],
+  "rendered": false,
+  "theme": "Volcanoes"
+ },
+ {
+  "view": "roddy",
+  "site": "roddy",
+  "title": "Roddy crater",
+  "lat": -21.66,
+  "lon": -39.41,
+  "window_km": [
+   130.0,
+   118.0
+  ],
+  "rendered": false,
+  "theme": "Craters"
+ },
+ {
+  "view": "nirgal",
+  "site": "nirgal",
+  "title": "Nirgal Vallis",
+  "lat": -27.9,
+  "lon": -42.8,
+  "window_km": [
+   120.0,
+   90.0
+  ],
+  "rendered": false,
+  "theme": "Fluvial valleys"
+ },
+ {
+  "view": "nanedi",
+  "site": "nanedi",
+  "title": "Nanedi Valles",
+  "lat": 5.1,
+  "lon": -48.4,
+  "window_km": [
+   70.0,
+   90.0
+  ],
+  "rendered": false,
+  "theme": "Fluvial valleys"
+ },
+ {
+  "view": "samara",
+  "site": "samara",
+  "title": "Samara Valles",
+  "lat": -24.3,
+  "lon": -19.5,
+  "window_km": [
+   120.0,
+   100.0
+  ],
+  "rendered": false,
+  "theme": "Fluvial valleys"
+ },
+ {
+  "view": "loire",
+  "site": "loire",
+  "title": "Loire Valles",
+  "lat": -18.3,
+  "lon": -17.3,
+  "window_km": [
+   110.0,
+   90.0
+  ],
+  "rendered": false,
+  "theme": "Fluvial valleys"
+ },
+ {
+  "view": "maadim",
+  "site": "maadim",
+  "title": "Ma'adim Vallis",
+  "lat": -21.0,
+  "lon": 177.0,
+  "window_km": [
+   100.0,
+   140.0
+  ],
+  "rendered": false,
+  "theme": "Fluvial valleys"
+ },
+ {
+  "view": "reull",
+  "site": "reull",
+  "title": "Reull Vallis",
+  "lat": -41.6,
+  "lon": 101.4,
+  "window_km": [
+   120.0,
+   90.0
+  ],
+  "rendered": false,
+  "theme": "Fluvial valleys"
+ }
+]
