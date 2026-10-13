@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MESA Contributors</title>
+<meta name="description" content="Contributors to MESA (Mars Elevation from Shading and Altimetry).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #f3f4f6; --surface: #ffffff; --ink: #15181d; --ink2: #464c57; --muted: #737a86; --line: #dcdfe4; --accent: #2c69c9;
+    --night: #0c0e11; --night-line: #2a2f37; --night-ink: #eef0f3; --night-muted: #a3aab4; --face: #e4e8ee; --face-ink: #46505e;
+    --display: "Archivo", "Helvetica Neue", Arial, sans-serif; --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg: #0f1114; --surface: #171a1f; --ink: #eef0f3; --ink2: #b9bfc8; --muted: #8a919c; --line: #2a2f37; --accent: #6aa0f0; --face: #232831; --face-ink: #c7cdd6; color-scheme: dark; }
+  }
+  :root[data-theme="dark"] { --bg: #0f1114; --surface: #171a1f; --ink: #eef0f3; --ink2: #b9bfc8; --muted: #8a919c; --line: #2a2f37; --accent: #6aa0f0; --face: #232831; --face-ink: #c7cdd6; color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--body); }
+  a { color: var(--accent); }
+  .wrap { max-width: 1160px; margin: 0 auto; padding-inline: 16px; }
+  .night { background: var(--night); color: var(--night-ink); }
+  .top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-block: 14px; }
+  .brand { color: var(--night-ink); text-decoration: none; font: 700 17px/1 var(--display); font-stretch: 120%; }
+  .brand span { color: var(--night-muted); font-weight: 500; }
+  .top nav { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+  .top nav a { color: var(--night-muted); text-decoration: none; font-size: 14.5px; }
+  .top nav a[aria-current="page"] { color: var(--night-ink); }
+  .head { padding-block: 40px 44px; border-top: 1px solid var(--night-line); }
+  .eyebrow { font: 600 12.5px/1.3 var(--body); letter-spacing: 0.12em; text-transform: uppercase; color: var(--night-muted); margin: 0 0 10px; }
+  h1 { font: 800 clamp(40px, 7vw, 72px)/1 var(--display); font-stretch: 122%; margin: 0; letter-spacing: 0.01em; }
+  .head p { color: var(--night-muted); max-width: 62ch; margin: 14px 0 0; }
+  h2 { font: 750 clamp(22px, 3vw, 28px)/1.2 var(--display); font-stretch: 112%; margin: 48px 0 6px; }
+  .team { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 18px; margin-top: 20px; }
+  .person { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; min-width: 0; }
+  .face { width: 112px; height: 112px; border-radius: 50%; background: var(--face); color: var(--face-ink); display: grid; place-items: center;
+    font: 700 34px/1 var(--display); font-stretch: 115%; overflow: hidden; position: relative; }
+  .face img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .person h3 { font: 700 18px/1.3 var(--display); font-stretch: 110%; margin: 14px 0 4px; }
+  .person p { margin: 0; color: var(--ink2); font-size: 14.5px; }
+  .role { display: inline-block; margin-top: 10px; font: 600 11.5px/1 var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
+    border: 1px solid var(--line); border-radius: 99px; padding: 4px 8px; }
+  .mail { font-family: var(--mono); font-size: 13.5px; margin-top: 6px !important; word-break: break-all; }
+  .cnote { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin-top: 14px; max-width: 80ch; color: var(--ink2); }
+  .cnote p { margin: 0 0 8px; } .cnote p:last-child { margin: 0; }
+  footer { margin-top: 64px; border-top: 1px solid var(--line); padding-block: 22px 40px; color: var(--muted); font-size: 13.5px; }
+</style>
+</head>
+<body>
+<div class="night">
+  <div class="wrap top">
+    <a class="brand" href="index.html">planetary<span>dems</span></a>
+    <nav aria-label="Sections"><a href="index.html#explore">Sites</a><a href="index.html#data">Data access</a><a href="index.html#accuracy">Accuracy</a><a href="index.html#cite">Citation</a><a href="contributors.html" aria-current="page">Contributors</a></nav>
+  </div>
+  <div class="head"><div class="wrap">
+    <p class="eyebrow">MESA · Mars Elevation from Shading and Altimetry</p>
+    <h1>Contributors</h1>
+    <p>MESA was developed by researchers at the Massachusetts Institute of Technology and the University of Texas at Austin.</p>
+  </div></div>
+</div>
+
+<main class="wrap">
+  <h2>Authors</h2>
+  <div class="team" id="team"></div>
+
+  <h2>AI assistance</h2>
+  <div class="cnote">
+    <p>Claude, an AI model developed by Anthropic, was used to take a regional model and apply it globally across the surface of Mars. It was also used in writing code, preparing figures, and building this website. The authors directed, checked, and validated all work.</p>
+  </div>
+
+  <h2>Data</h2>
+  <div class="cnote">
+    <p>CTX images: NASA/JPL/Malin Space Science Systems. MOLA: NASA/GSFC. HiRISE DEMs: NASA/JPL/University of Arizona.</p>
+  </div>
+</main>
+<footer class="wrap"><a href="index.html">MESA</a> · planetarydems.org</footer>
+
+<script>
+// Photos: add img/people/<id>.jpg (square, ≥ 400 px). Initials are shown where a photo is missing.
+const TEAM = [
+  { id: 'mitchell', name: 'W. Hamish Mitchell', org: 'Department of Earth, Atmospheric and Planetary Sciences, Massachusetts Institute of Technology', role: 'Corresponding author', mail: 'whamitch@mit.edu' },
+  { id: 'stucky-de-quay', name: 'Gaia Stucky de Quay', org: 'Department of Earth, Atmospheric and Planetary Sciences, Massachusetts Institute of Technology' },
+  { id: 'goudge', name: 'Timothy A. Goudge', org: 'Jackson School of Geosciences, University of Texas at Austin' },
+  { id: 'freeman', name: 'William T. Freeman', org: 'Department of Electrical Engineering and Computer Science, Massachusetts Institute of Technology' },
+  { id: 'perron', name: 'J. Taylor Perron', org: 'Department of Earth, Atmospheric and Planetary Sciences, Massachusetts Institute of Technology' },
+];
+const initials = (n) => n.replace(/[^A-Za-z .-]/g, '').split(/\s+/).filter((w) => /^[A-Z]/.test(w) && w.length > 2).map((w) => w[0]).slice(0, 2).join('') || n[0];
+const photo = (window.EMBED_PEOPLE || {});
+document.getElementById('team').innerHTML = TEAM.map((p) => `
+  <div class="person">
+    <div class="face" aria-hidden="true">${initials(p.name)}<img src="${photo[p.id] || `img/people/${p.id}.jpg`}" alt="" onerror="this.remove()"></div>
+    <h3>${p.name}</h3>
+    <p>${p.org}</p>
+    ${p.role ? `<span class="role">${p.role}</span>` : ''}
+    ${p.mail ? `<p class="mail">${p.mail}</p>` : ''}
+  </div>`).join('');
+</script>
+</body>
+</html>

@@ -160,6 +160,21 @@
   pre { margin: 0; background: var(--code-bg); color: var(--code-ink); border-radius: 10px; padding: 16px 18px; overflow-x: auto; font: 13.5px/1.6 var(--mono); tab-size: 4; }
   pre .c { color: var(--code-com); } pre .s { color: var(--code-str); } pre .k { color: var(--code-kw); } pre .d { color: var(--code-num); }
   .copy { font: 500 13px/1 var(--body); padding: 7px 12px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+  .panel.dl h4 { margin: 0 0 6px; font: 700 16px/1.3 var(--display); font-stretch: 110%; }
+  .panel.dl p { margin: 0 0 12px; color: var(--ink2); font-size: 14.5px; }
+  .panel .small, .small { font-size: 13px; color: var(--muted); margin: 10px 0 0; }
+  .btn-dl { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 7px; border: 1px solid var(--accent); background: var(--accent);
+    color: var(--accent-ink); font: 600 15px/1 var(--body); cursor: pointer; }
+  .btn-dl:disabled { background: transparent; color: var(--muted); border-color: var(--line); cursor: not-allowed; }
+  .dl-status { font: 13.5px/1.4 var(--mono); color: var(--ink2); margin: 10px 0 0 !important; min-height: 1.4em; }
+  .guide { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 22px; margin-top: 14px; align-items: start; }
+  .steps { min-width: 0; }
+  .steps h4 { font: 700 17px/1.3 var(--display); font-stretch: 110%; margin: 0 0 6px; }
+  .steps ol { margin: 0; padding-left: 22px; color: var(--ink2); font-size: 15px; }
+  .steps li { margin: 6px 0; }
+  figure.shot { margin: 14px 0 0; background: var(--surface); }
+  figure.shot img { width: 100%; }
+  figure.shot.narrow { max-width: 460px; }
   .recipes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr)); gap: 18px; margin-top: 18px; }
   .recipe { min-width: 0; }
   .recipe h4 { font: 700 16px/1.3 var(--display); font-stretch: 110%; margin: 0 0 4px; }
@@ -189,7 +204,7 @@
 <div class="night">
   <div class="wrap top">
     <a class="brand" href="#top">planetary<span>dems</span></a>
-    <nav aria-label="Sections"><a href="#explore">Sites</a><a href="#data">Data access</a><a href="#accuracy">Accuracy</a><a href="#cite">Citation</a></nav>
+    <nav aria-label="Sections"><a href="#explore">Sites</a><a href="#data">Data access</a><a href="#accuracy">Accuracy</a><a href="#cite">Citation</a><a href="contributors.html">Contributors</a></nav>
   </div>
   <div class="hero" id="top">
     <img src="img/hero.jpg" data-src="img/hero.jpg" alt="The delta of Jezero crater in 3-D, CTX images draped on the MESA elevation model, seen from the east">
@@ -256,7 +271,7 @@
       <div><dt>Layout</dt><dd>512 × 512 tiles, DEFLATE compression, 12 overview levels with 36 m to 74 km pixels</dd></div>
     </dl>
 
-    <h3>1. Area selection</h3>
+    <h3>1. Select an area</h3>
     <div class="builder">
       <div class="panel">
         <label for="preset">Preset site</label>
@@ -267,18 +282,72 @@
           <div><label for="s">South (°N)</label><input id="s" inputmode="decimal"></div>
           <div><label for="n">North (°N)</label><input id="n" inputmode="decimal"></div>
         </div>
+        <label for="res" style="margin-top:12px">Pixel size</label>
+        <select id="res"><option value="0">18 m (full resolution)</option><option value="1">36 m</option><option value="2">72 m</option><option value="3">144 m</option><option value="4">288 m</option></select>
         <div class="est" id="est" aria-live="polite"></div>
       </div>
-      <div class="code">
-        <div class="head">
-          <div class="seg light" id="c-lang" role="group" aria-label="Tool"><button data-v="rioxarray" aria-pressed="true">rioxarray</button><button data-v="rasterio" aria-pressed="false">rasterio</button><button data-v="gdal" aria-pressed="false">GDAL command line</button></div>
-          <button class="copy" data-target="code-main">Copy</button>
-        </div>
-        <pre id="code-main"></pre>
+      <div class="panel dl">
+        <h4>Download for QGIS or ArcGIS</h4>
+        <p>The ZIP contains the DEM and the mask of the selected area as GeoTIFFs, each with a world file (<code>.tfw</code>) and a projection file (<code>.prj</code>). The subset is cut from the COG in the web browser. Command-line tools are not required.</p>
+        <button class="btn-dl" id="dl" type="button">Download GeoTIFF (ZIP)</button>
+        <p class="dl-status" id="dl-status" aria-live="polite"></p>
+        <p class="small">Browser downloads are limited to 800 MB of raw data. Larger areas are read in QGIS (step 3) or Python (step 4).</p>
       </div>
     </div>
 
-    <h3>2. Further examples</h3>
+    <h3>2. Open the DEM in a GIS</h3>
+    <div class="guide">
+      <div class="steps">
+        <h4>QGIS <span class="pill">free, qgis.org</span></h4>
+        <ol>
+          <li>Unzip the download.</li>
+          <li>Drag <code>…_mesa_dem.tif</code> into the QGIS window, or use Layer ▸ Add Layer ▸ Add Raster Layer.</li>
+          <li>If a red “No transform available” message appears, right-click the layer and choose Layer CRS ▸ Set Project CRS from Layer. Then close the message.</li>
+          <li>For shaded relief, right-click the layer and choose Duplicate Layer. In Layer Properties ▸ Symbology, set the lower copy to Hillshade and the upper copy to Singleband pseudocolor at ~50% opacity.</li>
+        </ol>
+        <figure class="shot"><img src="img/guide/qgis_dem_loaded.jpg" data-src="img/guide/qgis_dem_loaded.jpg" alt="QGIS main window with the Jezero crater subset of MESA, colored elevation over a hillshade" loading="lazy">
+          <figcaption>The Jezero crater subset in QGIS 3.30, colored elevation over a hillshade.</figcaption></figure>
+      </div>
+      <div class="steps">
+        <h4>ArcGIS Pro</h4>
+        <ol>
+          <li>Unzip the download.</li>
+          <li>On the Map tab, click Add Data and select <code>…_mesa_dem.tif</code>.</li>
+          <li>Right-click the map in the Contents pane and open Properties ▸ Coordinate Systems. Under Layers, select the coordinate system of the MESA layer (Mars equirectangular) and click OK. Remove the Earth basemap.</li>
+          <li>For shaded relief, open Imagery ▸ Raster Functions ▸ Surface ▸ Hillshade and select the DEM as input.</li>
+        </ol>
+        <p class="small">The coordinate system is stored in each GeoTIFF. The <code>.tfw</code> and <code>.prj</code> files are included for software that reads world files.</p>
+      </div>
+    </div>
+
+    <h3>3. Larger areas: stream the COG in QGIS</h3>
+    <p class="lede" style="font-size:15px">Areas beyond the browser limit are read directly from the COG in QGIS. Only the tiles in view are transferred.</p>
+    <div class="guide">
+      <div class="steps">
+        <ol>
+          <li>Open Layer ▸ Add Layer ▸ Add Raster Layer. Select Protocol: HTTP(S), cloud, etc., keep the type HTTP/HTTPS/FTP, and paste the DEM address into URI. Click Add.</li>
+          <li>Zoom to the area of interest.</li>
+          <li>Right-click the layer and choose Export ▸ Save As. Under Extent, click Map Canvas Extent or draw a box on the map. Keep the resolution at 18 m, enter a file name, and click OK.</li>
+        </ol>
+        <figure class="shot"><img src="img/guide/qgis_add_cog.png" data-src="img/guide/qgis_add_cog.png" alt="QGIS Data Source Manager, Raster page, with the MESA COG address entered under Protocol" loading="lazy">
+          <figcaption>Step 1. The MESA DEM added by its address.</figcaption></figure>
+      </div>
+      <div class="steps">
+        <figure class="shot narrow"><img src="img/guide/qgis_save_extent.png" data-src="img/guide/qgis_save_extent.png" alt="QGIS Save Raster Layer As dialog with the extent and 18 m resolution set" loading="lazy">
+          <figcaption>Step 3. A subset of the streamed layer saved as a GeoTIFF.</figcaption></figure>
+      </div>
+    </div>
+
+    <h3>4. Python and the command line</h3>
+    <div class="code">
+      <div class="head">
+        <div class="seg light" id="c-lang" role="group" aria-label="Tool"><button data-v="rioxarray" aria-pressed="true">rioxarray</button><button data-v="rasterio" aria-pressed="false">rasterio</button><button data-v="gdal" aria-pressed="false">GDAL command line</button></div>
+        <button class="copy" data-target="code-main">Copy</button>
+      </div>
+      <pre id="code-main"></pre>
+    </div>
+
+    <h3>5. Further examples</h3>
     <div class="recipes">
       <div class="recipe"><h4>Large regions from overviews</h4><p>The same surface is stored at coarser pixel spacing in 12 overview levels. At level 3 (288 m pixels), a 30° × 30° region is ~6,200 pixels across.</p>
         <div class="code"><div class="head"><span></span><button class="copy" data-target="r-ovr">Copy</button></div><pre id="r-ovr"></pre></div>
@@ -324,7 +393,7 @@
       <div class="panel"><b>License</b><p>To be announced with the data release.</p></div>
     </div>
   </section>
-  <footer>CTX images: NASA/JPL/Malin Space Science Systems. MOLA: NASA/GSFC. HiRISE DEMs: NASA/JPL/University of Arizona. · planetarydems.org</footer>
+  <footer>CTX images: NASA/JPL/Malin Space Science Systems. MOLA: NASA/GSFC. HiRISE DEMs: NASA/JPL/University of Arizona. · <a href="contributors.html">Contributors</a> · planetarydems.org</footer>
 </main>
 
 <script type="module">
@@ -475,7 +544,8 @@ gdal_translate -projwin_srs "+proj=longlat +R=3396190 +no_defs" \\
   ${b.slug}_mesa.tif`;
 }
 function estimate(b) {
-  const x = (lon) => (lon + 180) / 360 * NX, y = (lat) => (90 - lat) / 180 * NY;
+  const f = 2 ** (+$('res').value || 0);
+  const x = (lon) => (lon + 180) / 360 * NX / f, y = (lat) => (90 - lat) / 180 * NY / f;
   const problems = [];
   if (![b.w, b.e, b.s, b.n].every(Number.isFinite)) problems.push('Enter four numbers.');
   else {
@@ -490,9 +560,10 @@ function estimate(b) {
   const mb = tiles * TILE * TILE * 4 * 0.57 / 1e6, lat0 = (b.s + b.n) / 2;
   const km = [(b.e - b.w) * KM_DEG * Math.cos(lat0 * Math.PI / 180), (b.n - b.s) * KM_DEG];
   const size = mb >= 1000 ? `${(mb / 1000).toFixed(1)} GB` : `${Math.max(1, Math.round(mb))} MB`;
-  let s = `<div class="big">~${size}</div><p>${Math.round(wpx).toLocaleString()} × ${Math.round(hpx).toLocaleString()} pixels, ${Math.round(km[0]).toLocaleString()} × ${Math.round(km[1]).toLocaleString()} km, ${tiles.toLocaleString()} tiles of 9.2 km.</p>`;
+  const raw = wpx * hpx * 4 / 1e6; b.raw = raw;
+  let s = `<div class="big">~${size}</div><p>transferred for ${Math.round(wpx).toLocaleString()} × ${Math.round(hpx).toLocaleString()} pixels of ${18 * f} m, ${Math.round(km[0]).toLocaleString()} × ${Math.round(km[1]).toLocaleString()} km, ${tiles.toLocaleString()} tiles.</p>`;
   if (Math.abs(b.n) > 88.6 || Math.abs(b.s) > 88.6) s += '<p class="warn">Data are available equatorward of ~88.6° latitude.</p>';
-  if (mb > 2000) s += '<p class="warn">The transfer at 18 m exceeds 2 GB for this area. An overview level (see below) or a dask-backed read with <code>chunks=True</code> is recommended.</p>';
+  if (raw > 800) s += '<p class="warn">The subset exceeds the 800 MB browser limit at this pixel size. A coarser pixel size, QGIS streaming (step 3), or Python (step 4) is recommended.</p>';
   return s;
 }
 const recipes = {
@@ -535,6 +606,7 @@ function update(fromPreset) {
   for (const [id, [l, f]] of Object.entries(recipes)) $(id).innerHTML = hl(f(b), l);
 }
 $('preset').addEventListener('change', () => update(true));
+$('res').addEventListener('change', () => update(false));
 for (const id of ['w', 'e', 's', 'n']) $(id).addEventListener('input', () => update(false));
 seg('c-lang', () => update(false));
 update(true);
@@ -544,6 +616,32 @@ document.addEventListener('click', async (e) => {
   try { await navigator.clipboard.writeText(text); b.textContent = 'Copied'; }
   catch { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selected, press ⌘C'; }
   setTimeout(() => (b.textContent = 'Copy'), 1800);
+});
+
+// ---------------- download for GIS ----------------
+const DATA = window.MESA_DATA_URLS || { dem: DEM, mask: MASK, live: false };    // live = the COGs are hosted with CORS
+const dlBtn = $('dl'), dlStatus = $('dl-status');
+const loadScript = (src) => new Promise((res, rej) => { const el = document.createElement('script'); el.src = src; el.onload = res; el.onerror = () => rej(new Error(`could not load ${src}`)); document.head.appendChild(el); });
+function dlState() {
+  const b = bboxFromInputs(); estimate(b);
+  const ok = DATA.live && Number.isFinite(b.raw) && b.raw <= 800;
+  dlBtn.disabled = !ok;
+  dlBtn.textContent = DATA.live ? 'Download GeoTIFF (ZIP)' : 'Download GeoTIFF (ZIP), coming soon';
+}
+for (const id of ['preset', 'w', 'e', 's', 'n', 'res']) $(id).addEventListener(id === 'preset' || id === 'res' ? 'change' : 'input', dlState);
+dlState();
+dlBtn.addEventListener('click', async () => {
+  const b = bboxFromInputs(), level = +$('res').value;
+  dlBtn.disabled = true; dlStatus.textContent = 'Starting…';
+  try {
+    if (!window.GeoTIFF) await loadScript('https://cdn.jsdelivr.net/npm/geotiff@2.1.3/dist-browser/geotiff.js');
+    if (!window.JSZip) await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js');
+    if (!window.MESAGis) await loadScript('gis.js');
+    const r = await window.MESAGis.download(DATA, { ...b, label: b.label === 'custom area' ? 'custom area' : b.label }, level, (m) => (dlStatus.textContent = m));
+    dlStatus.textContent = `Saved ${r.file}: ${r.w.toLocaleString()} × ${r.h.toLocaleString()} pixels of ${r.px.toFixed(0)} m, ${(r.bytes / 1e6).toFixed(1)} MB.`;
+  } catch (err) {
+    dlStatus.textContent = `The download stopped: ${err.message}`;
+  } finally { dlState(); }
 });
 
 // ---------------- accuracy table + charts ----------------
