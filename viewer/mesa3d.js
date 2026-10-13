@@ -156,8 +156,8 @@ export async function createViewer(container, base, opts = {}) {
   // Per drape: [sun elevation, sun intensity, ambient, fill]. Image drapes keep flat ground equally bright whatever the
   // Sun's height (intensity ~ 1 / sin(elevation)); relief uses a low Sun from the images' azimuth to show shape.
   const LIGHT = {
-    ctx: [alt, (opts.sun ?? 0.55) / Math.sin(alt), opts.ambient ?? 1.6, 0],
-    color: [alt, (opts.sun ?? 0.55) / Math.sin(alt), opts.ambient ?? 1.6, 0],
+    ctx: [alt, opts.sun ?? meta.view?.sun ?? 0.55 / Math.sin(alt), opts.ambient ?? meta.view?.amb ?? 1.6, 0],
+    color: [alt, opts.sun ?? meta.view?.sun ?? 0.55 / Math.sin(alt), opts.ambient ?? meta.view?.amb ?? 1.6, 0],
     relief: [28 * DEG, 2.0, 0.42, 0.28],
   };
   function light(mode) {

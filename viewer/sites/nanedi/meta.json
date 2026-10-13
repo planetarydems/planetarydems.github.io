@@ -1,0 +1,88 @@
+{
+ "key": "nanedi",
+ "title": "Nanedi Valles",
+ "lon": -48.4,
+ "lat": 5.1,
+ "width_km": 70.002,
+ "height_km": 90.0,
+ "mesh": {
+  "cols": 1195,
+  "rows": 1536,
+  "px_m": 58.57907949790795
+ },
+ "zmin": -1622.0,
+ "zmax": 437.0,
+ "dem_px_m": 18.0,
+ "tex": {
+  "cols": 3185,
+  "rows": 4096,
+  "px_m": 21.978649921507063,
+  "full_cols": 7000,
+  "full_px_m": 10.0
+ },
+ "color_range": [
+  -1087.5957177734376,
+  -26.729617557524612
+ ],
+ "fill_share": 0.0,
+ "frames": [
+  {
+   "id": "V20_087736_1848",
+   "share": 0.3528,
+   "inc": 50.92
+  },
+  {
+   "id": "V16_086391_1848",
+   "share": 0.2501,
+   "inc": 41.02
+  },
+  {
+   "id": "F05_037638_1843",
+   "share": 0.244,
+   "inc": 55.45
+  },
+  {
+   "id": "B17_016250_1870",
+   "share": 0.1028,
+   "inc": 44.39
+  },
+  {
+   "id": "P01_001508_1850",
+   "share": 0.0496,
+   "inc": 53.06
+  },
+  {
+   "id": "F04_037216_1836",
+   "share": 0.0008,
+   "inc": 54.99
+  }
+ ],
+ "product": "ta_implicit_d1_implrel100s1_e088",
+ "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
+ "checks": {
+  "tex_valid_frames": 1.0,
+  "murray_shift_m": [
+   79.74810248973426,
+   162.85876274943803
+  ],
+  "murray_shift_resp": 0.46437297875675154,
+  "tex_filled_from_murray": 0.0,
+  "tex_filled_from_hillshade": 0.0,
+  "sun_az": 286.0,
+  "sun_alt": 41.01213918603174,
+  "sun_fit_r": 0.7253252562559779,
+  "tex_vs_dem_shift_m": [
+   -6.528753748024428,
+   2.1404728889820035
+  ],
+  "tex_vs_dem_resp": 0.6343133549804687
+ },
+ "view": {
+  "az": 176,
+  "el": 30,
+  "dist": 0.85,
+  "te": 0,
+  "tn": 0,
+  "ve": 3.0
+ }
+}

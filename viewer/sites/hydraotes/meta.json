@@ -1,0 +1,103 @@
+{
+ "key": "hydraotes",
+ "title": "Hydraotes Chaos",
+ "lon": -35.2,
+ "lat": 0.9,
+ "width_km": 120.006,
+ "height_km": 100.008,
+ "mesh": {
+  "cols": 1536,
+  "rows": 1280,
+  "px_m": 78.12890625
+ },
+ "zmin": -5014.0,
+ "zmax": -2279.0,
+ "dem_px_m": 18.0,
+ "tex": {
+  "cols": 4096,
+  "rows": 3413,
+  "px_m": 29.29833984375,
+  "full_cols": 8572,
+  "full_px_m": 14.0
+ },
+ "color_range": [
+  -4943.68408203125,
+  -2715.3570581054682
+ ],
+ "fill_share": 0.0,
+ "frames": [
+  {
+   "id": "K11_057853_1813",
+   "share": 0.1933,
+   "inc": 39.24
+  },
+  {
+   "id": "P17_007560_1809",
+   "share": 0.1668,
+   "inc": 45.23
+  },
+  {
+   "id": "P11_005279_1815",
+   "share": 0.1596,
+   "inc": 38.87
+  },
+  {
+   "id": "V05_082079_1818",
+   "share": 0.1215,
+   "inc": 59.29
+  },
+  {
+   "id": "P04_002734_1808",
+   "share": 0.1062,
+   "inc": 55.43
+  },
+  {
+   "id": "D21_035475_1832",
+   "share": 0.0994,
+   "inc": 53.02
+  },
+  {
+   "id": "U11_075393_1786",
+   "share": 0.0802,
+   "inc": 43.06
+  },
+  {
+   "id": "B03_010764_1814",
+   "share": 0.0552,
+   "inc": 56.22
+  },
+  {
+   "id": "N16_068417_1806",
+   "share": 0.0178,
+   "inc": 44.71
+  }
+ ],
+ "product": "ta_implicit_d1_implrel100s1_e088",
+ "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
+ "checks": {
+  "tex_valid_frames": 1.0,
+  "murray_shift_m": [
+   -52.44624354751613,
+   -16.34493569868664
+  ],
+  "murray_shift_resp": 0.6551548006034191,
+  "tex_filled_from_murray": 0.0,
+  "tex_filled_from_hillshade": 0.0,
+  "sun_az": 277.0,
+  "sun_alt": 42.95404273909389,
+  "sun_fit_r": 0.7285281023261999,
+  "tex_vs_dem_shift_m": [
+   -3.558180233432722,
+   10.160418745496827
+  ],
+  "tex_vs_dem_resp": 0.5815665151041667
+ },
+ "view": {
+  "az": 167,
+  "el": 30,
+  "dist": 0.85,
+  "te": 0,
+  "tn": 0,
+  "ve": 2.5
+ }
+}

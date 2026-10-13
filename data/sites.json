@@ -19,7 +19,7 @@
   "view": "parana_valleys",
   "site": "parana",
   "title": "Paraná Valles",
-  "caption": "Branching valleys of Paraná Valles, seen from the south-southeast. The image layer is a CTX mosaic aligned to MESA.",
+  "caption": "Branching valleys of Paraná Valles, seen from the south-southeast.",
   "ve": 5,
   "lat": -22.87,
   "lon": -10.26,
@@ -131,7 +131,7 @@
   "view": "parana_wide",
   "site": "parana",
   "title": "Paraná Valles network",
-  "caption": "The Paraná Valles network in a 110 by 80 km window, seen from the south-southwest. The image layer is a CTX mosaic aligned to MESA.",
+  "caption": "The Paraná Valles network in a 110 by 80 km window, seen from the south-southwest.",
   "ve": 5,
   "lat": -22.87,
   "lon": -10.26,
@@ -144,263 +144,307 @@
   "theme": "Fluvial valleys"
  },
  {
-  "view": "olympus",
-  "site": "olympus",
-  "title": "Olympus Mons caldera",
-  "lat": 18.45,
-  "lon": -133.85,
-  "window_km": [
-   100.0,
-   90.0
-  ],
-  "rendered": false,
-  "theme": "Volcanoes"
- },
- {
-  "view": "hebes",
-  "site": "hebes",
-  "title": "Hebes Chasma",
-  "lat": -1.1,
-  "lon": -76.0,
-  "window_km": [
-   160.0,
-   110.0
-  ],
-  "rendered": false,
-  "theme": "Chaos and canyons"
- },
- {
-  "view": "coprates",
-  "site": "coprates",
-  "title": "Coprates Chasma",
-  "lat": -13.4,
-  "lon": -61.4,
-  "window_km": [
-   100.0,
-   90.0
-  ],
-  "rendered": false,
-  "theme": "Chaos and canyons"
- },
- {
-  "view": "noctis",
-  "site": "noctis",
-  "title": "Noctis Labyrinthus",
-  "lat": -6.9,
-  "lon": -102.2,
-  "window_km": [
-   120.0,
-   100.0
-  ],
-  "rendered": false,
-  "theme": "Chaos and canyons"
- },
- {
-  "view": "mojave",
-  "site": "mojave",
-  "title": "Mojave crater",
-  "lat": 7.46,
-  "lon": -33.0,
-  "window_km": [
-   75.0,
-   70.0
-  ],
-  "rendered": false,
-  "theme": "Craters"
- },
- {
-  "view": "endeavour",
-  "site": "endeavour",
-  "title": "Endeavour crater",
-  "lat": -2.28,
-  "lon": -5.23,
-  "window_km": [
-   36.0,
-   32.0
-  ],
-  "rendered": false,
-  "theme": "Craters"
- },
- {
-  "view": "korolev",
-  "site": "korolev",
-  "title": "Korolev crater",
-  "lat": 72.77,
-  "lon": 164.58,
-  "window_km": [
-   110.0,
-   100.0
-  ],
-  "rendered": false,
-  "theme": "Craters"
- },
- {
-  "view": "holden",
-  "site": "holden",
-  "title": "Holden crater",
-  "lat": -26.1,
-  "lon": -34.0,
-  "window_km": [
-   140.0,
-   130.0
-  ],
-  "rendered": false,
-  "theme": "Deltas and fans"
- },
- {
-  "view": "zunil",
-  "site": "zunil",
-  "title": "Zunil crater",
-  "lat": 7.7,
-  "lon": 166.0,
-  "window_km": [
-   30.0,
-   26.0
-  ],
-  "rendered": false,
-  "theme": "Craters"
- },
- {
-  "view": "warrego",
-  "site": "warrego",
-  "title": "Warrego Valles",
-  "lat": -42.47,
-  "lon": -92.57,
-  "window_km": [
-   90.0,
-   70.0
-  ],
-  "rendered": false,
-  "theme": "Fluvial valleys"
- },
- {
-  "view": "hydraotes",
-  "site": "hydraotes",
-  "title": "Hydraotes Chaos",
-  "lat": 0.9,
-  "lon": -35.2,
-  "window_km": [
-   120.0,
-   100.0
-  ],
-  "rendered": false,
-  "theme": "Chaos and canyons"
- },
- {
-  "view": "iani",
-  "site": "iani",
-  "title": "Iani Chaos",
-  "lat": -0.99,
-  "lon": -17.715,
-  "window_km": [
-   100.0,
-   84.0
-  ],
-  "rendered": false,
-  "theme": "Chaos and canyons"
- },
- {
-  "view": "jovis",
-  "site": "jovis",
-  "title": "Jovis Tholus",
-  "lat": 18.41,
-  "lon": -117.45,
-  "window_km": [
-   90.0,
-   80.0
-  ],
-  "rendered": false,
-  "theme": "Volcanoes"
- },
- {
-  "view": "roddy",
-  "site": "roddy",
-  "title": "Roddy crater",
-  "lat": -21.66,
-  "lon": -39.41,
-  "window_km": [
-   130.0,
-   118.0
-  ],
-  "rendered": false,
-  "theme": "Craters"
- },
- {
-  "view": "nirgal",
-  "site": "nirgal",
-  "title": "Nirgal Vallis",
-  "lat": -27.9,
-  "lon": -42.8,
-  "window_km": [
-   120.0,
-   90.0
-  ],
-  "rendered": false,
-  "theme": "Fluvial valleys"
- },
- {
-  "view": "nanedi",
+  "view": "nanedi_view",
   "site": "nanedi",
   "title": "Nanedi Valles",
+  "caption": "The sinuous canyon of Nanedi Valles, seen from the south.",
+  "ve": 3.0,
   "lat": 5.1,
   "lon": -48.4,
   "window_km": [
    70.0,
    90.0
   ],
-  "rendered": false,
+  "rendered": true,
+  "viewer": true,
   "theme": "Fluvial valleys"
  },
  {
-  "view": "samara",
-  "site": "samara",
-  "title": "Samara Valles",
-  "lat": -24.3,
-  "lon": -19.5,
-  "window_km": [
-   120.0,
-   100.0
-  ],
-  "rendered": false,
-  "theme": "Fluvial valleys"
- },
- {
-  "view": "loire",
-  "site": "loire",
-  "title": "Loire Valles",
-  "lat": -18.3,
-  "lon": -17.3,
-  "window_km": [
-   110.0,
-   90.0
-  ],
-  "rendered": false,
-  "theme": "Fluvial valleys"
- },
- {
-  "view": "maadim",
+  "view": "maadim_view",
   "site": "maadim",
   "title": "Ma'adim Vallis",
+  "caption": "The canyon of Ma'adim Vallis, seen from the south-southwest.",
+  "ve": 2.5,
   "lat": -21.0,
   "lon": 177.0,
   "window_km": [
    100.0,
    140.0
   ],
-  "rendered": false,
+  "rendered": true,
+  "viewer": true,
   "theme": "Fluvial valleys"
  },
  {
-  "view": "reull",
+  "view": "nirgal_view",
+  "site": "nirgal",
+  "title": "Nirgal Vallis",
+  "caption": "The main valley of Nirgal Vallis and its tributaries, seen from the northeast.",
+  "ve": 4.5,
+  "lat": -27.9,
+  "lon": -42.8,
+  "window_km": [
+   120.0,
+   90.0
+  ],
+  "rendered": true,
+  "viewer": false,
+  "theme": "Fluvial valleys"
+ },
+ {
+  "view": "warrego_view",
+  "site": "warrego",
+  "title": "Warrego Valles",
+  "caption": "The branching valley network of Warrego Valles, seen from the south.",
+  "ve": 2.5,
+  "lat": -42.47,
+  "lon": -92.57,
+  "window_km": [
+   90.0,
+   70.0
+  ],
+  "rendered": true,
+  "viewer": false,
+  "theme": "Fluvial valleys"
+ },
+ {
+  "view": "loire_view",
+  "site": "loire",
+  "title": "Loire Valles",
+  "caption": "Valleys of Loire Valles, seen from the south.",
+  "ve": 3.5,
+  "lat": -18.3,
+  "lon": -17.3,
+  "window_km": [
+   110.0,
+   90.0
+  ],
+  "rendered": true,
+  "viewer": false,
+  "theme": "Fluvial valleys"
+ },
+ {
+  "view": "samara_view",
+  "site": "samara",
+  "title": "Samara Valles",
+  "caption": "Valleys of the Samara Valles system, seen from the south.",
+  "ve": 3.5,
+  "lat": -24.3,
+  "lon": -19.5,
+  "window_km": [
+   120.0,
+   100.0
+  ],
+  "rendered": true,
+  "viewer": false,
+  "theme": "Fluvial valleys"
+ },
+ {
+  "view": "reull_view",
   "site": "reull",
   "title": "Reull Vallis",
+  "caption": "A segment of Reull Vallis, seen from the south-southwest.",
+  "ve": 2,
   "lat": -41.6,
   "lon": 101.4,
   "window_km": [
    120.0,
    90.0
   ],
-  "rendered": false,
+  "rendered": true,
+  "viewer": false,
   "theme": "Fluvial valleys"
+ },
+ {
+  "view": "olympus_view",
+  "site": "olympus",
+  "title": "Olympus Mons caldera",
+  "caption": "The nested summit calderas of Olympus Mons, seen from the east-southeast.",
+  "ve": 2.0,
+  "lat": 18.45,
+  "lon": -133.85,
+  "window_km": [
+   100.0,
+   90.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Volcanoes"
+ },
+ {
+  "view": "coprates_view",
+  "site": "coprates",
+  "title": "Coprates Chasma",
+  "caption": "The walls and floor of Coprates Chasma in Valles Marineris, seen from the south-southwest.",
+  "ve": 1.5,
+  "lat": -13.4,
+  "lon": -61.4,
+  "window_km": [
+   100.0,
+   90.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Chaos and canyons"
+ },
+ {
+  "view": "hebes_view",
+  "site": "hebes",
+  "title": "Hebes Chasma",
+  "caption": "An enclosed trough of the Valles Marineris system with a central mesa, seen from the south-southeast.",
+  "ve": 1.5,
+  "lat": -1.1,
+  "lon": -76.0,
+  "window_km": [
+   160.0,
+   110.0
+  ],
+  "rendered": true,
+  "viewer": false,
+  "theme": "Chaos and canyons"
+ },
+ {
+  "view": "noctis_view",
+  "site": "noctis",
+  "title": "Noctis Labyrinthus",
+  "caption": "Intersecting troughs and pits of Noctis Labyrinthus, seen from the south.",
+  "ve": 2.0,
+  "lat": -6.9,
+  "lon": -102.2,
+  "window_km": [
+   120.0,
+   100.0
+  ],
+  "rendered": true,
+  "viewer": false,
+  "theme": "Chaos and canyons"
+ },
+ {
+  "view": "hydraotes_view",
+  "site": "hydraotes",
+  "title": "Hydraotes Chaos",
+  "caption": "Mesas and troughs of Hydraotes Chaos, seen from the south-southeast.",
+  "ve": 2.5,
+  "lat": 0.9,
+  "lon": -35.2,
+  "window_km": [
+   120.0,
+   100.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Chaos and canyons"
+ },
+ {
+  "view": "iani_view",
+  "site": "iani",
+  "title": "Iani Chaos",
+  "caption": "Chaotic terrain of Iani Chaos, seen from the south-southeast.",
+  "ve": 2.5,
+  "lat": -0.99,
+  "lon": -17.715,
+  "window_km": [
+   100.0,
+   84.0
+  ],
+  "rendered": true,
+  "viewer": false,
+  "theme": "Chaos and canyons"
+ },
+ {
+  "view": "mojave_view",
+  "site": "mojave",
+  "title": "Mojave crater",
+  "caption": "A young impact crater with a central peak, seen from the south-southeast.",
+  "ve": 2.5,
+  "lat": 7.46,
+  "lon": -33.0,
+  "window_km": [
+   75.0,
+   70.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Craters"
+ },
+ {
+  "view": "zunil_view",
+  "site": "zunil",
+  "title": "Zunil crater",
+  "caption": "A young rayed impact crater, seen from the south-southeast.",
+  "ve": 4,
+  "lat": 7.72,
+  "lon": 166.18,
+  "window_km": [
+   30.0,
+   26.0
+  ],
+  "rendered": true,
+  "viewer": false,
+  "theme": "Craters"
+ },
+ {
+  "view": "endeavour_view",
+  "site": "endeavour",
+  "title": "Endeavour crater",
+  "caption": "Rim segments of Endeavour crater, explored by the Opportunity rover, seen from the south-southeast.",
+  "ve": 5.0,
+  "lat": -2.28,
+  "lon": -5.23,
+  "window_km": [
+   36.0,
+   32.0
+  ],
+  "rendered": true,
+  "viewer": false,
+  "theme": "Craters"
+ },
+ {
+  "view": "holden_view",
+  "site": "holden",
+  "title": "Holden crater",
+  "caption": "The floor and walls of Holden crater, seen from the south.",
+  "ve": 2.0,
+  "lat": -26.1,
+  "lon": -34.0,
+  "window_km": [
+   140.0,
+   130.0
+  ],
+  "rendered": true,
+  "viewer": false,
+  "theme": "Deltas and fans"
+ },
+ {
+  "view": "roddy_view",
+  "site": "roddy",
+  "title": "Roddy crater",
+  "caption": "Roddy crater, seen from the south-southwest.",
+  "ve": 2.0,
+  "lat": -21.66,
+  "lon": -39.41,
+  "window_km": [
+   130.0,
+   118.0
+  ],
+  "rendered": true,
+  "viewer": false,
+  "theme": "Craters"
+ },
+ {
+  "view": "jovis_view",
+  "site": "jovis",
+  "title": "Jovis Tholus",
+  "caption": "The small shield volcano Jovis Tholus and its summit caldera, seen from the southeast.",
+  "ve": 4.0,
+  "lat": 18.41,
+  "lon": -117.45,
+  "window_km": [
+   90.0,
+   80.0
+  ],
+  "rendered": true,
+  "viewer": false,
+  "theme": "Volcanoes"
  }
 ]
