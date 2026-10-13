@@ -80,7 +80,7 @@
 <footer class="wrap"><a href="index.html">MESA</a> · planetarydems.org</footer>
 
 <script>
-// Photos: add img/people/<id>.jpg (square, ≥ 400 px). Initials are shown where a photo is missing.
+// Photos: add img/people/<id>.jpg (square, ≥ 400 px) and list the id in PHOTOS. Initials are shown otherwise.
 const TEAM = [
   { id: 'mitchell', name: 'W. Hamish Mitchell', org: 'Department of Earth, Atmospheric and Planetary Sciences, Massachusetts Institute of Technology', role: 'Corresponding author', mail: 'whamitch@mit.edu' },
   { id: 'stucky-de-quay', name: 'Gaia Stucky de Quay', org: 'Department of Earth, Atmospheric and Planetary Sciences, Massachusetts Institute of Technology' },
@@ -89,10 +89,11 @@ const TEAM = [
   { id: 'perron', name: 'J. Taylor Perron', org: 'Department of Earth, Atmospheric and Planetary Sciences, Massachusetts Institute of Technology' },
 ];
 const initials = (n) => n.replace(/[^A-Za-z .-]/g, '').split(/\s+/).filter((w) => /^[A-Z]/.test(w) && w.length > 2).map((w) => w[0]).slice(0, 2).join('') || n[0];
+const PHOTOS = [];   // e.g. ['mitchell', 'perron']
 const photo = (window.EMBED_PEOPLE || {});
 document.getElementById('team').innerHTML = TEAM.map((p) => `
   <div class="person">
-    <div class="face" aria-hidden="true">${initials(p.name)}<img src="${photo[p.id] || `img/people/${p.id}.jpg`}" alt="" onerror="this.remove()"></div>
+    <div class="face" aria-hidden="true">${initials(p.name)}${photo[p.id] || PHOTOS.includes(p.id) ? `<img src="${photo[p.id] || `img/people/${p.id}.jpg`}" alt="" onerror="this.remove()">` : ''}</div>
     <h3>${p.name}</h3>
     <p>${p.org}</p>
     ${p.role ? `<span class="role">${p.role}</span>` : ''}
