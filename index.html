@@ -402,7 +402,7 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 const fmtLat = (v) => `${Math.abs(v).toFixed(2)}°${v >= 0 ? 'N' : 'S'}`, fmtLon = (v) => `${Math.abs(v).toFixed(2)}°${v >= 0 ? 'E' : 'W'}`;
 // a standalone copy defines window.EMBED = {sites, tables, img: {path: dataURI}, viewer: {site: {file: dataURI}}}
 const EMBED = window.EMBED || null;
-const BUILD = '202610131606';                                   // set by build_site.py; new file addresses on every release
+const BUILD = '202610131617';                                   // set by build_site.py; new file addresses on every release
 const withV = (p) => (BUILD ? `${p}?v=${BUILD}` : p);
 const [SITES, T] = EMBED ? [EMBED.sites, EMBED.tables]
   : await Promise.all([fetch(withV('data/sites.json')).then((r) => r.json()), fetch(withV('data/tables.json')).then((r) => r.json())]);

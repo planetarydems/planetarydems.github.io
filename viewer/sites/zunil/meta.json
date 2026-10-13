@@ -1,0 +1,78 @@
+{
+ "key": "zunil",
+ "title": "Zunil crater",
+ "lon": 166.18,
+ "lat": 7.72,
+ "width_km": 30.006,
+ "height_km": 25.992,
+ "mesh": {
+  "cols": 1536,
+  "rows": 1331,
+  "px_m": 19.53515625
+ },
+ "zmin": -3560.0,
+ "zmax": -2305.0,
+ "dem_px_m": 18.0,
+ "tex": {
+  "cols": 4096,
+  "rows": 3548,
+  "px_m": 7.32568359375,
+  "full_cols": 5001,
+  "full_px_m": 6.0
+ },
+ "color_range": [
+  -3466.063583984375,
+  -2441.652214355469
+ ],
+ "fill_share": 0.0,
+ "frames": [
+  {
+   "id": "P02_001764_1877",
+   "share": 0.5597,
+   "inc": 51.89
+  },
+  {
+   "id": "V14_085315_1882",
+   "share": 0.3914,
+   "inc": 37.81
+  },
+  {
+   "id": "F05_037617_1899",
+   "share": 0.0481,
+   "inc": 56.81
+  },
+  {
+   "id": "P21_009372_1869",
+   "share": 0.0008,
+   "inc": 51.89
+  }
+ ],
+ "product": "ta_implicit_d1_implrel100s1_e088",
+ "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
+ "checks": {
+  "tex_valid_frames": 1.0,
+  "murray_shift_m": [
+   -89.7956214042133,
+   -108.9025131690214
+  ],
+  "murray_shift_resp": 0.29797702225910566,
+  "tex_filled_from_murray": 0.0,
+  "tex_filled_from_hillshade": 0.0,
+  "sun_az": 275,
+  "sun_alt": 43.38343132481536,
+  "sun_fit_r": 0.7530687026441598,
+  "tex_vs_dem_shift_m": [
+   3.732040008609374,
+   2.7703905491796377
+  ],
+  "tex_vs_dem_resp": 0.6989332291251765
+ },
+ "view": {
+  "az": 165,
+  "el": 32,
+  "dist": 0.85,
+  "te": 0,
+  "tn": 0,
+  "ve": 4
+ }
+}

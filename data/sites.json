@@ -188,7 +188,7 @@
    90.0
   ],
   "rendered": true,
-  "viewer": false,
+  "viewer": true,
   "theme": "Fluvial valleys"
  },
  {
@@ -204,7 +204,7 @@
    70.0
   ],
   "rendered": true,
-  "viewer": false,
+  "viewer": true,
   "theme": "Fluvial valleys"
  },
  {
@@ -220,7 +220,7 @@
    90.0
   ],
   "rendered": true,
-  "viewer": false,
+  "viewer": true,
   "theme": "Fluvial valleys"
  },
  {
@@ -236,7 +236,7 @@
    100.0
   ],
   "rendered": true,
-  "viewer": false,
+  "viewer": true,
   "theme": "Fluvial valleys"
  },
  {
@@ -252,7 +252,7 @@
    90.0
   ],
   "rendered": true,
-  "viewer": false,
+  "viewer": true,
   "theme": "Fluvial valleys"
  },
  {
@@ -300,7 +300,7 @@
    110.0
   ],
   "rendered": true,
-  "viewer": false,
+  "viewer": true,
   "theme": "Chaos and canyons"
  },
  {
@@ -316,7 +316,7 @@
    100.0
   ],
   "rendered": true,
-  "viewer": false,
+  "viewer": true,
   "theme": "Chaos and canyons"
  },
  {
@@ -348,7 +348,7 @@
    84.0
   ],
   "rendered": true,
-  "viewer": false,
+  "viewer": true,
   "theme": "Chaos and canyons"
  },
  {
@@ -380,7 +380,7 @@
    26.0
   ],
   "rendered": true,
-  "viewer": false,
+  "viewer": true,
   "theme": "Craters"
  },
  {
@@ -396,7 +396,7 @@
    32.0
   ],
   "rendered": true,
-  "viewer": false,
+  "viewer": true,
   "theme": "Craters"
  },
  {
@@ -412,7 +412,7 @@
    130.0
   ],
   "rendered": true,
-  "viewer": false,
+  "viewer": true,
   "theme": "Deltas and fans"
  },
  {
@@ -428,7 +428,7 @@
    118.0
   ],
   "rendered": true,
-  "viewer": false,
+  "viewer": true,
   "theme": "Craters"
  },
  {
@@ -444,7 +444,7 @@
    80.0
   ],
   "rendered": true,
-  "viewer": false,
+  "viewer": true,
   "theme": "Volcanoes"
  }
 ]

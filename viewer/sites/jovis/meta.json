@@ -1,0 +1,103 @@
+{
+ "key": "jovis",
+ "title": "Jovis Tholus",
+ "lon": -117.45,
+ "lat": 18.41,
+ "width_km": 90.0,
+ "height_km": 79.992,
+ "mesh": {
+  "cols": 1536,
+  "rows": 1365,
+  "px_m": 58.59375
+ },
+ "zmin": 1704.0,
+ "zmax": 3109.0,
+ "dem_px_m": 18.0,
+ "tex": {
+  "cols": 4096,
+  "rows": 3640,
+  "px_m": 21.97265625,
+  "full_cols": 9000,
+  "full_px_m": 10.0
+ },
+ "color_range": [
+  1779.5614001464844,
+  2987.04248046875
+ ],
+ "fill_share": 0.0,
+ "frames": [
+  {
+   "id": "F08_038986_1977",
+   "share": 0.2499,
+   "inc": 63.65
+  },
+  {
+   "id": "P07_003871_1978",
+   "share": 0.2205,
+   "inc": 62.21
+  },
+  {
+   "id": "U20_078917_1999",
+   "share": 0.1984,
+   "inc": 45.5
+  },
+  {
+   "id": "J08_047979_1975",
+   "share": 0.1667,
+   "inc": 59.28
+  },
+  {
+   "id": "J07_047478_1978",
+   "share": 0.0843,
+   "inc": 59.03
+  },
+  {
+   "id": "P17_007853_1982",
+   "share": 0.0404,
+   "inc": 42.6
+  },
+  {
+   "id": "J05_046555_2014",
+   "share": 0.031,
+   "inc": 53.83
+  },
+  {
+   "id": "B20_017281_2002",
+   "share": 0.0075,
+   "inc": 44.22
+  },
+  {
+   "id": "G21_026353_1973",
+   "share": 0.0013,
+   "inc": 43.26
+  }
+ ],
+ "product": "ta_implicit_d1_implrel100s1_e088",
+ "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
+ "checks": {
+  "tex_valid_frames": 1.0,
+  "murray_shift_m": [
+   106.34647829806454,
+   140.04772548243182
+  ],
+  "murray_shift_resp": 0.4564085616861979,
+  "tex_filled_from_murray": 0.0,
+  "tex_filled_from_hillshade": 0.0,
+  "sun_az": 240,
+  "sun_alt": 32.714205049520075,
+  "sun_fit_r": 0.6523992024501616,
+  "tex_vs_dem_shift_m": [
+   -3.197050630683407,
+   -1.084985490579129
+  ],
+  "tex_vs_dem_resp": 0.5908020135416666
+ },
+ "view": {
+  "az": 130,
+  "el": 30,
+  "dist": 0.85,
+  "te": 0,
+  "tn": 0,
+  "ve": 4.0
+ }
+}

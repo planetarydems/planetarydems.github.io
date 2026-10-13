@@ -1,0 +1,78 @@
+{
+ "key": "endeavour",
+ "title": "Endeavour crater",
+ "lon": -5.23,
+ "lat": -2.28,
+ "width_km": 36.0,
+ "height_km": 32.004,
+ "mesh": {
+  "cols": 1536,
+  "rows": 1366,
+  "px_m": 23.4375
+ },
+ "zmin": -1989.0,
+ "zmax": -1250.0,
+ "dem_px_m": 18.0,
+ "tex": {
+  "cols": 4096,
+  "rows": 3641,
+  "px_m": 8.7890625,
+  "full_cols": 6000,
+  "full_px_m": 6.0
+ },
+ "color_range": [
+  -1942.3823266601562,
+  -1374.091064453125
+ ],
+ "fill_share": 0.0,
+ "frames": [
+  {
+   "id": "G02_018846_1791",
+   "share": 0.4712,
+   "inc": 53.6
+  },
+  {
+   "id": "D06_029738_1759",
+   "share": 0.3327,
+   "inc": 52.6
+  },
+  {
+   "id": "N05_064445_1789",
+   "share": 0.1819,
+   "inc": 56.64
+  },
+  {
+   "id": "G11_022670_1761",
+   "share": 0.0143,
+   "inc": 37.06
+  }
+ ],
+ "product": "ta_implicit_d1_implrel100s1_e088",
+ "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
+ "checks": {
+  "tex_valid_frames": 1.0,
+  "murray_shift_m": [
+   -2.5595266292466476,
+   -110.7710267473376
+  ],
+  "murray_shift_resp": 0.06914375780647183,
+  "tex_filled_from_murray": 0.0,
+  "tex_filled_from_hillshade": 0.0,
+  "sun_az": 270,
+  "sun_alt": 36.41571889013873,
+  "sun_fit_r": 0.4466977372583038,
+  "tex_vs_dem_shift_m": [
+   -13.140632024639672,
+   2.464856919101976
+  ],
+  "tex_vs_dem_resp": 0.3228183871799045
+ },
+ "view": {
+  "az": 160,
+  "el": 30,
+  "dist": 0.85,
+  "te": 0,
+  "tn": 0,
+  "ve": 5.0
+ }
+}
