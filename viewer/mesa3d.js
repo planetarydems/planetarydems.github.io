@@ -55,7 +55,7 @@ function subsample(src, w, h, step) {
 
 export async function createViewer(container, base, opts = {}) {
   base = base.endsWith('/') ? base : base + '/';
-  const url = (name) => (opts.files && opts.files[name]) || base + name;   // opts.files: embedded copies (standalone page)
+  const url = (name) => (opts.files && opts.files[name]) || base + name + (opts.v ? `?v=${opts.v}` : '');   // opts.files: embedded copies; opts.v: release stamp
   const meta = await (await fetch(url('meta.json'))).json();
   const mobile = matchMedia('(pointer: coarse)').matches || Math.min(screen.width, screen.height) < 700;
   const quality = opts.quality || 'auto';

@@ -402,9 +402,11 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 const fmtLat = (v) => `${Math.abs(v).toFixed(2)}°${v >= 0 ? 'N' : 'S'}`, fmtLon = (v) => `${Math.abs(v).toFixed(2)}°${v >= 0 ? 'E' : 'W'}`;
 // a standalone copy defines window.EMBED = {sites, tables, img: {path: dataURI}, viewer: {site: {file: dataURI}}}
 const EMBED = window.EMBED || null;
+const BUILD = '202610131606';                                   // set by build_site.py; new file addresses on every release
+const withV = (p) => (BUILD ? `${p}?v=${BUILD}` : p);
 const [SITES, T] = EMBED ? [EMBED.sites, EMBED.tables]
-  : await Promise.all([fetch('data/sites.json').then((r) => r.json()), fetch('data/tables.json').then((r) => r.json())]);
-const im = (p) => (EMBED && EMBED.img[p]) || p;
+  : await Promise.all([fetch(withV('data/sites.json')).then((r) => r.json()), fetch(withV('data/tables.json')).then((r) => r.json())]);
+const im = (p) => (EMBED && EMBED.img[p]) || withV(p);
 for (const el of document.querySelectorAll('img[data-src]')) el.src = im(el.dataset.src);
 
 // ---------------- segmented controls ----------------
@@ -446,9 +448,9 @@ function compare() {
 async function interactive() {
   const m = $('media');
   m.innerHTML = '<div class="gl"></div><div class="loading">Loading terrain…</div>';
-  viewerMod = viewerMod || window.MESA3D || await import('./viewer/mesa3d.js');
+  viewerMod = viewerMod || window.MESA3D || await import(withV('./viewer/mesa3d.js'));
   if (viewer) viewer.dispose();
-  viewer = await viewerMod.createViewer(m.querySelector('.gl'), `viewer/sites/${cur.site}/`, { files: EMBED && EMBED.viewer[cur.site] });
+  viewer = await viewerMod.createViewer(m.querySelector('.gl'), `viewer/sites/${cur.site}/`, { files: EMBED && EMBED.viewer[cur.site], v: BUILD });
   m.querySelector('.loading').remove();
   m.insertAdjacentHTML('beforeend', `<div class="gl-tools">
     <div class="seg" id="g-surf"><button data-v="mesa" aria-pressed="true">MESA</button><button data-v="mola" aria-pressed="false">MOLA</button></div>
@@ -636,7 +638,7 @@ dlBtn.addEventListener('click', async () => {
   try {
     if (!window.GeoTIFF) await loadScript('https://cdn.jsdelivr.net/npm/geotiff@2.1.3/dist-browser/geotiff.js');
     if (!window.JSZip) await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js');
-    if (!window.MESAGis) await loadScript('gis.js');
+    if (!window.MESAGis) await loadScript(withV('gis.js'));
     const r = await window.MESAGis.download(DATA, { ...b, label: b.label === 'custom area' ? 'custom area' : b.label }, level, (m) => (dlStatus.textContent = m));
     dlStatus.textContent = `Saved ${r.file}: ${r.w.toLocaleString()} × ${r.h.toLocaleString()} pixels of ${r.px.toFixed(0)} m, ${(r.bytes / 1e6).toFixed(1)} MB.`;
   } catch (err) {
