@@ -131,7 +131,8 @@
       mask ? `${name}_mask.tif  0 = predicted from CTX, 1 = infilled, 255 = nodata` : '',
       '.tfw = world file, .prj = projection (ESRI WKT). The GeoTIFFs also carry the coordinate system internally.',
       '',
-      'Source: https://planetarydems.org', ''].join('\r\n'));
+      'Source: https://planetarydems.org',
+      'License: Creative Commons Attribution 4.0 (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/', ''].join('\r\n'));
     const blob = await zip.generateAsync({ type: 'blob', compression: 'DEFLATE', compressionOptions: { level: 1 } });
     const file = `${name}.zip`;
     if (window.__onDownload) await window.__onDownload(file, blob);      // test hook

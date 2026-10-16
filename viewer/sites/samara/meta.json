@@ -21,8 +21,8 @@
   "full_px_m": 14.0
  },
  "color_range": [
-  -1016.6994305419922,
-  -111.57080108642572
+  -1016.6852966308594,
+  -110.89125785827565
  ],
  "fill_share": 0.0,
  "frames": [
@@ -77,7 +77,7 @@
    "inc": 67.92
   }
  ],
- "product": "ta_implicit_d1_implrel100s1_e088",
+ "product": "ta_implicit_d1_implrel100s1_e088_cog_dlc2",
  "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
  "checks": {
   "tex_valid_frames": 1.0,
@@ -90,19 +90,11 @@
   "tex_filled_from_hillshade": 0.0,
   "sun_az": 295,
   "sun_alt": 29.70924452026592,
-  "sun_fit_r": 0.6959414594852794,
+  "sun_fit_r": 0.6901494894654142,
   "tex_vs_dem_shift_m": [
-   2.425197480157294,
-   9.160186582165807
+   -3.288985952668554,
+   13.826454116696368
   ],
-  "tex_vs_dem_resp": 0.5910964981995884
- },
- "view": {
-  "az": 185,
-  "el": 30,
-  "dist": 0.85,
-  "te": 0,
-  "tn": 0,
-  "ve": 3.5
+  "tex_vs_dem_resp": 0.5866091594650206
  }
 }

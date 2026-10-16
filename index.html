@@ -257,7 +257,7 @@
       <table>
         <thead><tr><th>Product</th><th>Content</th><th>Grid and format</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td><b>MESA DEM</b><br><code>mesa_v1_dem_18m.tif</code></td><td>Elevation in meters above the MOLA areoid (the PEDR height convention), float32, nodata −9999</td><td>1,185,494 × 592,747 pixels at 18 m. One lossless COG, 1.43 TB</td><td><span class="pill">Coming soon</span></td></tr>
+          <tr><td><b>MESA DEM</b><br><code>mesa_v1_dem_18m.tif</code></td><td>Elevation in meters above the MOLA areoid (the PEDR height convention), float32, nodata −9999</td><td>1,185,494 × 592,747 pixels at 18 m. One lossless COG, ~1.4 TB</td><td><span class="pill">Coming soon</span></td></tr>
           <tr><td><b>Mask</b><br><code>mesa_v1_mask_18m.tif</code></td><td>0 = predicted from CTX, 1 = infilled (inpainting network or gap bridge), 255 = nodata</td><td>Same grid. uint8 COG, 1.3 GB</td><td><span class="pill">Coming soon</span></td></tr>
           <tr><td><b>Uncertainty map</b><br><code>mesa_v1_uncertainty_18m.tif</code></td><td>Expected error of each pixel in meters, from the median error of test pixels with the same slope, local incidence, and distance to the nearest laser shot. Infilled pixels are assigned by distance to the nearest predicted pixel. A class raster accompanies the map (reliable &lt;10 m, caution 10–25 m, unreliable ≥25 m, and infilled).</td><td>Same grid. COG</td><td><span class="pill">Coming soon</span></td></tr>
           <tr><td><b>CTX image mosaic</b><br><code>mesa_v1_ctx_6m.tif</code></td><td>8-bit CTX image. Each pixel is taken from the registered image that dominates the DEM at that location.</td><td>DEM grid at one third of the pixel size (6 m, 3 × 3 per DEM pixel). One lossless COG, ~4.3 TB</td><td><span class="pill">Coming soon</span></td></tr>
@@ -381,7 +381,7 @@
         <div class="key"><span><i style="background:var(--accent)"></i>MESA</span><span><i style="background:var(--mola)"></i>MOLA</span></div><div class="tip"></div></div>
     </div>
     <figure><img src="img/hirise_comparison.jpg" data-src="img/hirise_comparison.jpg" alt="Three HiRISE test sites: CTX image, HiRISE DEM, MESA and MOLA side by side" loading="lazy">
-      <figcaption>Three HiRISE DEMs of the test set, 8 km across. Ridges, gullies, and dunes in the HiRISE DEMs are reproduced in MESA and are absent from MOLA. Color is elevation over a hillshade. Offsets between surfaces were not removed.</figcaption></figure>
+      <figcaption>Three HiRISE DEMs of the test set, 8 km across. The MESA panels show the released product, moved by the horizontal shift between its CTX images and the HiRISE orthoimage. HiRISE and MOLA are shown in place. Ridges, gullies, and dunes in the HiRISE DEMs are reproduced in MESA and are absent from MOLA. Color is elevation over a hillshade. Elevations are absolute in every panel.</figcaption></figure>
   </section>
 
   <section class="read" id="cite">
@@ -390,7 +390,7 @@
     <div class="cite">
       <div class="panel"><b>Paper</b><p>In preparation.</p></div>
       <div class="panel"><b>Code and model</b><p>To be released with the paper in the planetarydems organization on GitHub.</p></div>
-      <div class="panel"><b>License</b><p>To be announced with the data release.</p></div>
+      <div class="panel"><b>License</b><p><a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 (CC BY 4.0)</a>. MESA is a derived product made at MIT. The input data (MRO CTX images, MOLA altimetry) are NASA Planetary Data System products in the public domain.</p></div>
     </div>
   </section>
   <footer>CTX images: NASA/JPL/Malin Space Science Systems. MOLA: NASA/GSFC. HiRISE DEMs: NASA/JPL/University of Arizona. · <a href="contributors.html">Contributors</a> · planetarydems.org</footer>
@@ -402,7 +402,7 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 const fmtLat = (v) => `${Math.abs(v).toFixed(2)}°${v >= 0 ? 'N' : 'S'}`, fmtLon = (v) => `${Math.abs(v).toFixed(2)}°${v >= 0 ? 'E' : 'W'}`;
 // a standalone copy defines window.EMBED = {sites, tables, img: {path: dataURI}, viewer: {site: {file: dataURI}}}
 const EMBED = window.EMBED || null;
-const BUILD = '202610131617';                                   // set by build_site.py; new file addresses on every release
+const BUILD = '202610161230';                                   // set by build_site.py; new file addresses on every release
 const withV = (p) => (BUILD ? `${p}?v=${BUILD}` : p);
 const [SITES, T] = EMBED ? [EMBED.sites, EMBED.tables]
   : await Promise.all([fetch(withV('data/sites.json')).then((r) => r.json()), fetch(withV('data/tables.json')).then((r) => r.json())]);

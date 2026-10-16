@@ -11,7 +11,7 @@
   "px_m": 91.1484375
  },
  "zmin": -3193.0,
- "zmax": 1113.0,
+ "zmax": 1114.0,
  "dem_px_m": 18.0,
  "tex": {
   "cols": 4096,
@@ -21,10 +21,10 @@
   "full_px_m": 16.0
  },
  "color_range": [
-  -2356.750451660156,
-  612.6974395751954
+  -2356.542932128906,
+  612.9874877929688
  ],
- "fill_share": 0.000509945077250671,
+ "fill_share": 0.0005098560660659528,
  "frames": [
   {
    "id": "G02_019111_1548",
@@ -97,7 +97,7 @@
    "inc": 60.66
   }
  ],
- "product": "ta_implicit_d1_implrel100s1_e088",
+ "product": "ta_implicit_d1_implrel100s1_e088_cog_dlc2",
  "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
  "checks": {
   "tex_valid_frames": 0.9994944984615385,
@@ -110,19 +110,11 @@
   "tex_filled_from_hillshade": 0.0,
   "sun_az": 300,
   "sun_alt": 26.563775095181,
-  "sun_fit_r": 0.7812874523425747,
+  "sun_fit_r": 0.7788998772856459,
   "tex_vs_dem_shift_m": [
-   -1.9007633706223714,
-   4.545702527177127
+   -2.0625950987923716,
+   4.62307641161533
   ],
-  "tex_vs_dem_resp": 0.67208410520619
- },
- "view": {
-  "az": 190,
-  "el": 30,
-  "dist": 0.85,
-  "te": 0,
-  "tn": 0,
-  "ve": 2.0
+  "tex_vs_dem_resp": 0.6753769591113014
  }
 }

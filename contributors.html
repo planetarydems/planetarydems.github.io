@@ -35,13 +35,14 @@
   h1 { font: 800 clamp(40px, 7vw, 72px)/1 var(--display); font-stretch: 122%; margin: 0; letter-spacing: 0.01em; }
   .head p { color: var(--night-muted); max-width: 62ch; margin: 14px 0 0; }
   h2 { font: 750 clamp(22px, 3vw, 28px)/1.2 var(--display); font-stretch: 112%; margin: 48px 0 6px; }
-  .team { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 18px; margin-top: 20px; }
+  .team { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 18px; margin-top: 20px; }
   .person { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; min-width: 0; }
   .face { width: 112px; height: 112px; border-radius: 50%; background: var(--face); color: var(--face-ink); display: grid; place-items: center;
     font: 700 34px/1 var(--display); font-stretch: 115%; overflow: hidden; position: relative; }
   .face img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .person h3 { font: 700 18px/1.3 var(--display); font-stretch: 110%; margin: 14px 0 4px; }
   .person p { margin: 0; color: var(--ink2); font-size: 14.5px; }
+  .person p + p.org { margin-top: 6px; }
   .role { display: inline-block; margin-top: 10px; font: 600 11.5px/1 var(--body); letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
     border: 1px solid var(--line); border-radius: 99px; padding: 4px 8px; }
   .mail { font-family: var(--mono); font-size: 13.5px; margin-top: 6px !important; word-break: break-all; }
@@ -59,7 +60,7 @@
   <div class="head"><div class="wrap">
     <p class="eyebrow">MESA · Mars Elevation from Shading and Altimetry</p>
     <h1>Contributors</h1>
-    <p>MESA was developed by researchers at the Massachusetts Institute of Technology and the University of Texas at Austin.</p>
+    <p>MESA was developed by researchers at the Massachusetts Institute of Technology, the University of Texas at Austin, Harvard University, and the Center for Astrophysics | Harvard &amp; Smithsonian.</p>
   </div></div>
 </div>
 
@@ -81,21 +82,25 @@
 
 <script>
 // Photos: add img/people/<id>.jpg (square, ≥ 400 px) and list the id in PHOTOS. Initials are shown otherwise.
-const TEAM = [
-  { id: 'mitchell', name: 'W. Hamish Mitchell', org: 'Department of Earth, Atmospheric and Planetary Sciences, Massachusetts Institute of Technology', role: 'Corresponding author', mail: 'whamitch@mit.edu' },
-  { id: 'stucky-de-quay', name: 'Gaia Stucky de Quay', org: 'Department of Earth, Atmospheric and Planetary Sciences, Massachusetts Institute of Technology' },
-  { id: 'goudge', name: 'Timothy A. Goudge', org: 'Jackson School of Geosciences, University of Texas at Austin' },
-  { id: 'freeman', name: 'William T. Freeman', org: 'Department of Electrical Engineering and Computer Science, Massachusetts Institute of Technology' },
-  { id: 'perron', name: 'J. Taylor Perron', org: 'Department of Earth, Atmospheric and Planetary Sciences, Massachusetts Institute of Technology' },
+const EAPS = 'Department of Earth, Atmospheric and Planetary Sciences, Massachusetts Institute of Technology';
+const CSAIL = 'Computer Science and Artificial Intelligence Laboratory, Massachusetts Institute of Technology';
+const TEAM = [   // author order and affiliations as in the manuscript
+  { id: 'mitchell', name: 'W. Hamish Mitchell', ini: 'HM', org: [EAPS], role: 'Corresponding author', mail: 'whamitch@mit.edu' },
+  { id: 'stucky-de-quay', name: 'Gaia Stucky de Quay', ini: 'GS', org: [EAPS] },
+  { id: 'goudge', name: 'Timothy A. Goudge', ini: 'TG', org: ['Jackson School of Geosciences, University of Texas at Austin'] },
+  { id: 'li', name: 'Eric Li', ini: 'EL', org: [CSAIL] },
+  { id: 'deng', name: 'Congyue Deng', ini: 'CD', org: [CSAIL] },
+  { id: 'quayum', name: 'Rafid Quayum', ini: 'RQ', org: ['School of Engineering and Applied Sciences, Harvard University', 'Center for Astrophysics | Harvard &amp; Smithsonian'] },
+  { id: 'freeman', name: 'William T. Freeman', ini: 'WF', org: [CSAIL, 'Department of Electrical Engineering and Computer Science, Massachusetts Institute of Technology'] },
+  { id: 'perron', name: 'J. Taylor Perron', ini: 'TP', org: [EAPS] },
 ];
-const initials = (n) => n.replace(/[^A-Za-z .-]/g, '').split(/\s+/).filter((w) => /^[A-Z]/.test(w) && w.length > 2).map((w) => w[0]).slice(0, 2).join('') || n[0];
 const PHOTOS = [];   // e.g. ['mitchell', 'perron']
 const photo = (window.EMBED_PEOPLE || {});
 document.getElementById('team').innerHTML = TEAM.map((p) => `
   <div class="person">
-    <div class="face" aria-hidden="true">${initials(p.name)}${photo[p.id] || PHOTOS.includes(p.id) ? `<img src="${photo[p.id] || `img/people/${p.id}.jpg`}" alt="" onerror="this.remove()">` : ''}</div>
+    <div class="face" aria-hidden="true">${p.ini}${photo[p.id] || PHOTOS.includes(p.id) ? `<img src="${photo[p.id] || `img/people/${p.id}.jpg`}" alt="" onerror="this.remove()">` : ''}</div>
     <h3>${p.name}</h3>
-    <p>${p.org}</p>
+    ${p.org.map((o) => `<p class="org">${o}</p>`).join('')}
     ${p.role ? `<span class="role">${p.role}</span>` : ''}
     ${p.mail ? `<p class="mail">${p.mail}</p>` : ''}
   </div>`).join('');

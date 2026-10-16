@@ -1,5 +1,5 @@
 {
- "source": "paper/main.tex working copy of 2026-10-09 20:50 (re-scored for the implrel100s1_e088 model and mosaic): Tables 1, 3 and 4, abstract, Sections 3.1-3.3. The manuscript still calls the product MADER; the website uses the new name MESA.",
+ "source": "paper/main.tex at commit 6494c51 (2026-10-15), epoch-88 model (implrel100s1_e088) and released mosaic: abstract, Table 1 (whole CTX images scored against the full stereo DEM), Table 3, Figure 3 (wavelength bands), Section 3.4.",
  "metrics": {
   "deployMAE": "Median of the per-DEM mean absolute error of the product as delivered. Shifts, offsets, and tilts were not removed.",
   "labelMAE": "Error after the prediction is rescaled to the mean and standard deviation of the reference, after co-registration. Reported for MESA. MOLA is evaluated as distributed (deployMAE).",
@@ -19,9 +19,9 @@
   },
   {
    "label": "Error against 359 held-out CTX stereo DEMs",
-   "value": "10.5 m",
-   "compare": "MOLA 18.4 m",
-   "note": "median deployMAE, whole CTX images"
+   "value": "11.8 m",
+   "compare": "MOLA 19.0 m",
+   "note": "median deployMAE, whole CTX images scored against the full stereo DEM"
   },
   {
    "label": "CTX images",
@@ -59,34 +59,34 @@
    [
     "Held-out CTX stereo DEMs (whole images)",
     "359",
-    "9.8",
-    "10.5",
-    "18.4"
+    "11.4",
+    "11.8",
+    "19.0"
    ],
    [
     "  equatorial, < 30°",
     "223",
-    "10.8",
+    "12.0",
     "12.3",
-    "19.6"
+    "21.2"
    ],
    [
     "  mid-latitude, 30–60°",
     "109",
-    "9.2",
-    "9.9",
-    "18.3"
+    "10.3",
+    "10.4",
+    "18.5"
    ],
    [
     "  polar, > 60°",
     "27",
-    "7.4",
-    "7.7",
-    "9.3"
+    "9.9",
+    "10.3",
+    "11.2"
    ]
   ],
   "notes": [
-   "Values are medians. *labelMAE against HiRISE is computed for the 581 DEMs with orthoimages co-registered to the CTX image."
+   "Values are medians. Whole CTX images are scored against the full stereo DEM of each pair. *labelMAE against HiRISE is computed for the 581 DEMs with orthoimages co-registered to the CTX image."
   ]
  },
  "fine_scale": {
@@ -99,23 +99,23 @@
   "rows": [
    [
     "Correlation with the stereo DEM",
-    "0.75",
-    "0.33"
+    "0.73",
+    "0.31"
    ],
    [
     "Share of the stereo DEM's amplitude",
     "82%",
-    "40%"
+    "37%"
    ],
    [
     "Error as a share of relief",
-    "1.9%",
-    "3.2%"
+    "1.3%",
+    "2.3%"
    ]
   ]
  },
  "wavelength": {
-  "title": "Accuracy against 581 co-registered HiRISE DEMs by wavelength (Table 4a)",
+  "title": "Accuracy against 581 co-registered HiRISE DEMs by wavelength (Figure 3; the band above 9.2 km is left out)",
   "bands": [
    "< 144 m",
    "144–288 m",
