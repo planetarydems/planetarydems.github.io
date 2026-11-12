@@ -608,42 +608,51 @@
   "theme": "Volcanoes"
  },
  {
-  "view": "terby",
+  "view": "terby_view",
   "site": "terby",
   "title": "Terby crater",
+  "caption": "Layered deposits on the northern floor of Terby crater, seen from the south-southwest.",
+  "ve": 2.0,
   "lat": -27.16,
   "lon": 74.69,
   "window_km": [
    140.0,
    120.0
   ],
-  "rendered": false,
+  "rendered": true,
+  "viewer": true,
   "theme": "Layered deposits"
  },
  {
-  "view": "danielson",
+  "view": "danielson_view",
   "site": "danielson",
   "title": "Danielson crater",
+  "caption": "Layered deposits and dark dunes in Danielson crater, seen from the south-southeast.",
+  "ve": 3.0,
   "lat": 7.95,
   "lon": -7.05,
   "window_km": [
    90.0,
    80.0
   ],
-  "rendered": false,
+  "rendered": true,
+  "viewer": true,
   "theme": "Layered deposits"
  },
  {
-  "view": "henry",
+  "view": "henry_view",
   "site": "henry",
   "title": "Henry crater",
+  "caption": "The layered central mound of Henry crater, seen from the south-southeast.",
+  "ve": 2.5,
   "lat": 10.9,
   "lon": 23.3,
   "window_km": [
    200.0,
    190.0
   ],
-  "rendered": false,
+  "rendered": true,
+  "viewer": true,
   "theme": "Layered deposits"
  },
  {

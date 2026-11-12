@@ -1,0 +1,77 @@
+{
+ "key": "danielson",
+ "title": "Danielson crater",
+ "lon": -7.05,
+ "lat": 7.95,
+ "width_km": 90.0,
+ "height_km": 79.992,
+ "mesh": {
+  "cols": 1536,
+  "rows": 1365,
+  "px_m": 58.59375
+ },
+ "zmin": -3507.0,
+ "zmax": -899.0,
+ "dem_px_m": 18.0,
+ "tex": {
+  "cols": 4096,
+  "rows": 3640,
+  "px_m": 21.97265625,
+  "full_cols": 11250,
+  "full_px_m": 8.0
+ },
+ "color_range": [
+  -3376.7421875,
+  -1121.8843945312492
+ ],
+ "fill_share": 0.0,
+ "frames": [
+  {
+   "id": "P07_003577_1878",
+   "share": 0.3134,
+   "inc": 59.37
+  },
+  {
+   "id": "P05_003089_1890",
+   "share": 0.2531,
+   "inc": 57.93
+  },
+  {
+   "id": "P02_001744_1879",
+   "share": 0.2342,
+   "inc": 53.06
+  },
+  {
+   "id": "B03_010697_1875",
+   "share": 0.1583,
+   "inc": 54.73
+  },
+  {
+   "id": "B07_012543_1880",
+   "share": 0.0411,
+   "inc": 58.76
+  }
+ ],
+ "product": "ta_implicit_d1_spline100s1_e098v3_release_20261109",
+ "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
+ "checks": {
+  "tex_valid_frames": 1.0,
+  "tex_filled_from_hillshade": 0.0,
+  "sun_az": 267.0,
+  "sun_alt": 33.23159751597516,
+  "sun_fit_r": 0.7080565299811585,
+  "tex_vs_dem_shift_m": [
+   -4.802440786052102,
+   -0.5652528949631233
+  ],
+  "tex_vs_dem_resp": 0.6131583009548611
+ },
+ "view": {
+  "az": 155,
+  "el": 32,
+  "dist": 0.85,
+  "te": 0,
+  "tn": 0,
+  "ve": 3.0
+ }
+}
