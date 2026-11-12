@@ -96,6 +96,7 @@
   .media .zleg .zbar { height: 9px; border-radius: 3px; background: linear-gradient(90deg, #7f7184, #899acf, #7bbed3, #80d6ad, #b3db84, #d4c683, #daa278, #c77e6b, #a06b6a); }
   .media .zleg .zends { display: flex; justify-content: space-between; gap: 8px; margin-top: 4px; font-variant-numeric: tabular-nums; }
   .media .zleg .zends span:nth-child(2) { color: var(--night-muted); }
+  @media (max-width: 520px) { .media .zleg { padding: 5px 8px 4px; font-size: 11px; } .media .zleg .zbar { height: 7px; } }
   .media input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
   .media .gl { position: absolute; inset: 0; }
   .media .loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--night-muted); font-size: 14px; }
@@ -407,7 +408,7 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 const fmtLat = (v) => `${Math.abs(v).toFixed(2)}°${v >= 0 ? 'N' : 'S'}`, fmtLon = (v) => `${Math.abs(v).toFixed(2)}°${v >= 0 ? 'E' : 'W'}`;
 // a standalone copy defines window.EMBED = {sites, tables, img: {path: dataURI}, viewer: {site: {file: dataURI}}}
 const EMBED = window.EMBED || null;
-const BUILD = '202611121330';                                   // set by build_site.py; new file addresses on every release
+const BUILD = '202611121337';                                   // set by build_site.py; new file addresses on every release
 const withV = (p) => (BUILD ? `${p}?v=${BUILD}` : p);
 const [SITES, T] = EMBED ? [EMBED.sites, EMBED.tables]
   : await Promise.all([fetch(withV('data/sites.json')).then((r) => r.json()), fetch(withV('data/tables.json')).then((r) => r.json())]);
