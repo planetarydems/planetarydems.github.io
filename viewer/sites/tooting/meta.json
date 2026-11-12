@@ -55,16 +55,16 @@
  "product": "ta_implicit_d1_spline100s1_e098v3_release_20261109",
  "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
  "checks": {
-  "tex_valid_frames": 0.9776176945844333,
-  "tex_filled_from_hillshade": 0.022382305415566756,
-  "sun_az": 256.0,
+  "tex_valid_frames": 1.0,
+  "tex_filled_from_hillshade": 0.0,
+  "sun_az": 257.0,
   "sun_alt": 42.455873258732595,
-  "sun_fit_r": 0.7399476932892608,
+  "sun_fit_r": 0.7363181947531245,
   "tex_vs_dem_shift_m": [
-   -0.12130406617052358,
-   3.3124392234185507
+   -0.1294620563103308,
+   3.3033468774765424
   ],
-  "tex_vs_dem_resp": 0.6806000200229221
+  "tex_vs_dem_resp": 0.67442328060574
  },
  "view": {
   "az": 145,
