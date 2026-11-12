@@ -448,6 +448,22 @@
   "theme": "Volcanoes"
  },
  {
+  "view": "kasei_view",
+  "site": "kasei",
+  "title": "Kasei Valles",
+  "caption": "Streamlined islands in the outflow channel Kasei Valles, seen from the south-southeast.",
+  "ve": 2.5,
+  "lat": 24.58,
+  "lon": -65.0,
+  "window_km": [
+   280.0,
+   200.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Fluvial valleys"
+ },
+ {
   "view": "gusev_view",
   "site": "gusev",
   "title": "Gusev crater",
@@ -528,6 +544,22 @@
   "theme": "Chaos and canyons"
  },
  {
+  "view": "aram_view",
+  "site": "aram",
+  "title": "Aram Chaos",
+  "caption": "Chaotic terrain inside the crater Aram Chaos, seen from the south.",
+  "ve": 2.5,
+  "lat": 2.35,
+  "lon": -21.5,
+  "window_km": [
+   300.0,
+   290.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Chaos and canyons"
+ },
+ {
   "view": "arsia_view",
   "site": "arsia",
   "title": "Arsia Mons caldera",
@@ -574,32 +606,6 @@
   "rendered": true,
   "viewer": true,
   "theme": "Volcanoes"
- },
- {
-  "view": "aram",
-  "site": "aram",
-  "title": "Aram Chaos",
-  "lat": 2.35,
-  "lon": -21.5,
-  "window_km": [
-   300.0,
-   290.0
-  ],
-  "rendered": false,
-  "theme": "Chaos and canyons"
- },
- {
-  "view": "kasei",
-  "site": "kasei",
-  "title": "Kasei Valles",
-  "lat": 24.58,
-  "lon": -65.0,
-  "window_km": [
-   280.0,
-   200.0
-  ],
-  "rendered": false,
-  "theme": "Fluvial valleys"
  },
  {
   "view": "terby",
