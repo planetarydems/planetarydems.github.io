@@ -1,0 +1,92 @@
+{
+ "key": "pavonis",
+ "title": "Pavonis Mons caldera",
+ "lon": -113.13,
+ "lat": 1.14,
+ "width_km": 120.006,
+ "height_km": 109.998,
+ "mesh": {
+  "cols": 1536,
+  "rows": 1408,
+  "px_m": 78.12890625
+ },
+ "zmin": 9170.0,
+ "zmax": 13977.0,
+ "dem_px_m": 18.0,
+ "tex": {
+  "cols": 4096,
+  "rows": 3754,
+  "px_m": 29.29833984375,
+  "full_cols": 8572,
+  "full_px_m": 14.0
+ },
+ "color_range": [
+  9221.5849609375,
+  13886.861328125
+ ],
+ "fill_share": 0.0391784043591144,
+ "frames": [
+  {
+   "id": "G20_025865_1812",
+   "share": 0.2068,
+   "inc": 47.69
+  },
+  {
+   "id": "P10_005005_1806",
+   "share": 0.1652,
+   "inc": 42.81
+  },
+  {
+   "id": "U08_073985_1826",
+   "share": 0.1538,
+   "inc": 57.2
+  },
+  {
+   "id": "F21_044168_1805",
+   "share": 0.1289,
+   "inc": 51.04
+  },
+  {
+   "id": "P02_001893_1804",
+   "share": 0.1225,
+   "inc": 54.76
+  },
+  {
+   "id": "J05_046845_1793",
+   "share": 0.1039,
+   "inc": 51.37
+  },
+  {
+   "id": "N03_063526_1804",
+   "share": 0.0827,
+   "inc": 55.85
+  },
+  {
+   "id": "P10_005084_1811",
+   "share": 0.0361,
+   "inc": 39.83
+  }
+ ],
+ "product": "ta_implicit_d1_spline100s1_e098v3_release_20261109",
+ "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
+ "checks": {
+  "tex_valid_frames": 1.0,
+  "tex_filled_from_hillshade": 0.0,
+  "sun_az": 267.0,
+  "sun_alt": 39.58196033524024,
+  "sun_fit_r": 0.6342865834852328,
+  "tex_vs_dem_shift_m": [
+   -4.446352492299411,
+   -0.04603500319990417
+  ],
+  "tex_vs_dem_resp": 0.5474405958387587
+ },
+ "view": {
+  "az": 155,
+  "el": 35,
+  "dist": 0.95,
+  "te": 0,
+  "tn": -12,
+  "ve": 2.0
+ }
+}

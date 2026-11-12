@@ -21,10 +21,10 @@
   "full_px_m": 12.0
  },
  "color_range": [
-  -5190.56396484375,
-  4183.51025390625
+  -5190.89794921875,
+  4183.3344775390615
  ],
- "fill_share": 0.0003902087832973362,
+ "fill_share": 0.00039013678905687547,
  "frames": [
   {
    "id": "F17_042531_1661",
@@ -72,7 +72,7 @@
    "inc": 47.67
   }
  ],
- "product": "ta_implicit_d1_spline100s1_e098v3_deseam",
+ "product": "ta_implicit_d1_spline100s1_e098v3_release_20261109",
  "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
  "checks": {
   "tex_valid_frames": 0.9996077273818095,
@@ -85,12 +85,12 @@
   "tex_filled_from_hillshade": 0.0,
   "sun_az": 302.0,
   "sun_alt": 35.67427791820173,
-  "sun_fit_r": 0.841183421857233,
+  "sun_fit_r": 0.8385924496093738,
   "tex_vs_dem_shift_m": [
-   -10.979565476420248,
-   3.1324163212966596
+   -10.677978440051447,
+   3.3326428152886365
   ],
-  "tex_vs_dem_resp": 0.7521813891666667
+  "tex_vs_dem_resp": 0.7511164594965278
  },
  "view": {
   "az": 192,

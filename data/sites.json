@@ -480,29 +480,35 @@
   "theme": "Volcanoes"
  },
  {
-  "view": "pavonis",
+  "view": "pavonis_view",
   "site": "pavonis",
   "title": "Pavonis Mons caldera",
+  "caption": "The nested summit calderas of Pavonis Mons, seen from the south-southeast.",
+  "ve": 2.0,
   "lat": 1.14,
   "lon": -113.13,
   "window_km": [
    120.0,
    110.0
   ],
-  "rendered": false,
+  "rendered": true,
+  "viewer": true,
   "theme": "Volcanoes"
  },
  {
-  "view": "ceraunius",
+  "view": "ceraunius_view",
   "site": "ceraunius",
   "title": "Ceraunius Tholus",
+  "caption": "Ceraunius Tholus and the channel on its northern flank, seen from the southeast.",
+  "ve": 1.5,
   "lat": 24.3,
   "lon": -97.4,
   "window_km": [
    160.0,
    180.0
   ],
-  "rendered": false,
+  "rendered": true,
+  "viewer": true,
   "theme": "Volcanoes"
  },
  {
