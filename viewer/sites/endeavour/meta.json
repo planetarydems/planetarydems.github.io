@@ -21,8 +21,8 @@
   "full_px_m": 6.0
  },
  "color_range": [
-  -1940.9726586914062,
-  -1374.410155029297
+  -1940.7672155761718,
+  -1374.192138671875
  ],
  "fill_share": 0.0,
  "frames": [
@@ -47,7 +47,7 @@
    "inc": 37.06
   }
  ],
- "product": "ta_implicit_d1_spline100s1_e098v3_deseam",
+ "product": "ta_implicit_d1_spline100s1_e098v3_release_20261109",
  "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
  "checks": {
   "tex_valid_frames": 1.0,
@@ -60,12 +60,12 @@
   "tex_filled_from_hillshade": 0.0,
   "sun_az": 269.0,
   "sun_alt": 36.41571889013873,
-  "sun_fit_r": 0.43940846317417037,
+  "sun_fit_r": 0.4345004615073819,
   "tex_vs_dem_shift_m": [
-   -11.688374350675986,
-   4.503364747318528
+   -13.551813301117363,
+   -2.438963866900167
   ],
-  "tex_vs_dem_resp": 0.3506219700113932
+  "tex_vs_dem_resp": 0.31003591796875
  },
  "view": {
   "az": 160,

@@ -464,6 +464,22 @@
   "theme": "Craters"
  },
  {
+  "view": "candor_view",
+  "site": "candor",
+  "title": "Candor Chasma",
+  "caption": "Layered deposits and canyon walls of Candor Chasma, seen from the south.",
+  "ve": 1.5,
+  "lat": -6.5,
+  "lon": -71.0,
+  "window_km": [
+   180.0,
+   140.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Chaos and canyons"
+ },
+ {
   "view": "arsia_view",
   "site": "arsia",
   "title": "Arsia Mons caldera",
@@ -485,11 +501,11 @@
   "title": "Pavonis Mons caldera",
   "caption": "The nested summit calderas of Pavonis Mons, seen from the south-southeast.",
   "ve": 2.0,
-  "lat": 1.14,
+  "lat": 0.8,
   "lon": -113.13,
   "window_km": [
-   120.0,
-   110.0
+   130.0,
+   120.0
   ],
   "rendered": true,
   "viewer": true,
@@ -510,19 +526,6 @@
   "rendered": true,
   "viewer": true,
   "theme": "Volcanoes"
- },
- {
-  "view": "candor",
-  "site": "candor",
-  "title": "Candor Chasma",
-  "lat": -6.5,
-  "lon": -71.0,
-  "window_km": [
-   180.0,
-   140.0
-  ],
-  "rendered": false,
-  "theme": "Chaos and canyons"
  },
  {
   "view": "echus",
