@@ -1,0 +1,82 @@
+{
+ "key": "nilipatera",
+ "title": "Nili Patera",
+ "lon": 66.95,
+ "lat": 9.0,
+ "width_km": 79.992,
+ "height_km": 70.002,
+ "mesh": {
+  "cols": 1536,
+  "rows": 1344,
+  "px_m": 52.078125
+ },
+ "zmin": 65.0,
+ "zmax": 2473.0,
+ "dem_px_m": 18.0,
+ "tex": {
+  "cols": 4096,
+  "rows": 3584,
+  "px_m": 19.529296875,
+  "full_cols": 9999,
+  "full_px_m": 8.0
+ },
+ "color_range": [
+  112.19836540222168,
+  2211.826721191408
+ ],
+ "fill_share": 0.0,
+ "frames": [
+  {
+   "id": "B21_017762_1891",
+   "share": 0.2913,
+   "inc": 47.08
+  },
+  {
+   "id": "P17_007609_1883",
+   "share": 0.2647,
+   "inc": 43.24
+  },
+  {
+   "id": "P18_008110_1890",
+   "share": 0.2245,
+   "inc": 46.41
+  },
+  {
+   "id": "D09_030843_1875",
+   "share": 0.0948,
+   "inc": 53.11
+  },
+  {
+   "id": "G08_021507_1888",
+   "share": 0.0759,
+   "inc": 56.89
+  },
+  {
+   "id": "P16_007398_1893",
+   "share": 0.0489,
+   "inc": 40.7
+  }
+ ],
+ "product": "ta_implicit_d1_spline100s1_e098v3_release_20261109",
+ "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
+ "checks": {
+  "tex_valid_frames": 1.0,
+  "tex_filled_from_hillshade": 0.0,
+  "sun_az": 307.0,
+  "sun_alt": 43.0824155,
+  "sun_fit_r": 0.5390428351582328,
+  "tex_vs_dem_shift_m": [
+   -8.67498553427231,
+   16.210644371172748
+  ],
+  "tex_vs_dem_resp": 0.4416314487847222
+ },
+ "view": {
+  "az": 195,
+  "el": 32,
+  "dist": 0.85,
+  "te": 0,
+  "tn": 0,
+  "ve": 3.0
+ }
+}

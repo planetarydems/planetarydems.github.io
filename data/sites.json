@@ -496,6 +496,38 @@
   "theme": "Craters"
  },
  {
+  "view": "tooting_view",
+  "site": "tooting",
+  "title": "Tooting crater",
+  "caption": "The young impact crater Tooting, seen from the southeast.",
+  "ve": 3.0,
+  "lat": 23.2,
+  "lon": -152.2,
+  "window_km": [
+   50.0,
+   45.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Craters"
+ },
+ {
+  "view": "lyot_view",
+  "site": "lyot",
+  "title": "Lyot crater",
+  "caption": "Lyot, a peak-ring impact basin in the northern plains, seen from the southeast.",
+  "ve": 2.0,
+  "lat": 50.8,
+  "lon": 29.3,
+  "window_km": [
+   260.0,
+   240.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Craters"
+ },
+ {
   "view": "candor_view",
   "site": "candor",
   "title": "Candor Chasma",
@@ -624,6 +656,22 @@
   "theme": "Volcanoes"
  },
  {
+  "view": "nilipatera_view",
+  "site": "nilipatera",
+  "title": "Nili Patera",
+  "caption": "The Nili Patera caldera in Syrtis Major, with dunes on its floor, seen from the south-southwest.",
+  "ve": 3.0,
+  "lat": 9.0,
+  "lon": 66.95,
+  "window_km": [
+   80.0,
+   70.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Volcanoes"
+ },
+ {
   "view": "terby_view",
   "site": "terby",
   "title": "Terby crater",
@@ -688,68 +736,35 @@
   "theme": "Ice and wind"
  },
  {
-  "view": "moreux",
+  "view": "moreux_view",
   "site": "moreux",
   "title": "Moreux crater",
+  "caption": "Moreux crater with dunes around its central peaks, seen from the southeast.",
+  "ve": 2.0,
   "lat": 41.38,
   "lon": 44.4,
   "window_km": [
    170.0,
    160.0
   ],
-  "rendered": false,
+  "rendered": true,
+  "viewer": true,
   "theme": "Ice and wind"
  },
  {
-  "view": "nilipatera",
-  "site": "nilipatera",
-  "title": "Nili Patera",
-  "lat": 9.0,
-  "lon": 66.95,
-  "window_km": [
-   80.0,
-   70.0
-  ],
-  "rendered": false,
-  "theme": "Volcanoes"
- },
- {
-  "view": "tooting",
-  "site": "tooting",
-  "title": "Tooting crater",
-  "lat": 23.2,
-  "lon": -152.2,
-  "window_km": [
-   50.0,
-   45.0
-  ],
-  "rendered": false,
-  "theme": "Craters"
- },
- {
-  "view": "lyot",
-  "site": "lyot",
-  "title": "Lyot crater",
-  "lat": 50.8,
-  "lon": 29.3,
-  "window_km": [
-   260.0,
-   240.0
-  ],
-  "rendered": false,
-  "theme": "Craters"
- },
- {
-  "view": "medusae",
+  "view": "medusae_view",
   "site": "medusae",
   "title": "Medusae Fossae",
+  "caption": "Wind-eroded ridges of the Medusae Fossae Formation, seen from the south-southeast.",
+  "ve": 3.5,
   "lat": -3.0,
   "lon": -160.76,
   "window_km": [
    130.0,
    100.0
   ],
-  "rendered": false,
+  "rendered": true,
+  "viewer": true,
   "theme": "Ice and wind"
  }
 ]
