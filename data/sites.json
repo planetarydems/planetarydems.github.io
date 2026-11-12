@@ -496,6 +496,38 @@
   "theme": "Chaos and canyons"
  },
  {
+  "view": "juventae_view",
+  "site": "juventae",
+  "title": "Juventae Chasma",
+  "caption": "Mounds and blocks on the floor of Juventae Chasma, seen from the south-southeast.",
+  "ve": 1.5,
+  "lat": -4.06,
+  "lon": -61.5,
+  "window_km": [
+   200.0,
+   170.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Chaos and canyons"
+ },
+ {
+  "view": "ius_view",
+  "site": "ius",
+  "title": "Ius Chasma",
+  "caption": "Spur-and-gully walls of Ius Chasma in Valles Marineris, seen from the south.",
+  "ve": 1.5,
+  "lat": -7.0,
+  "lon": -85.0,
+  "window_km": [
+   200.0,
+   130.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Chaos and canyons"
+ },
+ {
   "view": "arsia_view",
   "site": "arsia",
   "title": "Arsia Mons caldera",
@@ -542,32 +574,6 @@
   "rendered": true,
   "viewer": true,
   "theme": "Volcanoes"
- },
- {
-  "view": "juventae",
-  "site": "juventae",
-  "title": "Juventae Chasma",
-  "lat": -4.06,
-  "lon": -61.5,
-  "window_km": [
-   200.0,
-   170.0
-  ],
-  "rendered": false,
-  "theme": "Chaos and canyons"
- },
- {
-  "view": "ius",
-  "site": "ius",
-  "title": "Ius Chasma",
-  "lat": -7.0,
-  "lon": -85.0,
-  "window_km": [
-   200.0,
-   130.0
-  ],
-  "rendered": false,
-  "theme": "Chaos and canyons"
  },
  {
   "view": "aram",
