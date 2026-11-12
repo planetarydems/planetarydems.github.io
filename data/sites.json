@@ -13,7 +13,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Deltas and fans"
+  "theme": "Deltas and fans",
+  "zr": [
+   -2710,
+   -1720
+  ]
  },
  {
   "view": "parana_valleys",
@@ -29,7 +33,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Fluvial valleys"
+  "theme": "Fluvial valleys",
+  "zr": [
+   -980,
+   220
+  ]
  },
  {
   "view": "gale_mound",
@@ -45,7 +53,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Craters"
+  "theme": "Craters",
+  "zr": [
+   -4510,
+   130
+  ]
  },
  {
   "view": "eberswalde_delta",
@@ -61,7 +73,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Deltas and fans"
+  "theme": "Deltas and fans",
+  "zr": [
+   -1550,
+   -150
+  ]
  },
  {
   "view": "saheki_crater",
@@ -77,7 +93,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Deltas and fans"
+  "theme": "Deltas and fans",
+  "zr": [
+   -2850,
+   200
+  ]
  },
  {
   "view": "aureum_chaos",
@@ -93,7 +113,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Chaos and canyons"
+  "theme": "Chaos and canyons",
+  "zr": [
+   -3850,
+   -1710
+  ]
  },
  {
   "view": "saheki_floor",
@@ -109,7 +133,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Deltas and fans"
+  "theme": "Deltas and fans",
+  "zr": [
+   -2850,
+   200
+  ]
  },
  {
   "view": "jezero_crater",
@@ -125,7 +153,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Deltas and fans"
+  "theme": "Deltas and fans",
+  "zr": [
+   -2710,
+   -1720
+  ]
  },
  {
   "view": "parana_wide",
@@ -141,7 +173,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Fluvial valleys"
+  "theme": "Fluvial valleys",
+  "zr": [
+   -980,
+   220
+  ]
  },
  {
   "view": "nanedi_view",
@@ -157,7 +193,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Fluvial valleys"
+  "theme": "Fluvial valleys",
+  "zr": [
+   -1080,
+   -30
+  ]
  },
  {
   "view": "maadim_view",
@@ -173,7 +213,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Fluvial valleys"
+  "theme": "Fluvial valleys",
+  "zr": [
+   -1050,
+   1390
+  ]
  },
  {
   "view": "nirgal_view",
@@ -189,7 +233,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Fluvial valleys"
+  "theme": "Fluvial valleys",
+  "zr": [
+   150,
+   810
+  ]
  },
  {
   "view": "warrego_view",
@@ -205,7 +253,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Fluvial valleys"
+  "theme": "Fluvial valleys",
+  "zr": [
+   2880,
+   5160
+  ]
  },
  {
   "view": "loire_view",
@@ -221,7 +273,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Fluvial valleys"
+  "theme": "Fluvial valleys",
+  "zr": [
+   -1930,
+   -690
+  ]
  },
  {
   "view": "samara_view",
@@ -237,7 +293,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Fluvial valleys"
+  "theme": "Fluvial valleys",
+  "zr": [
+   -1020,
+   -110
+  ]
  },
  {
   "view": "reull_view",
@@ -253,7 +313,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Fluvial valleys"
+  "theme": "Fluvial valleys",
+  "zr": [
+   -2510,
+   -220
+  ]
  },
  {
   "view": "olympus_view",
@@ -269,7 +333,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Volcanoes"
+  "theme": "Volcanoes",
+  "zr": [
+   16830,
+   20940
+  ]
  },
  {
   "view": "coprates_view",
@@ -285,7 +353,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Chaos and canyons"
+  "theme": "Chaos and canyons",
+  "zr": [
+   -5190,
+   4180
+  ]
  },
  {
   "view": "hebes_view",
@@ -301,7 +373,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Chaos and canyons"
+  "theme": "Chaos and canyons",
+  "zr": [
+   -4180,
+   4080
+  ]
  },
  {
   "view": "noctis_view",
@@ -317,7 +393,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Chaos and canyons"
+  "theme": "Chaos and canyons",
+  "zr": [
+   4360,
+   8300
+  ]
  },
  {
   "view": "hydraotes_view",
@@ -333,7 +413,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Chaos and canyons"
+  "theme": "Chaos and canyons",
+  "zr": [
+   -4940,
+   -2720
+  ]
  },
  {
   "view": "iani_view",
@@ -349,7 +433,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Chaos and canyons"
+  "theme": "Chaos and canyons",
+  "zr": [
+   -3910,
+   -1680
+  ]
  },
  {
   "view": "mojave_view",
@@ -365,7 +453,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Craters"
+  "theme": "Craters",
+  "zr": [
+   -5150,
+   -2500
+  ]
  },
  {
   "view": "zunil_view",
@@ -381,7 +473,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Craters"
+  "theme": "Craters",
+  "zr": [
+   -3460,
+   -2440
+  ]
  },
  {
   "view": "endeavour_view",
@@ -397,7 +493,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Craters"
+  "theme": "Craters",
+  "zr": [
+   -1940,
+   -1370
+  ]
  },
  {
   "view": "holden_view",
@@ -413,7 +513,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Deltas and fans"
+  "theme": "Deltas and fans",
+  "zr": [
+   -2360,
+   610
+  ]
  },
  {
   "view": "roddy_view",
@@ -429,7 +533,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Craters"
+  "theme": "Craters",
+  "zr": [
+   -1790,
+   1930
+  ]
  },
  {
   "view": "jovis_view",
@@ -445,7 +553,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Volcanoes"
+  "theme": "Volcanoes",
+  "zr": [
+   1780,
+   2990
+  ]
  },
  {
   "view": "kasei_view",
@@ -461,7 +573,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Fluvial valleys"
+  "theme": "Fluvial valleys",
+  "zr": [
+   -2950,
+   -40
+  ]
  },
  {
   "view": "gusev_view",
@@ -477,7 +593,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Craters"
+  "theme": "Craters",
+  "zr": [
+   -1950,
+   880
+  ]
  },
  {
   "view": "hale_view",
@@ -493,7 +613,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Craters"
+  "theme": "Craters",
+  "zr": [
+   -2430,
+   2080
+  ]
  },
  {
   "view": "tooting_view",
@@ -509,7 +633,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Craters"
+  "theme": "Craters",
+  "zr": [
+   -5060,
+   -3170
+  ]
  },
  {
   "view": "lyot_view",
@@ -525,7 +653,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Craters"
+  "theme": "Craters",
+  "zr": [
+   -6590,
+   -2550
+  ]
  },
  {
   "view": "candor_view",
@@ -541,7 +673,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Chaos and canyons"
+  "theme": "Chaos and canyons",
+  "zr": [
+   -4780,
+   4620
+  ]
  },
  {
   "view": "echus_view",
@@ -557,7 +693,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Chaos and canyons"
+  "theme": "Chaos and canyons",
+  "zr": [
+   -1000,
+   3920
+  ]
  },
  {
   "view": "juventae_view",
@@ -573,7 +713,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Chaos and canyons"
+  "theme": "Chaos and canyons",
+  "zr": [
+   -3850,
+   2650
+  ]
  },
  {
   "view": "ius_view",
@@ -589,7 +733,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Chaos and canyons"
+  "theme": "Chaos and canyons",
+  "zr": [
+   -3400,
+   4930
+  ]
  },
  {
   "view": "aram_view",
@@ -605,7 +753,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Chaos and canyons"
+  "theme": "Chaos and canyons",
+  "zr": [
+   -3560,
+   -920
+  ]
  },
  {
   "view": "arsia_view",
@@ -621,7 +773,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Volcanoes"
+  "theme": "Volcanoes",
+  "zr": [
+   11920,
+   17600
+  ]
  },
  {
   "view": "pavonis_view",
@@ -637,7 +793,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Volcanoes"
+  "theme": "Volcanoes",
+  "zr": [
+   9220,
+   14010
+  ]
  },
  {
   "view": "ceraunius_view",
@@ -653,7 +813,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Volcanoes"
+  "theme": "Volcanoes",
+  "zr": [
+   1630,
+   7820
+  ]
  },
  {
   "view": "nilipatera_view",
@@ -669,7 +833,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Volcanoes"
+  "theme": "Volcanoes",
+  "zr": [
+   110,
+   2210
+  ]
  },
  {
   "view": "terby_view",
@@ -685,7 +853,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Layered deposits"
+  "theme": "Layered deposits",
+  "zr": [
+   -5000,
+   -150
+  ]
  },
  {
   "view": "danielson_view",
@@ -701,7 +873,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Layered deposits"
+  "theme": "Layered deposits",
+  "zr": [
+   -3380,
+   -1120
+  ]
  },
  {
   "view": "henry_view",
@@ -717,7 +893,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Layered deposits"
+  "theme": "Layered deposits",
+  "zr": [
+   -1940,
+   750
+  ]
  },
  {
   "view": "protonilus_view",
@@ -733,7 +913,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Ice and wind"
+  "theme": "Ice and wind",
+  "zr": [
+   -3160,
+   -350
+  ]
  },
  {
   "view": "moreux_view",
@@ -749,7 +933,11 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Ice and wind"
+  "theme": "Ice and wind",
+  "zr": [
+   -4210,
+   -140
+  ]
  },
  {
   "view": "medusae_view",
@@ -765,6 +953,10 @@
   ],
   "rendered": true,
   "viewer": true,
-  "theme": "Ice and wind"
+  "theme": "Ice and wind",
+  "zr": [
+   -2990,
+   -1330
+  ]
  }
 ]

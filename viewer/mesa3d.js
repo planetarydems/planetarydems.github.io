@@ -261,7 +261,10 @@ export async function createViewer(container, base, opts = {}) {
   return {
     meta, scene, camera, controls, renderer, terrain,
     setSurface, setDrape, resetView, currentView, heightAt,
-    setSurfaceNow(x) { anim = null; terrain.morphTargetInfluences[0] = skirt.morphTargetInfluences[0] = x; },
+    setSurfaceNow(x) {
+      anim = null; surface = x >= 0.5 ? 'mola' : 'mesa'; terrain.morphTargetInfluences[0] = skirt.morphTargetInfluences[0] = x;
+      if (drape === 'color') { mat.map = surface === 'mola' ? texCl : texCm; mat.needsUpdate = true; }
+    },
     setExaggeration(x) { const t = controls.target.clone(); ve = x; applyVE(); camera.position.add(controls.target.clone().sub(t)); },
     get exaggeration() { return ve; },
     setAutoRotate(b) { controls.autoRotate = b; },

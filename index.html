@@ -91,6 +91,11 @@
     box-shadow: 0 1px 6px rgba(0,0,0,.5); background-image: linear-gradient(90deg, transparent 9px, #222 9px 11px, transparent 11px 19px, #222 19px 21px, transparent 21px); }
   .media .tag { position: absolute; top: 12px; padding: 4px 9px; border-radius: 5px; background: rgba(12,14,17,0.72); color: #fff; font: 600 13px/1.2 var(--body); pointer-events: none; }
   .media .tag.l { left: 12px; } .media .tag.r { right: 12px; }
+  .media .zleg { position: absolute; right: 12px; bottom: 12px; width: min(240px, 42%); padding: 7px 10px 6px; border-radius: 7px; background: rgba(12,14,17,0.72); color: #fff; font: 12px/1.2 var(--body); pointer-events: none; }
+  .media .zleg.top { top: 12px; bottom: auto; }
+  .media .zleg .zbar { height: 9px; border-radius: 3px; background: linear-gradient(90deg, #7f7184, #899acf, #7bbed3, #80d6ad, #b3db84, #d4c683, #daa278, #c77e6b, #a06b6a); }
+  .media .zleg .zends { display: flex; justify-content: space-between; gap: 8px; margin-top: 4px; font-variant-numeric: tabular-nums; }
+  .media .zleg .zends span:nth-child(2) { color: var(--night-muted); }
   .media input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
   .media .gl { position: absolute; inset: 0; }
   .media .loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--night-muted); font-size: 14px; }
@@ -228,13 +233,13 @@
   <section class="explore" id="explore"><div class="wrap">
     <p class="eyebrow" style="color:var(--night-muted)">Sites</p>
     <h2>Perspective views at 18 m</h2>
-    <p class="lede">In each view, MESA (left of the divider) is compared with the MOLA gridded DEM (right). In the relief view, both surfaces are rendered with shading from the elevation model. In the CTX view, the CTX images used for the MESA prediction are draped over both surfaces. The divider is moved by dragging.</p>
+    <p class="lede">In each view, MESA (left of the divider) is compared with the MOLA gridded DEM (right). In the elevation view, both surfaces are colored by height above the MOLA areoid on one color scale. In the relief view, both surfaces are rendered with shading from the elevation model. In the CTX view, the CTX images used for the MESA prediction are draped over both surfaces. The divider is moved by dragging.</p>
     <div class="stage">
       <div class="media" id="media"></div>
       <div class="bar">
         <div class="info"><div class="name" id="s-name"></div><div class="where" id="s-where"></div><p class="cap" id="s-cap"></p></div>
         <div class="controls">
-          <div class="seg" id="c-drape" role="group" aria-label="Drape"><button data-v="relief" aria-pressed="true">Relief</button><button data-v="ctx" aria-pressed="false">CTX image</button></div>
+          <div class="seg" id="c-drape" role="group" aria-label="Drape"><button data-v="color" aria-pressed="true">Elevation</button><button data-v="relief" aria-pressed="false">Relief</button><button data-v="ctx" aria-pressed="false">CTX image</button></div>
           <div class="seg" id="c-mode" role="group" aria-label="View"><button data-v="compare" aria-pressed="true">Compare</button><button data-v="3d" aria-pressed="false">Interactive 3-D</button></div>
         </div>
       </div>
@@ -402,7 +407,7 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 const fmtLat = (v) => `${Math.abs(v).toFixed(2)}°${v >= 0 ? 'N' : 'S'}`, fmtLon = (v) => `${Math.abs(v).toFixed(2)}°${v >= 0 ? 'E' : 'W'}`;
 // a standalone copy defines window.EMBED = {sites, tables, img: {path: dataURI}, viewer: {site: {file: dataURI}}}
 const EMBED = window.EMBED || null;
-const BUILD = '202611121257';                                   // set by build_site.py; new file addresses on every release
+const BUILD = '202611121330';                                   // set by build_site.py; new file addresses on every release
 const withV = (p) => (BUILD ? `${p}?v=${BUILD}` : p);
 const [SITES, T] = EMBED ? [EMBED.sites, EMBED.tables]
   : await Promise.all([fetch(withV('data/sites.json')).then((r) => r.json()), fetch(withV('data/tables.json')).then((r) => r.json())]);
@@ -435,12 +440,18 @@ function renderSites() {
 }
 $('sites').addEventListener('click', (e) => { const b = e.target.closest('button.site'); if (b) { cur = SITES[+b.dataset.i]; renderThemes(); renderSites(); show(); } });
 
+const fmtZ = (v) => `${v < 0 ? '−' : ''}${Math.abs(v).toLocaleString('en-US')}`;
+function zleg() {
+  return cur.zr ? `<div class="zleg" aria-label="Elevation from ${fmtZ(cur.zr[0])} to ${fmtZ(cur.zr[1])} m"><div class="zbar"></div>
+    <div class="zends"><span>${fmtZ(cur.zr[0])}</span><span>elevation (m)</span><span>${fmtZ(cur.zr[1])}</span></div></div>` : '';
+}
 function compare() {
   const d = pressed('c-drape'), m = $('media');
   if (viewer) { viewer.dispose(); viewer = null; }
-  m.innerHTML = `<img src="${im(`img/${cur.view}_mesa_${d}.jpg`)}" alt="${esc(cur.title)}, ${d === 'ctx' ? 'CTX image on' : 'relief of'} MESA">
-    <img class="over" src="${im(`img/${cur.view}_mola_${d}.jpg`)}" alt="${esc(cur.title)}, ${d === 'ctx' ? 'CTX image on' : 'relief of'} MOLA">
-    <div class="divider"></div><span class="tag l">MESA · 18 m</span><span class="tag r">MOLA · 463 m</span>
+  const what = { ctx: 'CTX image on', relief: 'relief of', color: 'color elevation of' }[d];
+  m.innerHTML = `<img src="${im(`img/${cur.view}_mesa_${d}.jpg`)}" alt="${esc(cur.title)}, ${what} MESA">
+    <img class="over" src="${im(`img/${cur.view}_mola_${d}.jpg`)}" alt="${esc(cur.title)}, ${what} MOLA">
+    <div class="divider"></div><span class="tag l">MESA · 18 m</span><span class="tag r">MOLA · 463 m</span>${d === 'color' ? zleg() : ''}
     <input type="range" min="0" max="100" value="50" aria-label="Move the divider between MESA and MOLA">`;
   m.style.setProperty('--x', '50%');
   m.querySelector('input').addEventListener('input', (e) => m.style.setProperty('--x', `${e.target.value}%`));
@@ -454,10 +465,13 @@ async function interactive() {
   m.querySelector('.loading').remove();
   m.insertAdjacentHTML('beforeend', `<div class="gl-tools">
     <div class="seg" id="g-surf"><button data-v="mesa" aria-pressed="true">MESA</button><button data-v="mola" aria-pressed="false">MOLA</button></div>
-    <div class="seg" id="g-drape"><button data-v="ctx" aria-pressed="true">Image</button><button data-v="color" aria-pressed="false">Elevation</button><button data-v="relief" aria-pressed="false">Relief</button></div>
+    <div class="seg" id="g-drape"><button data-v="color" aria-pressed="true">Elevation</button><button data-v="ctx" aria-pressed="false">Image</button><button data-v="relief" aria-pressed="false">Relief</button></div>
     <label>Vertical <input id="g-ve" type="range" min="1" max="6" step="0.5" value="${viewer.exaggeration}"></label></div>`);
   seg('g-surf', (v) => viewer.setSurface(v));
-  seg('g-drape', (v) => viewer.setDrape(v));
+  m.insertAdjacentHTML('beforeend', zleg());
+  const leg = m.querySelector('.zleg'); if (leg) leg.classList.add('top');
+  viewer.setDrape('color');
+  seg('g-drape', (v) => { viewer.setDrape(v); if (leg) leg.style.display = v === 'color' ? '' : 'none'; });
   $('g-ve').addEventListener('input', (e) => viewer.setExaggeration(+e.target.value));
 }
 function show() {
