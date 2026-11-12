@@ -446,5 +446,271 @@
   "rendered": true,
   "viewer": true,
   "theme": "Volcanoes"
+ },
+ {
+  "view": "gusev_view",
+  "site": "gusev",
+  "title": "Gusev crater",
+  "caption": "Gusev crater, landing site of the Spirit rover, seen from the south.",
+  "ve": 2.0,
+  "lat": -14.55,
+  "lon": 175.4,
+  "window_km": [
+   190.0,
+   180.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Craters"
+ },
+ {
+  "view": "arsia_view",
+  "site": "arsia",
+  "title": "Arsia Mons caldera",
+  "caption": "The summit caldera of Arsia Mons, seen from the south-southeast.",
+  "ve": 2.0,
+  "lat": -8.75,
+  "lon": -120.1,
+  "window_km": [
+   200.0,
+   180.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Volcanoes"
+ },
+ {
+  "view": "pavonis",
+  "site": "pavonis",
+  "title": "Pavonis Mons caldera",
+  "lat": 1.14,
+  "lon": -113.13,
+  "window_km": [
+   120.0,
+   110.0
+  ],
+  "rendered": false,
+  "theme": "Volcanoes"
+ },
+ {
+  "view": "ceraunius",
+  "site": "ceraunius",
+  "title": "Ceraunius Tholus",
+  "lat": 24.3,
+  "lon": -97.4,
+  "window_km": [
+   160.0,
+   180.0
+  ],
+  "rendered": false,
+  "theme": "Volcanoes"
+ },
+ {
+  "view": "candor",
+  "site": "candor",
+  "title": "Candor Chasma",
+  "lat": -6.5,
+  "lon": -71.0,
+  "window_km": [
+   180.0,
+   140.0
+  ],
+  "rendered": false,
+  "theme": "Chaos and canyons"
+ },
+ {
+  "view": "echus",
+  "site": "echus",
+  "title": "Echus Chasma",
+  "lat": 0.83,
+  "lon": -80.35,
+  "window_km": [
+   170.0,
+   150.0
+  ],
+  "rendered": false,
+  "theme": "Chaos and canyons"
+ },
+ {
+  "view": "juventae",
+  "site": "juventae",
+  "title": "Juventae Chasma",
+  "lat": -4.06,
+  "lon": -61.5,
+  "window_km": [
+   200.0,
+   170.0
+  ],
+  "rendered": false,
+  "theme": "Chaos and canyons"
+ },
+ {
+  "view": "ius",
+  "site": "ius",
+  "title": "Ius Chasma",
+  "lat": -7.0,
+  "lon": -85.0,
+  "window_km": [
+   200.0,
+   130.0
+  ],
+  "rendered": false,
+  "theme": "Chaos and canyons"
+ },
+ {
+  "view": "aram",
+  "site": "aram",
+  "title": "Aram Chaos",
+  "lat": 2.35,
+  "lon": -21.5,
+  "window_km": [
+   300.0,
+   290.0
+  ],
+  "rendered": false,
+  "theme": "Chaos and canyons"
+ },
+ {
+  "view": "kasei",
+  "site": "kasei",
+  "title": "Kasei Valles",
+  "lat": 24.58,
+  "lon": -65.0,
+  "window_km": [
+   280.0,
+   200.0
+  ],
+  "rendered": false,
+  "theme": "Fluvial valleys"
+ },
+ {
+  "view": "terby",
+  "site": "terby",
+  "title": "Terby crater",
+  "lat": -27.16,
+  "lon": 74.69,
+  "window_km": [
+   140.0,
+   120.0
+  ],
+  "rendered": false,
+  "theme": "Layered deposits"
+ },
+ {
+  "view": "danielson",
+  "site": "danielson",
+  "title": "Danielson crater",
+  "lat": 7.95,
+  "lon": -7.05,
+  "window_km": [
+   90.0,
+   80.0
+  ],
+  "rendered": false,
+  "theme": "Layered deposits"
+ },
+ {
+  "view": "henry",
+  "site": "henry",
+  "title": "Henry crater",
+  "lat": 10.9,
+  "lon": 23.3,
+  "window_km": [
+   200.0,
+   190.0
+  ],
+  "rendered": false,
+  "theme": "Layered deposits"
+ },
+ {
+  "view": "hale",
+  "site": "hale",
+  "title": "Hale crater",
+  "lat": -35.7,
+  "lon": -36.35,
+  "window_km": [
+   180.0,
+   160.0
+  ],
+  "rendered": false,
+  "theme": "Craters"
+ },
+ {
+  "view": "protonilus",
+  "site": "protonilus",
+  "title": "Protonilus Mensae",
+  "lat": 44.0,
+  "lon": 49.0,
+  "window_km": [
+   160.0,
+   140.0
+  ],
+  "rendered": false,
+  "theme": "Ice and wind"
+ },
+ {
+  "view": "moreux",
+  "site": "moreux",
+  "title": "Moreux crater",
+  "lat": 41.38,
+  "lon": 44.4,
+  "window_km": [
+   170.0,
+   160.0
+  ],
+  "rendered": false,
+  "theme": "Ice and wind"
+ },
+ {
+  "view": "nilipatera",
+  "site": "nilipatera",
+  "title": "Nili Patera",
+  "lat": 9.0,
+  "lon": 66.95,
+  "window_km": [
+   80.0,
+   70.0
+  ],
+  "rendered": false,
+  "theme": "Volcanoes"
+ },
+ {
+  "view": "tooting",
+  "site": "tooting",
+  "title": "Tooting crater",
+  "lat": 23.2,
+  "lon": -152.2,
+  "window_km": [
+   50.0,
+   45.0
+  ],
+  "rendered": false,
+  "theme": "Craters"
+ },
+ {
+  "view": "lyot",
+  "site": "lyot",
+  "title": "Lyot crater",
+  "lat": 50.8,
+  "lon": 29.3,
+  "window_km": [
+   260.0,
+   240.0
+  ],
+  "rendered": false,
+  "theme": "Craters"
+ },
+ {
+  "view": "medusae",
+  "site": "medusae",
+  "title": "Medusae Fossae",
+  "lat": -3.0,
+  "lon": -160.76,
+  "window_km": [
+   130.0,
+   100.0
+  ],
+  "rendered": false,
+  "theme": "Ice and wind"
  }
 ]

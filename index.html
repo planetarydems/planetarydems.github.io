@@ -213,7 +213,7 @@
       <p class="eyebrow" style="color:var(--night-muted)">Mars · global elevation model · 18 m grid</p>
       <h1>MESA</h1>
       <p class="expansion">Mars Elevation from Shading and Altimetry</p>
-      <p class="lead">A global digital elevation model of Mars on an 18 m grid. Elevation is predicted from the shading in 45,570 Context Camera (CTX) images with a neural network and leveled to MOLA laser altimetry.</p>
+      <p class="lead">A global digital elevation model of Mars on an 18 m grid. Elevation is predicted from the shading in 47,596 Context Camera (CTX) images with a neural network and leveled to MOLA laser altimetry.</p>
       <div class="cta"><a class="btn primary" href="#data">Data access</a><a class="btn" href="#explore">Site gallery</a></div>
     </div></div>
   </div>
@@ -221,7 +221,7 @@
     <div class="stats">
       <div class="stat"><div class="v">18 m</div><div class="l">grid spacing. <b>MOLA: 463 m</b></div></div>
       <div class="stat"><div class="v">8.6 m</div><div class="l">median error against 618 independent HiRISE DEMs. <b>MOLA: 17.8 m</b></div></div>
-      <div class="stat"><div class="v">96.4%</div><div class="l">of the surface predicted from CTX images. Infilled areas are flagged.</div></div>
+      <div class="stat"><div class="v">96.8%</div><div class="l">of the surface predicted from CTX images. Infilled areas are flagged.</div></div>
       <div class="stat"><div class="v">1.4 TB</div><div class="l">single Cloud-Optimized GeoTIFF, read in subsets over HTTP.</div></div>
     </div>
   </div>
@@ -258,7 +258,7 @@
         <thead><tr><th>Product</th><th>Content</th><th>Grid and format</th><th>Status</th></tr></thead>
         <tbody>
           <tr><td><b>MESA DEM</b><br><code>mesa_v1_dem_18m.tif</code></td><td>Elevation in meters above the MOLA areoid (the PEDR height convention), float32, nodata −9999</td><td>1,185,494 × 592,747 pixels at 18 m. One lossless COG, ~1.4 TB</td><td><span class="pill">Coming soon</span></td></tr>
-          <tr><td><b>Mask</b><br><code>mesa_v1_mask_18m.tif</code></td><td>0 = predicted from CTX, 1 = infilled (inpainting network or gap bridge), 255 = nodata</td><td>Same grid. uint8 COG, 1.3 GB</td><td><span class="pill">Coming soon</span></td></tr>
+          <tr><td><b>Mask</b><br><code>mesa_v1_mask_18m.tif</code></td><td>0 = predicted from CTX, 1 = infilled by the inpainting network, 2 = short bridge or seam replacement (MOLA-guided, up to 180 m), 3 = MOLA fill with matched edges, 255 = nodata</td><td>Same grid. uint8 COG, 1.3 GB</td><td><span class="pill">Coming soon</span></td></tr>
           <tr><td><b>Uncertainty map</b><br><code>mesa_v1_uncertainty_18m.tif</code></td><td>Expected error of each pixel in meters, from the median error of test pixels with the same slope, local incidence, and distance to the nearest laser shot. Infilled pixels are assigned by distance to the nearest predicted pixel. A class raster accompanies the map (reliable &lt;10 m, caution 10–25 m, unreliable ≥25 m, and infilled).</td><td>Same grid. COG</td><td><span class="pill">Coming soon</span></td></tr>
           <tr><td><b>CTX image mosaic</b><br><code>mesa_v1_ctx_6m.tif</code></td><td>8-bit CTX image. Each pixel is taken from the registered image that dominates the DEM at that location.</td><td>DEM grid at one third of the pixel size (6 m, 3 × 3 per DEM pixel). One lossless COG, ~4.3 TB</td><td><span class="pill">Coming soon</span></td></tr>
         </tbody>
@@ -354,7 +354,7 @@
         <div class="ovr"><table><thead><tr><th>overview_level</th><th class="n">0</th><th class="n">1</th><th class="n">2</th><th class="n">3</th><th class="n">4</th><th class="n">5</th><th class="n">7</th><th class="n">9</th><th class="n">11</th></tr></thead>
           <tbody><tr><td>pixel</td><td class="n">36 m</td><td class="n">72 m</td><td class="n">144 m</td><td class="n">288 m</td><td class="n">576 m</td><td class="n">1.2 km</td><td class="n">4.6 km</td><td class="n">18 km</td><td class="n">74 km</td></tr></tbody></table></div>
       </div>
-      <div class="recipe"><h4>Infilled pixels</h4><p>3.6% of the surface is infilled, in areas without usable CTX images. Infilled pixels are suitable for context. They are unsuitable for measurements of small landforms.</p>
+      <div class="recipe"><h4>Infilled pixels</h4><p>3.1% of the surface is infilled, in areas without usable CTX images. Infilled pixels are suitable for context. They are unsuitable for measurements of small landforms.</p>
         <div class="code"><div class="head"><span></span><button class="copy" data-target="r-mask">Copy</button></div><pre id="r-mask"></pre></div></div>
       <div class="recipe"><h4>Square pixels in meters</h4><p>Pixels of the global grid are elongated east–west away from the equator. Reprojection to a projection centered on the area is recommended before distances or slopes are measured.</p>
         <div class="code"><div class="head"><span></span><button class="copy" data-target="r-proj">Copy</button></div><pre id="r-proj"></pre></div></div>
@@ -381,7 +381,7 @@
         <div class="key"><span><i style="background:var(--accent)"></i>MESA</span><span><i style="background:var(--mola)"></i>MOLA</span></div><div class="tip"></div></div>
     </div>
     <figure><img src="img/hirise_comparison.jpg" data-src="img/hirise_comparison.jpg" alt="Three HiRISE test sites: CTX image, HiRISE DEM, MESA and MOLA side by side" loading="lazy">
-      <figcaption>Three HiRISE DEMs of the test set, 8 km across. The MESA panels show the released product, moved by the horizontal shift between its CTX images and the HiRISE orthoimage. HiRISE and MOLA are shown in place. Ridges, gullies, and dunes in the HiRISE DEMs are reproduced in MESA and are absent from MOLA. Color is elevation over a hillshade. Elevations are absolute in every panel.</figcaption></figure>
+      <figcaption>Three HiRISE DEMs of the test set, 8 km across. All panels are shown in place. Ridges, gullies, and dunes in the HiRISE DEMs are reproduced in MESA and are absent from MOLA. Color is elevation over a hillshade. Elevations are absolute in every panel.</figcaption></figure>
   </section>
 
   <section class="read" id="cite">
@@ -402,7 +402,7 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 const fmtLat = (v) => `${Math.abs(v).toFixed(2)}°${v >= 0 ? 'N' : 'S'}`, fmtLon = (v) => `${Math.abs(v).toFixed(2)}°${v >= 0 ? 'E' : 'W'}`;
 // a standalone copy defines window.EMBED = {sites, tables, img: {path: dataURI}, viewer: {site: {file: dataURI}}}
 const EMBED = window.EMBED || null;
-const BUILD = '202610161230';                                   // set by build_site.py; new file addresses on every release
+const BUILD = '202611121152';                                   // set by build_site.py; new file addresses on every release
 const withV = (p) => (BUILD ? `${p}?v=${BUILD}` : p);
 const [SITES, T] = EMBED ? [EMBED.sites, EMBED.tables]
   : await Promise.all([fetch(withV('data/sites.json')).then((r) => r.json()), fetch(withV('data/tables.json')).then((r) => r.json())]);
@@ -421,7 +421,7 @@ const pressed = (id) => [...$(id).children].find((b) => b.getAttribute('aria-pre
 
 // ---------------- explore stage ----------------
 let cur = SITES.find((s) => s.rendered), viewer = null, viewerMod = null, theme = 'All';
-const THEMES = ['All', ...['Fluvial valleys', 'Deltas and fans', 'Craters', 'Chaos and canyons', 'Volcanoes'].filter((t) => SITES.some((s) => s.theme === t))];
+const THEMES = ['All', ...['Fluvial valleys', 'Deltas and fans', 'Layered deposits', 'Craters', 'Chaos and canyons', 'Volcanoes', 'Ice and wind'].filter((t) => SITES.some((s) => s.theme === t))];
 function renderThemes() {
   $('themes').innerHTML = THEMES.map((t) => `<button aria-pressed="${t === theme}" data-t="${esc(t)}">${esc(t)}<span>${t === 'All' ? SITES.length : SITES.filter((s) => s.theme === t).length}</span></button>`).join('');
 }
@@ -579,7 +579,7 @@ region.rio.to_raster("region_288m.tif", compress="deflate")`],
 MASK = "${MASK}"   # placeholder address
 
 mask = rioxarray.open_rasterio(MASK).rio.clip_box(${num(b.w)}, ${num(b.s)}, ${num(b.e)}, ${num(b.n)}, crs=MARS)
-infilled = mask.squeeze() == 1      # 0 = predicted from CTX, 1 = infilled, 255 = nodata
+infilled = mask.squeeze().isin([1, 2, 3])   # 0 = predicted from CTX, 1-3 = filled, 255 = nodata
 print(f"{float(infilled.mean()):.1%} of the area is infilled")`],
   'r-proj': ['py', (b) => {
     const lat0 = (b.s + b.n) / 2, lon0 = (b.w + b.e) / 2;

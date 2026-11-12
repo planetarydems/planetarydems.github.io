@@ -128,7 +128,7 @@
       `${dem.win.w} × ${dem.win.h} pixels`,
       '',
       `${name}_dem.tif   elevation in meters above the MOLA areoid, float32, nodata -9999`,
-      mask ? `${name}_mask.tif  0 = predicted from CTX, 1 = infilled, 255 = nodata` : '',
+      mask ? `${name}_mask.tif  0 = predicted from CTX, 1 = inpainting-network infill, 2 = short MOLA-guided bridge, 3 = MOLA fill, 255 = nodata` : '',
       '.tfw = world file, .prj = projection (ESRI WKT). The GeoTIFFs also carry the coordinate system internally.',
       '',
       'Source: https://planetarydems.org',

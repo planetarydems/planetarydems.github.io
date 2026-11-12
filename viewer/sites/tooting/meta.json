@@ -1,0 +1,77 @@
+{
+ "key": "tooting",
+ "title": "Tooting crater",
+ "lon": -152.2,
+ "lat": 23.2,
+ "width_km": 50.004,
+ "height_km": 45.0,
+ "mesh": {
+  "cols": 1536,
+  "rows": 1382,
+  "px_m": 32.5546875
+ },
+ "zmin": -5150.0,
+ "zmax": -2968.0,
+ "dem_px_m": 18.0,
+ "tex": {
+  "cols": 4096,
+  "rows": 3686,
+  "px_m": 12.2080078125,
+  "full_cols": 8334,
+  "full_px_m": 6.0
+ },
+ "color_range": [
+  -5064.214370117187,
+  -3173.7463085937507
+ ],
+ "fill_share": 0.022355363570914326,
+ "frames": [
+  {
+   "id": "P22_009766_2034",
+   "share": 0.2907,
+   "inc": 47.04
+  },
+  {
+   "id": "V17_086487_2056",
+   "share": 0.2651,
+   "inc": 41.08
+  },
+  {
+   "id": "U08_073894_2013",
+   "share": 0.2196,
+   "inc": 65.11
+  },
+  {
+   "id": "B17_016425_2037",
+   "share": 0.2149,
+   "inc": 38.58
+  },
+  {
+   "id": "V15_085986_2004",
+   "share": 0.0097,
+   "inc": 40.35
+  }
+ ],
+ "product": "ta_implicit_d1_spline100s1_e098v3_release_20261109",
+ "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
+ "checks": {
+  "tex_valid_frames": 0.9776176945844333,
+  "tex_filled_from_hillshade": 0.022382305415566756,
+  "sun_az": 256.0,
+  "sun_alt": 42.455873258732595,
+  "sun_fit_r": 0.7399476932892608,
+  "tex_vs_dem_shift_m": [
+   -0.12130406617052358,
+   3.3124392234185507
+  ],
+  "tex_vs_dem_resp": 0.6806000200229221
+ },
+ "view": {
+  "az": 145,
+  "el": 32,
+  "dist": 0.85,
+  "te": 0,
+  "tn": 0,
+  "ve": 3.0
+ }
+}

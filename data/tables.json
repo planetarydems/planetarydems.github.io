@@ -1,5 +1,5 @@
 {
- "source": "paper/main.tex at commit 6494c51 (2026-10-15), epoch-88 model (implrel100s1_e088) and released mosaic: abstract, Table 1 (whole CTX images scored against the full stereo DEM), Table 3, Figure 3 (wavelength bands), Section 3.4.",
+ "source": "paper/main.tex working copy of 2026-11-12 (release v3: spline decoder epoch 98, release COGs 20261109): Table 1 (whole CTX images scored against the full stereo DEM), Table 3, Figure 3 data (figures/fig_spectrum_data.json, registered_581), Section 3.4.",
  "metrics": {
   "deployMAE": "Median of the per-DEM mean absolute error of the product as delivered. Shifts, offsets, and tilts were not removed.",
   "labelMAE": "Error after the prediction is rescaled to the mean and standard deviation of the reference, after co-registration. Reported for MESA. MOLA is evaluated as distributed (deployMAE).",
@@ -19,19 +19,19 @@
   },
   {
    "label": "Error against 359 held-out CTX stereo DEMs",
-   "value": "11.8 m",
+   "value": "11.7 m",
    "compare": "MOLA 19.0 m",
    "note": "median deployMAE, whole CTX images scored against the full stereo DEM"
   },
   {
    "label": "CTX images",
-   "value": "45,570",
+   "value": "47,596",
    "compare": "acquired 2006-09-28 to 2025-11-30"
   },
   {
    "label": "Surface predicted from CTX",
-   "value": "96.4%",
-   "compare": "3.6% infilled and flagged in a provenance mask"
+   "value": "96.8%",
+   "compare": "3.1% infilled and flagged in a provenance mask"
   },
   {
    "label": "Tiles",
@@ -52,36 +52,36 @@
    [
     "HiRISE stereo DEMs",
     "618",
-    "7.8*",
+    "8.0*",
     "8.6",
     "17.8"
    ],
    [
     "Held-out CTX stereo DEMs (whole images)",
     "359",
-    "11.4",
-    "11.8",
+    "11.3",
+    "11.7",
     "19.0"
    ],
    [
     "  equatorial, < 30°",
     "223",
-    "12.0",
+    "11.9",
     "12.3",
     "21.2"
    ],
    [
     "  mid-latitude, 30–60°",
     "109",
+    "10.0",
     "10.3",
-    "10.4",
     "18.5"
    ],
    [
     "  polar, > 60°",
     "27",
-    "9.9",
-    "10.3",
+    "10.0",
+    "10.4",
     "11.2"
    ]
   ],
@@ -104,7 +104,7 @@
    ],
    [
     "Share of the stereo DEM's amplitude",
-    "82%",
+    "81%",
     "37%"
    ],
    [
@@ -115,7 +115,7 @@
   ]
  },
  "wavelength": {
-  "title": "Accuracy against 581 co-registered HiRISE DEMs by wavelength (Figure 3; the band above 9.2 km is left out)",
+  "title": "Accuracy against 581 co-registered HiRISE DEMs by wavelength (Figure 3, release v3; the band above 9.2 km is left out)",
   "bands": [
    "< 144 m",
    "144–288 m",
@@ -136,16 +136,16 @@
   ],
   "mesa": {
    "amplitude": [
-    0.39,
-    0.6,
-    0.76,
-    0.86,
-    0.93,
-    0.97,
-    0.99
+    0.37,
+    0.59,
+    0.74,
+    0.85,
+    0.92,
+    0.96,
+    0.98
    ],
    "r": [
-    0.48,
+    0.5,
     0.71,
     0.83,
     0.9,
@@ -154,13 +154,13 @@
     0.99
    ],
    "rms_error_m": [
-    0.84,
+    0.83,
     0.91,
     1.58,
-    2.73,
-    4.43,
-    6.07,
-    6.31
+    2.72,
+    4.36,
+    5.89,
+    6.08
    ]
   },
   "mola": {
