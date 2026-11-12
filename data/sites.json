@@ -160,26 +160,6 @@
   ]
  },
  {
-  "view": "parana_wide",
-  "site": "parana",
-  "title": "Paraná Valles network",
-  "caption": "The Paraná Valles network in a 110 by 80 km window, seen from the south-southwest.",
-  "ve": 5,
-  "lat": -22.87,
-  "lon": -10.26,
-  "window_km": [
-   110.0,
-   80.0
-  ],
-  "rendered": true,
-  "viewer": true,
-  "theme": "Fluvial valleys",
-  "zr": [
-   -980,
-   220
-  ]
- },
- {
   "view": "nanedi_view",
   "site": "nanedi",
   "title": "Nanedi Valles",
