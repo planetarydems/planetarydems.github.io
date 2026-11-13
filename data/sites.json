@@ -460,6 +460,26 @@
   ]
  },
  {
+  "view": "bashkaus_lake_view",
+  "site": "bashkaus_lake",
+  "title": "Open-basin lake near Bashkaus Valles",
+  "caption": "Branching valleys and an open-basin paleolake near Bashkaus Valles, seen from the southwest.",
+  "ve": 4.5,
+  "lat": -25.997,
+  "lon": -2.776,
+  "window_km": [
+   76.0,
+   64.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Fluvial valleys",
+  "zr": [
+   340,
+   1510
+  ]
+ },
+ {
   "view": "olympus_view",
   "site": "olympus",
   "title": "Olympus Mons caldera",

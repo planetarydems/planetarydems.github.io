@@ -1,0 +1,102 @@
+{
+ "key": "bashkaus_lake",
+ "title": "Open-basin lake near Bashkaus Valles",
+ "lon": -2.776,
+ "lat": -25.997,
+ "width_km": 75.996,
+ "height_km": 64.008,
+ "mesh": {
+  "cols": 1536,
+  "rows": 1294,
+  "px_m": 49.4765625
+ },
+ "zmin": 113.0,
+ "zmax": 1620.0,
+ "dem_px_m": 18.0,
+ "tex": {
+  "cols": 4096,
+  "rows": 3449,
+  "px_m": 18.5537109375,
+  "full_cols": 9500,
+  "full_px_m": 8.0
+ },
+ "color_range": [
+  339.01127471923826,
+  1505.9917834472656
+ ],
+ "fill_share": 0.0009800557260991358,
+ "frames": [
+  {
+   "id": "J03_046050_1517",
+   "share": 0.2205,
+   "inc": 64.14
+  },
+  {
+   "id": "B20_017567_1541",
+   "share": 0.2108,
+   "inc": 70.08
+  },
+  {
+   "id": "B09_013321_1526",
+   "share": 0.1832,
+   "inc": 38.51
+  },
+  {
+   "id": "D19_034630_1523",
+   "share": 0.1384,
+   "inc": 68.22
+  },
+  {
+   "id": "U20_078702_1521",
+   "share": 0.1026,
+   "inc": 69.52
+  },
+  {
+   "id": "J11_049254_1561",
+   "share": 0.0653,
+   "inc": 31.65
+  },
+  {
+   "id": "G23_027127_1541",
+   "share": 0.0359,
+   "inc": 69.53
+  },
+  {
+   "id": "B17_016433_1554",
+   "share": 0.0338,
+   "inc": 60.06
+  },
+  {
+   "id": "G20_026204_1558",
+   "share": 0.009,
+   "inc": 67.37
+  },
+  {
+   "id": "N10_066252_1516",
+   "share": 0.0006,
+   "inc": 41.02
+  }
+ ],
+ "product": "ta_implicit_d1_spline100s1_e098v3_release_20261109",
+ "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
+ "checks": {
+  "tex_valid_frames": 1.0,
+  "tex_filled_from_hillshade": 0.0,
+  "sun_az": 302.0,
+  "sun_alt": 30.236058899999996,
+  "sun_fit_r": 0.6987667572075338,
+  "tex_vs_dem_shift_m": [
+   -4.187273210555759,
+   5.319120065392326
+  ],
+  "tex_vs_dem_resp": 0.4975603230794271
+ },
+ "view": {
+  "az": 220,
+  "el": 32,
+  "dist": 0.75,
+  "te": -8,
+  "tn": -2,
+  "ve": 4.5
+ }
+}
