@@ -300,6 +300,166 @@
   ]
  },
  {
+  "view": "evros_view",
+  "site": "evros",
+  "title": "Evros Vallis",
+  "caption": "The main valley of Evros Vallis and its tributaries, seen from the south.",
+  "ve": 4.5,
+  "lat": -12.71,
+  "lon": 14.25,
+  "window_km": [
+   200.0,
+   110.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Fluvial valleys",
+  "zr": [
+   350,
+   1630
+  ]
+ },
+ {
+  "view": "bashkaus_view",
+  "site": "bashkaus",
+  "title": "Bashkaus Valles",
+  "caption": "The branching valley network of Bashkaus Valles, seen from the south-southwest.",
+  "ve": 4.5,
+  "lat": -25.39,
+  "lon": -2.65,
+  "window_km": [
+   150.0,
+   180.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Fluvial valleys",
+  "zr": [
+   -50,
+   1740
+  ]
+ },
+ {
+  "view": "locras_view",
+  "site": "locras",
+  "title": "Locras Valles",
+  "caption": "The branching valley network of Locras Valles, seen from the south-southeast.",
+  "ve": 4.5,
+  "lat": 9.06,
+  "lon": 46.96,
+  "window_km": [
+   160.0,
+   130.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Fluvial valleys",
+  "zr": [
+   20,
+   1460
+  ]
+ },
+ {
+  "view": "tisia_view",
+  "site": "tisia",
+  "title": "Tisia Valles",
+  "caption": "The branching valley network of Tisia Valles, seen from the south.",
+  "ve": 4.5,
+  "lat": -10.69,
+  "lon": 46.35,
+  "window_km": [
+   160.0,
+   130.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Fluvial valleys",
+  "zr": [
+   2070,
+   3340
+  ]
+ },
+ {
+  "view": "naktong_view",
+  "site": "naktong",
+  "title": "Naktong Vallis",
+  "caption": "Valleys of the Naktong Vallis system among highland craters, seen from the south-southeast.",
+  "ve": 4.5,
+  "lat": 6.18,
+  "lon": 30.35,
+  "window_km": [
+   160.0,
+   130.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Fluvial valleys",
+  "zr": [
+   -530,
+   390
+  ]
+ },
+ {
+  "view": "vichada_view",
+  "site": "vichada",
+  "title": "Vichada Valles",
+  "caption": "The Vichada Valles network northeast of the Hellas basin, seen from the south.",
+  "ve": 4.5,
+  "lat": -21.3,
+  "lon": 88.06,
+  "window_km": [
+   160.0,
+   140.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Fluvial valleys",
+  "zr": [
+   550,
+   1710
+  ]
+ },
+ {
+  "view": "arda_view",
+  "site": "arda",
+  "title": "Arda Valles",
+  "caption": "Closely spaced valleys of Arda Valles, north of Holden and Eberswalde craters, seen from the south.",
+  "ve": 3.5,
+  "lat": -20.43,
+  "lon": -32.42,
+  "window_km": [
+   170.0,
+   120.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Fluvial valleys",
+  "zr": [
+   -2100,
+   1020
+  ]
+ },
+ {
+  "view": "cusus_view",
+  "site": "cusus",
+  "title": "Cusus Valles",
+  "caption": "The branching valley network of Cusus Valles, seen from the south-southeast.",
+  "ve": 4.5,
+  "lat": 13.78,
+  "lon": 49.97,
+  "window_km": [
+   160.0,
+   130.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Fluvial valleys",
+  "zr": [
+   310,
+   1030
+  ]
+ },
+ {
   "view": "olympus_view",
   "site": "olympus",
   "title": "Olympus Mons caldera",
