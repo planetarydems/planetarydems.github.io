@@ -1,0 +1,92 @@
+{
+ "key": "yuty",
+ "title": "Yuty crater",
+ "lon": -34.09,
+ "lat": 22.16,
+ "width_km": 75.996,
+ "height_km": 64.008,
+ "mesh": {
+  "cols": 1536,
+  "rows": 1294,
+  "px_m": 49.4765625
+ },
+ "zmin": -4598.0,
+ "zmax": -2823.0,
+ "dem_px_m": 18.0,
+ "tex": {
+  "cols": 4096,
+  "rows": 3449,
+  "px_m": 18.5537109375,
+  "full_cols": 9500,
+  "full_px_m": 8.0
+ },
+ "color_range": [
+  -4389.632846679688,
+  -3191.959060058594
+ ],
+ "fill_share": 0.0,
+ "frames": [
+  {
+   "id": "P04_002668_2030",
+   "share": 0.2806,
+   "inc": 59.21
+  },
+  {
+   "id": "N06_064657_2019",
+   "share": 0.26,
+   "inc": 63.56
+  },
+  {
+   "id": "P14_006637_2025",
+   "share": 0.2146,
+   "inc": 40.14
+  },
+  {
+   "id": "V04_081459_2006",
+   "share": 0.189,
+   "inc": 56.9
+  },
+  {
+   "id": "V02_080892_2019",
+   "share": 0.0428,
+   "inc": 51.61
+  },
+  {
+   "id": "B22_018214_2034",
+   "share": 0.0077,
+   "inc": 43.92
+  },
+  {
+   "id": "D01_027550_2006",
+   "share": 0.0029,
+   "inc": 46.53
+  },
+  {
+   "id": "V13_085019_2024",
+   "share": 0.0023,
+   "inc": 48.28
+  }
+ ],
+ "product": "ta_implicit_d1_spline100s1_e098v3_release_20261109",
+ "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
+ "checks": {
+  "tex_valid_frames": 1.0,
+  "tex_filled_from_hillshade": 0.0,
+  "sun_az": 261.0,
+  "sun_alt": 34.69279202792028,
+  "sun_fit_r": 0.5480064751290338,
+  "tex_vs_dem_shift_m": [
+   -8.761028558718863,
+   0.17581012954042308
+  ],
+  "tex_vs_dem_resp": 0.5742324840404369
+ },
+ "view": {
+  "az": 150,
+  "el": 32,
+  "dist": 0.85,
+  "te": 0,
+  "tn": 0,
+  "ve": 3.5
+ }
+}

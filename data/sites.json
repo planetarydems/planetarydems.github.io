@@ -480,6 +480,126 @@
   ]
  },
  {
+  "view": "aeolis_dorsa_view",
+  "site": "aeolis_dorsa",
+  "title": "Aeolis Dorsa",
+  "caption": "Wind-carved yardangs and flat-topped ridges in Aeolis Dorsa, seen from the south-southeast.",
+  "ve": 4.5,
+  "lat": -4.4,
+  "lon": 154.12,
+  "window_km": [
+   110.0,
+   80.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Ice and wind",
+  "zr": [
+   -2530,
+   -1560
+  ]
+ },
+ {
+  "view": "hypanis_view",
+  "site": "hypanis",
+  "title": "Hypanis Valles",
+  "caption": "The lower course of Hypanis Valles where it meets the northern plains, seen from the south-southeast.",
+  "ve": 4.5,
+  "lat": 11.36,
+  "lon": -45.33,
+  "window_km": [
+   160.0,
+   130.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Deltas and fans",
+  "zr": [
+   -2890,
+   -2030
+  ]
+ },
+ {
+  "view": "becquerel_view",
+  "site": "becquerel",
+  "title": "Becquerel crater",
+  "caption": "The layered mound on the floor of Becquerel crater, seen from the south-southeast.",
+  "ve": 2.5,
+  "lat": 21.38,
+  "lon": -8.09,
+  "window_km": [
+   96.0,
+   72.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Layered deposits",
+  "zr": [
+   -4400,
+   -1740
+  ]
+ },
+ {
+  "view": "yuty_view",
+  "site": "yuty",
+  "title": "Yuty crater",
+  "caption": "Lobed ejecta around Yuty crater, a classic rampart crater, seen from the south-southeast.",
+  "ve": 3.5,
+  "lat": 22.16,
+  "lon": -34.09,
+  "window_km": [
+   76.0,
+   64.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Craters",
+  "zr": [
+   -4390,
+   -3190
+  ]
+ },
+ {
+  "view": "kaiser_view",
+  "site": "kaiser",
+  "title": "Kaiser crater dunes",
+  "caption": "The dune field on the floor of Kaiser crater, seen from the south-southwest.",
+  "ve": 4.0,
+  "lat": -46.83,
+  "lon": 19.23,
+  "window_km": [
+   100.0,
+   70.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Ice and wind",
+  "zr": [
+   790,
+   1310
+  ]
+ },
+ {
+  "view": "cerberus_view",
+  "site": "cerberus",
+  "title": "Cerberus Fossae",
+  "caption": "Young fractures of Cerberus Fossae in Elysium Planitia, seen from the south.",
+  "ve": 5.0,
+  "lat": 10.55,
+  "lon": 156.97,
+  "window_km": [
+   140.0,
+   90.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Tectonics",
+  "zr": [
+   -2670,
+   -2280
+  ]
+ },
+ {
   "view": "olympus_view",
   "site": "olympus",
   "title": "Olympus Mons caldera",

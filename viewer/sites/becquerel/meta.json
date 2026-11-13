@@ -1,0 +1,97 @@
+{
+ "key": "becquerel",
+ "title": "Becquerel crater",
+ "lon": -8.09,
+ "lat": 21.38,
+ "width_km": 95.994,
+ "height_km": 72.0,
+ "mesh": {
+  "cols": 1536,
+  "rows": 1152,
+  "px_m": 62.49609375
+ },
+ "zmin": -4569.0,
+ "zmax": -1323.0,
+ "dem_px_m": 18.0,
+ "tex": {
+  "cols": 4096,
+  "rows": 3072,
+  "px_m": 23.43603515625,
+  "full_cols": 9599,
+  "full_px_m": 10.0
+ },
+ "color_range": [
+  -4400.9931640625,
+  -1743.5240429687492
+ ],
+ "fill_share": 0.0,
+ "frames": [
+  {
+   "id": "P17_007704_2014",
+   "share": 0.2099,
+   "inc": 40.98
+  },
+  {
+   "id": "J14_050177_2023",
+   "share": 0.173,
+   "inc": 40.63
+  },
+  {
+   "id": "P19_008495_2015",
+   "share": 0.1704,
+   "inc": 43.83
+  },
+  {
+   "id": "P17_007493_2022",
+   "share": 0.1613,
+   "inc": 39.83
+  },
+  {
+   "id": "U14_076526_2017",
+   "share": 0.1226,
+   "inc": 43.95
+  },
+  {
+   "id": "P21_009286_2022",
+   "share": 0.0908,
+   "inc": 45.94
+  },
+  {
+   "id": "V13_085018_2002",
+   "share": 0.0443,
+   "inc": 46.7
+  },
+  {
+   "id": "G22_026705_2034",
+   "share": 0.0146,
+   "inc": 41.89
+  },
+  {
+   "id": "V18_086851_2026",
+   "share": 0.0131,
+   "inc": 42.08
+  }
+ ],
+ "product": "ta_implicit_d1_spline100s1_e098v3_release_20261109",
+ "mola": "MOLA MEGDR 463 m global mosaic, as distributed",
+ "checks": {
+  "tex_valid_frames": 1.0,
+  "tex_filled_from_hillshade": 0.0,
+  "sun_az": 262.0,
+  "sun_alt": 47.684840848408484,
+  "sun_fit_r": 0.5660479631830131,
+  "tex_vs_dem_shift_m": [
+   -5.685387038492081,
+   -1.7141228844875513
+  ],
+  "tex_vs_dem_resp": 0.5342598781105324
+ },
+ "view": {
+  "az": 150,
+  "el": 32,
+  "dist": 0.85,
+  "te": 0,
+  "tn": 0,
+  "ve": 2.5
+ }
+}
