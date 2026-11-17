@@ -600,6 +600,126 @@
   ]
  },
  {
+  "view": "ismenius_view",
+  "site": "ismenius",
+  "title": "Ismenius Cavus",
+  "caption": "A paleolake basin joined by a valley from the south and by Mamers Valles to the north, seen from the south-southeast.",
+  "ve": 2.5,
+  "lat": 33.82,
+  "lon": 17.18,
+  "window_km": [
+   140.0,
+   180.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Paleolakes",
+  "zr": [
+   -3500,
+   -1420
+  ]
+ },
+ {
+  "view": "arago_canyon_view",
+  "site": "arago_canyon",
+  "title": "Outlet canyon east of Arago crater",
+  "caption": "A canyon running north from a paleolake basin east of Arago crater, seen from the south.",
+  "ve": 4.0,
+  "lat": 10.94,
+  "lon": 31.94,
+  "window_km": [
+   110.0,
+   180.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Paleolakes",
+  "zr": [
+   -1520,
+   270
+  ]
+ },
+ {
+  "view": "pathfinder_view",
+  "site": "pathfinder",
+  "title": "Mars Pathfinder landing site",
+  "caption": "The Ares Vallis flood plain around the Mars Pathfinder landing site (1997), seen from the south.",
+  "ve": 3.5,
+  "lat": 18.54,
+  "lon": -33.12,
+  "window_km": [
+   140.0,
+   110.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Landing sites",
+  "zr": [
+   -3780,
+   -3050
+  ]
+ },
+ {
+  "view": "viking1_view",
+  "site": "viking1",
+  "title": "Viking 1 landing site",
+  "caption": "Chryse Planitia around the Viking 1 landing site (1976), crossed by wrinkle ridges, seen from the south.",
+  "ve": 4.0,
+  "lat": 22.27,
+  "lon": -47.95,
+  "window_km": [
+   110.0,
+   80.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Landing sites",
+  "zr": [
+   -3690,
+   -3480
+  ]
+ },
+ {
+  "view": "oxia_view",
+  "site": "oxia",
+  "title": "Oxia Planum",
+  "caption": "Oxia Planum, the landing site chosen for the Rosalind Franklin rover, seen from the south.",
+  "ve": 4.5,
+  "lat": 18.275,
+  "lon": -24.632,
+  "window_km": [
+   120.0,
+   90.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Landing sites",
+  "zr": [
+   -3150,
+   -2630
+  ]
+ },
+ {
+  "view": "zhurong_view",
+  "site": "zhurong",
+  "title": "Zhurong landing site",
+  "caption": "Southern Utopia Planitia around the Zhurong rover landing site (2021), seen from the south-southeast.",
+  "ve": 5.0,
+  "lat": 25.07,
+  "lon": 109.74,
+  "window_km": [
+   80.0,
+   60.0
+  ],
+  "rendered": true,
+  "viewer": true,
+  "theme": "Landing sites",
+  "zr": [
+   -4230,
+   -3990
+  ]
+ },
+ {
   "view": "olympus_view",
   "site": "olympus",
   "title": "Olympus Mons caldera",
