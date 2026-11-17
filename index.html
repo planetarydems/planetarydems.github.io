@@ -256,7 +256,7 @@
     <p class="eyebrow">Data access</p>
     <h2>Reading subsets of the COG</h2>
     <p class="lede">MESA is distributed as a single 1.4 TB Cloud-Optimized GeoTIFF (COG). Subsets are read with HTTP range requests in GDAL, rasterio, or rioxarray. Only the 512 × 512 pixel tiles that intersect the requested area are transferred. In a test, ~12 MB were transferred for a 35 × 30 km subset at Jezero crater.</p>
-    <div class="callout"><b>Hosting in preparation.</b> The files will be in the public bucket <code>s3://planetarydems</code> (AWS region us-west-2), under <code>mars/mesa/v1/</code>, in the Registry of Open Data on AWS. An AWS account will not be needed. The addresses and the download button work once the bucket is open. The code was tested on a subset with the same file layout.</div>
+    <div class="callout"><b>Hosting in preparation.</b> The files will be in the public bucket <code>s3://planetarydems</code> (AWS region us-west-2), under <code>mars/mesa/v1/</code>, in the Registry of Open Data on AWS. No AWS account is needed to read them. The addresses below and the download button are active once the bucket is open. The code was tested on a subset with the same file layout.</div>
 
     <p class="lede" style="font-size:15px">The four products are defined on one grid (global equirectangular, Mars sphere). Resampling is not required to overlay them.</p>
     <div class="files products">
@@ -408,7 +408,7 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 const fmtLat = (v) => `${Math.abs(v).toFixed(2)}°${v >= 0 ? 'N' : 'S'}`, fmtLon = (v) => `${Math.abs(v).toFixed(2)}°${v >= 0 ? 'E' : 'W'}`;
 // a standalone copy defines window.EMBED = {sites, tables, img: {path: dataURI}, viewer: {site: {file: dataURI}}}
 const EMBED = window.EMBED || null;
-const BUILD = '202611171431';                                   // set by build_site.py; new file addresses on every release
+const BUILD = '202611171507';                                   // set by build_site.py; new file addresses on every release
 const withV = (p) => (BUILD ? `${p}?v=${BUILD}` : p);
 const [SITES, T] = EMBED ? [EMBED.sites, EMBED.tables]
   : await Promise.all([fetch(withV('data/sites.json')).then((r) => r.json()), fetch(withV('data/tables.json')).then((r) => r.json())]);
