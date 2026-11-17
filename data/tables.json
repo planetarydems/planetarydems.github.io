@@ -1,5 +1,5 @@
 {
- "source": "paper/main.tex working copy of 2026-11-12 (release v3: spline decoder epoch 98, release COGs 20261109): Table 1 (whole CTX images scored against the full stereo DEM), Table 3, Figure 3 data (figures/fig_spectrum_data.json, registered_581), Section 3.4.",
+ "source": "paper/main.tex and supplement.tex at commit e456e46 (2026-11-15; installed product, release COGs 20261116): Table 1 and Table 3 (single-image predictions), Text S10 (released DEM, predicted pixels), Figure 3 data (figures/fig_spectrum_data.json, registered_581), Section 3.4; product facts from release/aws_open_data/docs/DATA_DESCRIPTION.md.",
  "metrics": {
   "deployMAE": "Median of the per-DEM mean absolute error of the product as delivered. Shifts, offsets, and tilts were not removed.",
   "labelMAE": "Error after the prediction is rescaled to the mean and standard deviation of the reference, after co-registration. Reported for MESA. MOLA is evaluated as distributed (deployMAE).",
@@ -12,26 +12,26 @@
    "compare": "MOLA gridded DEM 463 m"
   },
   {
-   "label": "Error against 618 HiRISE DEMs",
-   "value": "8.6 m",
-   "compare": "MOLA 17.8 m",
-   "note": "median deployMAE"
+   "label": "Error of the released DEM against 618 HiRISE DEMs",
+   "value": "8.5 m",
+   "compare": "MOLA 18.0 m",
+   "note": "median deployMAE on predicted pixels"
   },
   {
-   "label": "Error against 359 held-out CTX stereo DEMs",
-   "value": "11.7 m",
-   "compare": "MOLA 19.0 m",
-   "note": "median deployMAE, whole CTX images scored against the full stereo DEM"
+   "label": "Error of the released DEM against 359 held-out CTX stereo DEMs",
+   "value": "11.2 m",
+   "compare": "MOLA 19.2 m",
+   "note": "median deployMAE on predicted pixels"
   },
   {
    "label": "CTX images",
-   "value": "47,596",
+   "value": "48,002",
    "compare": "acquired 2006-09-28 to 2025-11-30"
   },
   {
    "label": "Surface predicted from CTX",
-   "value": "96.8%",
-   "compare": "3.1% infilled and flagged in a provenance mask"
+   "value": "97.6%",
+   "compare": "2.3% infilled and flagged in a provenance mask"
   },
   {
    "label": "Tiles",
@@ -50,14 +50,28 @@
   ],
   "rows": [
    [
-    "HiRISE stereo DEMs",
+    "HiRISE stereo DEMs, released DEM",
+    "618",
+    "–",
+    "8.5",
+    "18.0"
+   ],
+   [
+    "Held-out CTX stereo DEMs, released DEM",
+    "359",
+    "–",
+    "11.2",
+    "19.2"
+   ],
+   [
+    "HiRISE stereo DEMs, single-image predictions",
     "618",
     "8.0*",
     "8.6",
     "17.8"
    ],
    [
-    "Held-out CTX stereo DEMs (whole images)",
+    "Held-out CTX stereo DEMs, single-image predictions (whole images)",
     "359",
     "11.3",
     "11.7",
@@ -86,7 +100,7 @@
    ]
   ],
   "notes": [
-   "Values are medians. Whole CTX images are scored against the full stereo DEM of each pair. *labelMAE against HiRISE is computed for the 581 DEMs with orthoimages co-registered to the CTX image."
+   "Values are medians. The released DEM is scored in place on its predicted pixels. Single-image predictions are whole CTX images scored against the full stereo DEM of each pair, before the images are joined into the mosaic. *labelMAE against HiRISE is computed for the 581 DEMs with orthoimages co-registered to the CTX image."
   ]
  },
  "fine_scale": {
@@ -205,15 +219,15 @@
    ],
    [
     "Source images",
-    "45,570 CTX images, 2006–2025, one prediction per image and tile (53,702)"
+    "48,002 CTX images, 2006–2025, one prediction per image and tile (57,945)"
    ],
    [
     "Vertical reference",
-    "MOLA areoid, leveled to MOLA PEDR laser shots: median residual −0.05 m, robust SD 2.28 m"
+    "MOLA areoid, leveled to MOLA PEDR laser shots: median residual −0.08 m, robust SD 2.27 m"
    ],
    [
     "Coverage",
-    "96.4% predicted from CTX images and 3.6% infilled (1.4% within 30° of the equator, 11.2% poleward of 60°). Data are available equatorward of ~88.6° latitude."
+    "97.6% predicted from CTX images and 2.3% infilled (1.1% within 30° of the equator, 3.6% at 30–60°, 3.7% poleward of 60°). Data are available equatorward of ~88.6° latitude."
    ],
    [
     "Companion layers",
@@ -221,7 +235,7 @@
    ],
    [
     "Known limits",
-    "Fine-scale amplitude is low (39% of the HiRISE amplitude below 144 m). The improvement over MOLA is small poleward of 80°. Infilled areas are suitable for context and unsuitable for morphometry."
+    "Fine-scale amplitude is low (37% of the HiRISE amplitude below 144 m). The improvement over MOLA is small poleward of 80°. Infilled areas are suitable for context and unsuitable for morphometry."
    ]
   ]
  }
