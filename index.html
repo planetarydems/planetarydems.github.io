@@ -256,17 +256,17 @@
     <p class="eyebrow">Data access</p>
     <h2>Reading subsets of the COG</h2>
     <p class="lede">MESA is distributed as a single 1.4 TB Cloud-Optimized GeoTIFF (COG). Subsets are read with HTTP range requests in GDAL, rasterio, or rioxarray. Only the 512 × 512 pixel tiles that intersect the requested area are transferred. In a test, ~12 MB were transferred for a 35 × 30 km subset at Jezero crater.</p>
-    <div class="callout"><b>Prototype.</b> Hosting is in preparation. The file addresses below are placeholders. The code was tested on a subset with the same file layout.</div>
+    <div class="callout"><b>Hosting in preparation.</b> The files will be in the public bucket <code>s3://planetarydems</code> (AWS region us-west-2), under <code>mars/mesa/v1/</code>, in the Registry of Open Data on AWS. An AWS account will not be needed. The addresses and the download button work once the bucket is open. The code was tested on a subset with the same file layout.</div>
 
     <p class="lede" style="font-size:15px">The four products are defined on one grid (global equirectangular, Mars sphere). Resampling is not required to overlay them.</p>
     <div class="files products">
       <table>
         <thead><tr><th>Product</th><th>Content</th><th>Grid and format</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td><b>MESA DEM</b><br><code>mesa_v1_dem_18m.tif</code></td><td>Elevation in meters above the MOLA areoid (the PEDR height convention), float32, nodata −9999</td><td>1,185,494 × 592,747 pixels at 18 m. One lossless COG, ~1.4 TB</td><td><span class="pill">Coming soon</span></td></tr>
-          <tr><td><b>Mask</b><br><code>mesa_v1_mask_18m.tif</code></td><td>0 = predicted from CTX, 1 = infilled by the inpainting network, 2 = short bridge or seam replacement (MOLA-guided, up to 180 m), 3 = MOLA fill with matched edges, 255 = nodata</td><td>Same grid. uint8 COG, 1.2 GB</td><td><span class="pill">Coming soon</span></td></tr>
-          <tr><td><b>Uncertainty map</b><br><code>mesa_v1_uncertainty_18m.tif</code></td><td>Expected error of each pixel in meters, from the median error of test pixels with the same slope, local incidence, and distance to the nearest laser shot. Infilled pixels are assigned by distance to the nearest predicted pixel. A class raster accompanies the map (reliable &lt;10 m, caution 10–25 m, unreliable ≥25 m, and infilled).</td><td>Same grid. COG</td><td><span class="pill">Coming soon</span></td></tr>
-          <tr><td><b>CTX image mosaic</b><br><code>mesa_v1_ctx_6m.tif</code></td><td>8-bit CTX image. Each pixel is taken from the registered image that dominates the DEM at that location.</td><td>DEM grid at one third of the pixel size (6 m, 3 × 3 per DEM pixel). One lossless COG, ~4.2 TB</td><td><span class="pill">Coming soon</span></td></tr>
+          <tr><td><b>MESA DEM</b><br><code>dem/<wbr>mesa_mars_dem_18m_v1.tif</code></td><td>Elevation in meters above the MOLA areoid (the PEDR height convention), float32, nodata −9999</td><td>1,185,494 × 592,747 pixels at 18 m. One lossless COG, ~1.4 TB</td><td><span class="pill">Coming soon</span></td></tr>
+          <tr><td><b>Mask</b><br><code>dem/<wbr>mesa_mars_dem_18m_v1_mask.tif</code></td><td>0 = predicted from CTX, 1 = infilled by the inpainting network, 2 = short bridge or seam replacement (MOLA-guided, up to 180 m), 3 = MOLA fill with matched edges, 255 = nodata</td><td>Same grid. uint8 COG, 1.2 GB</td><td><span class="pill">Coming soon</span></td></tr>
+          <tr><td><b>Uncertainty map</b><br><code>uncertainty/<wbr>mesa_mars_uncertainty_median_m_v1.tif</code></td><td>Expected error of each pixel in meters, from the median error of test pixels with the same slope, local incidence, and distance to the nearest laser shot. Infilled pixels are assigned by distance to the nearest predicted pixel. A class raster accompanies the map (<code>mesa_mars_uncertainty_class_v1.tif</code>: reliable &lt;10 m, caution 10–25 m, unreliable ≥25 m, and infilled).</td><td>Same grid. float32 COG, 144 GB</td><td><span class="pill">Coming soon</span></td></tr>
+          <tr><td><b>CTX image mosaic</b><br><code>ctx_image/<wbr>mesa_ctx_image_6m_v1.tif</code></td><td>8-bit CTX image. Each pixel is taken from the registered image that dominates the DEM at that location.</td><td>DEM grid at one third of the pixel size (6 m, 3 × 3 per DEM pixel). One lossless COG, ~4.2 TB</td><td><span class="pill">Coming soon</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -408,7 +408,7 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&l
 const fmtLat = (v) => `${Math.abs(v).toFixed(2)}°${v >= 0 ? 'N' : 'S'}`, fmtLon = (v) => `${Math.abs(v).toFixed(2)}°${v >= 0 ? 'E' : 'W'}`;
 // a standalone copy defines window.EMBED = {sites, tables, img: {path: dataURI}, viewer: {site: {file: dataURI}}}
 const EMBED = window.EMBED || null;
-const BUILD = '202611171230';                                   // set by build_site.py; new file addresses on every release
+const BUILD = '202611171431';                                   // set by build_site.py; new file addresses on every release
 const withV = (p) => (BUILD ? `${p}?v=${BUILD}` : p);
 const [SITES, T] = EMBED ? [EMBED.sites, EMBED.tables]
   : await Promise.all([fetch(withV('data/sites.json')).then((r) => r.json()), fetch(withV('data/tables.json')).then((r) => r.json())]);
@@ -490,8 +490,8 @@ seg('c-mode', (v) => (v === '3d' ? interactive() : compare()));
 renderThemes(); renderSites(); show();
 
 // ---------------- area builder + code ----------------
-const DEM = 'https://data.planetarydems.org/mars/mesa/v1/mesa_v1_dem_18m.tif';
-const MASK = 'https://data.planetarydems.org/mars/mesa/v1/mesa_v1_mask_18m.tif';
+const DEM = 'https://planetarydems.s3.us-west-2.amazonaws.com/mars/mesa/v1/dem/mesa_mars_dem_18m_v1.tif';
+const MASK = 'https://planetarydems.s3.us-west-2.amazonaws.com/mars/mesa/v1/dem/mesa_mars_dem_18m_v1_mask.tif';
 const NX = 1185494, NY = 592747, TILE = 512, KM_DEG = 3396.19 * Math.PI / 180;
 const presets = SITES.filter((s, i, a) => a.findIndex((t) => t.site === s.site) === i).map((s) => {
   const hw = s.window_km[0] / 2 / (KM_DEG * Math.cos(s.lat * Math.PI / 180)), hh = s.window_km[1] / 2 / KM_DEG;
@@ -526,7 +526,7 @@ function code(lang, b) {
   const box = `west, south, east, north = ${num(b.w)}, ${num(b.s)}, ${num(b.e)}, ${num(b.n)}`;
   if (lang === 'rioxarray') return `import rioxarray
 
-DEM = "${DEM}"   # placeholder address
+DEM = "${DEM}"   # public, no AWS account needed
 MARS = "+proj=longlat +R=3396190 +no_defs +type=crs"   # Mars sphere, degrees
 
 ${box}   # ${b.label}
@@ -538,7 +538,7 @@ area.rio.to_raster("${b.slug}_mesa.tif", compress="deflate")  # intersecting til
 from rasterio.warp import transform_bounds
 from rasterio.windows import from_bounds
 
-DEM = "${DEM}"   # placeholder address
+DEM = "${DEM}"   # public, no AWS account needed
 MARS = "+proj=longlat +R=3396190 +no_defs +type=crs"   # Mars sphere, degrees
 ${box}   # ${b.label}
 
@@ -591,7 +591,7 @@ coarse = rioxarray.open_rasterio(DEM, masked=True, overview_level=3)   # 288 m p
 region = coarse.rio.clip_box(-30, -30, 0, 0, crs=MARS)                 # 30° x 30°, Margaritifer Terra
 region.rio.to_raster("region_288m.tif", compress="deflate")`],
   'r-mask': ['py', (b) => `# continued from the code above
-MASK = "${MASK}"   # placeholder address
+MASK = "${MASK}"   # public, no AWS account needed
 
 mask = rioxarray.open_rasterio(MASK).rio.clip_box(${num(b.w)}, ${num(b.s)}, ${num(b.e)}, ${num(b.n)}, crs=MARS)
 infilled = mask.squeeze().isin([1, 2, 3])   # 0 = predicted from CTX, 1-3 = filled, 255 = nodata
